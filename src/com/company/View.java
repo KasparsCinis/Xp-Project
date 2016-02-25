@@ -23,27 +23,26 @@ public class View extends Application{
         launch(args);
     }
 
+    GridPane grid;
+    HBox hBox;
+    Scene scene;
 
+    Image img;
+    ImageView imgView;
+
+    Button manageBtn;
+    Button reserveBtn;
 
 
     @Override
     public void start(Stage primaryStage)
     {
-        GridPane grid = new GridPane();
-        HBox hBox = new HBox();
-        Scene scene = new Scene(grid, 800, 600);
-        grid.setAlignment(Pos.CENTER);
+        grid = new GridPane();
+        hBox = new HBox();
+        scene = new Scene(grid, 800, 600);
 
-
-        Image img;
-        ImageView imgView;
-
-
-
-        Button manageBtn = new Button("Manage \nActivity");
-        Button reserveBtn = new Button("Make \nReservation");
-
-
+        manageBtn = new Button("Manage \nActivity");
+        reserveBtn = new Button("Make \nReservation");
 
         img = new Image("com/Logo2.jpg");
         imgView = new ImageView();
@@ -62,14 +61,14 @@ public class View extends Application{
         imgView.setFitWidth(350);
 
 
-
-
         manageBtn.setMinHeight(90);
         manageBtn.setMinWidth(200);
         manageBtn.setMaxWidth(200);
+
         reserveBtn.setMinHeight(90);
         reserveBtn.setMinWidth(200);
         reserveBtn.setMaxWidth(200);
+
         manageBtn.setFont(Font.font(null, FontWeight.BOLD, 20));
         reserveBtn.setFont(Font.font(null, FontWeight.BOLD, 20));
 
@@ -78,13 +77,12 @@ public class View extends Application{
 
 
 
-        grid.setGridLinesVisible(true);
-
+        //grid.setGridLinesVisible(true);
         //grid.setPadding(new Insets(50, 20, 20, 50));
-        //grid.setMargin(new Insets());
+
         grid.add(manageBtn, 1, 1);
         grid.add(reserveBtn, 2, 1);
-
+        grid.setAlignment(Pos.CENTER);
 
 
         primaryStage.setTitle("Adventure parks");
