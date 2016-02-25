@@ -2,6 +2,8 @@ package com.company;
 
 
 
+
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -9,24 +11,38 @@ import org.junit.Before;
 
 public class Main {
 
-    @Before
-    public void setUp() throws Exception {
-    }
-
-
-    public static void main(String[] args) {
-
-    }
-
-    @Test  //TEST
-    public void testBackgroundUpdateSpeed()
+    @Test
+    public void testDBinsertion()
     {
-        assertEquals(calculationAdd(4,7), 11);
+    ModelClass modelClass = new ModelClass();
+        modelClass.writeToDB("DD", 12, 25, "sdsd");
+        assertEquals("DD", modelClass.toString());
     }
 
-
-    public int calculationAdd(int a, int b)
+    @Test
+    public void testDBupdate()
     {
-        return a + b;
+        ModelClass modelClass = new ModelClass();
+        modelClass.writeToDB("DD", 12, 25, "sdsd");
+        assertEquals("DD", modelClass.toString());
+
     }
+
+    @Test
+    public void testDBdelete()
+    {
+        ModelClass modelClass = new ModelClass();
+        modelClass.writeToDB("DD", 12, 25, "sdsd");
+        assertEquals("DD", modelClass.toString());
+    }
+
+    @Test
+    public void testDBretrieve()
+    {
+        ModelClass modelClass = new ModelClass();
+        modelClass.writeToDB("DD", 12, 25, "sdsd");
+        assertEquals("DD", modelClass.toString());
+    }
+
+
 }
