@@ -11,7 +11,7 @@ import org.junit.Before;
 
 public class Main {
 
-  /*  @Test
+  /*  @Test //#1
     public void testDBinsertion()
     {
     ModelClass modelClass = new ModelClass();
@@ -19,7 +19,7 @@ public class Main {
         assertEquals("DD", modelClass.toString());
     }
 
-    @Test
+    @Test //#2
     public void testDBupdate()
     {
         ModelClass modelClass = new ModelClass();
@@ -28,7 +28,7 @@ public class Main {
 
     }
 
-    @Test
+    @Test //#4
     public void testDBdelete()
     {
         ModelClass modelClass = new ModelClass();
@@ -36,7 +36,7 @@ public class Main {
         assertEquals("DD", modelClass.toString());
     }
 
-    @Test
+    @Test //#5
     public void testDBretrieve()
     {
         ModelClass modelClass = new ModelClass();
