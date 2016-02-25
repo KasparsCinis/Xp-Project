@@ -1,9 +1,7 @@
 package com.company;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Created by Dom on 2016-02-25.
@@ -85,6 +83,26 @@ public class ModelClass {
            e.printStackTrace();
        }
    }
-       }
+
+
+    public ArrayList<Activity> getDBactivities() {
+        ArrayList<Activity> activitiesList = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM activities";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Activity activity = new Activity (resultSet.getString(1),resultSet.getString(2), resultSet.getInt(3), resultSet.getDouble(4), resultSet.getString(5) );
+                activitiesList.add(activity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return activitiesList;
+    } }
+
 
 

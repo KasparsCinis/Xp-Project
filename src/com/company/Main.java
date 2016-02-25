@@ -8,6 +8,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
+import java.util.ArrayList;
+
 
 public class Main {
 
@@ -46,6 +48,14 @@ public class Main {
 
     public static void main(String[] args) {
         ModelClass modelClass = new ModelClass();
-        modelClass.deleteDB(1);
+        ArrayList<Activity> list = new ArrayList<>();
+
+        list = modelClass.getDBactivities();
+
+        for (Activity a: list)
+        {
+            System.out.println(a.toString());
+        }
+
     }
 }
