@@ -1,7 +1,13 @@
 package com.company;
 
 
-
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.Before;
 
 
 import org.junit.Test;
@@ -10,10 +16,9 @@ import org.junit.Before;
 
 import java.util.ArrayList;
 
+public class Main extends Application {
 
-public class Main {
-
-  /*  @Test //#1
+    /*  @Test //#1
     public void testDBinsertion()
     {
     ModelClass modelClass = new ModelClass();
@@ -46,16 +51,28 @@ public class Main {
         assertEquals("DD", modelClass.toString());
     } */
 
-    public static void main(String[] args) {
-        ModelClass modelClass = new ModelClass();
-        ArrayList<Activity> list = new ArrayList<>();
 
-        list = modelClass.getDBactivities();
+    MainAdminScene m = new MainAdminScene();
+    Stage window;
+    Scene scene;
 
-        for (Activity a: list)
-        {
-            System.out.println(a.toString());
-        }
-
+    @Before
+    public void setUp() throws Exception {
     }
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        window = primaryStage;
+        Button button = new Button("button");
+        button.setOnAction(event -> m.display());
+        scene = new Scene(button, 500, 600);
+        window.setScene(scene);
+        window.show();
+    }
+
 }
