@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c816f39-2e48-4ffe-a7a2-a499d45e082c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Xp-Project/com/company/Main.class" afterPath="$PROJECT_DIR$/out/production/Xp-Project/com/company/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Xp-Project/com/company/ModelClass.class" afterPath="$PROJECT_DIR$/out/production/Xp-Project/com/company/ModelClass.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/ModelClass.java" afterPath="$PROJECT_DIR$/src/com/company/ModelClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_29_bin.xml" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_29_bin.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Xp-Project.iws" />
@@ -51,10 +48,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModelClass.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ModelClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/ModelClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3579639">
+            <state vertical-scroll-proportion="0.0">
               <caret line="22" column="72" selection-start-line="22" selection-start-column="72" selection-end-line="22" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -66,10 +63,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../LotDB/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-1.6748768">
               <caret line="110" column="5" selection-start-line="102" selection-start-column="12" selection-end-line="110" selection-end-column="5" />
               <folding />
             </state>
@@ -231,7 +228,7 @@
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mysql-connector-java-5.1.29-bin.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/mysql-connector-java-5.1.29-bin.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -601,12 +598,12 @@
       <created>1456225380800</created>
       <option name="number" value="Default" />
       <updated>1456225380800</updated>
-      <workItem from="1456402160891" duration="3886000" />
+      <workItem from="1456402160891" duration="4200000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3886000" />
+    <option name="totallyTimeSpent" value="4200000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -676,14 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../LotDB/src/sample/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="110" column="5" selection-start-line="102" selection-start-column="12" selection-end-line="110" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -696,7 +685,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/ModelClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3579639">
+        <state vertical-scroll-proportion="0.0">
           <caret line="22" column="72" selection-start-line="22" selection-start-column="72" selection-end-line="22" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -704,6 +693,14 @@
             <marker date="1456406007928" expanded="true" signature="1566:1658" placeholder="UPDATE activ..." />
             <marker date="1456406007928" expanded="true" signature="2416:2459" placeholder="DELETE FROM ..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../LotDB/src/sample/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.6748768">
+          <caret line="110" column="5" selection-start-line="102" selection-start-column="12" selection-end-line="110" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -772,7 +769,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>junit-4.12</last-edited>
+          <last-edited>mysql-connector-java-5.1.29-bin</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
