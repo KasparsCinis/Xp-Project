@@ -11,7 +11,7 @@ import org.junit.Before;
 
 public class Main {
 
-    @Test
+  /*  @Test
     public void testDBinsertion()
     {
     ModelClass modelClass = new ModelClass();
@@ -42,7 +42,10 @@ public class Main {
         ModelClass modelClass = new ModelClass();
         modelClass.writeToDB("DD", 12, 25, "sdsd");
         assertEquals("DD", modelClass.toString());
+    } */
+
+    public static void main(String[] args) {
+        ModelClass modelClass = new ModelClass();
+        modelClass.deleteDB(1);
     }
-
-
 }

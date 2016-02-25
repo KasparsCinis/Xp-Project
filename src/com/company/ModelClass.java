@@ -49,8 +49,42 @@ public class ModelClass {
         }
     }
 
-    public void updateDB(String name, int ageLimit, double price, String description)
+    public void updateDB(String name, int ageLimit, double price, String description, int idActivity)
     {
-        String sql="UPDATE activities SET name = ?, ageLimit = ?, price = ?, desccription = ?;
+        String sql="UPDATE activities SET name = ?, ageLimit = ?, price = ?, description = ?WHERE idActivity = ?";
+
+                try {
+
+                    PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                    preparedStatement.setString(1, name);
+                    preparedStatement.setInt(2, ageLimit);
+                    preparedStatement.setDouble(3, price);
+                    preparedStatement.setString(4, description);
+                    preparedStatement.setInt(5, idActivity);
+
+                    int numberOfRows = preparedStatement.executeUpdate();
+                    System.out.println("Completed insert. Number of rows affected:" + numberOfRows);
+
+                }catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
-}
+
+   public void deleteDB(int idActivity)
+   {
+       String sql = "DELETE FROM activities WHERE idActivity = ?";
+
+       try {
+           PreparedStatement preparedStatement = conn.prepareStatement(sql);
+           preparedStatement.setInt(1, idActivity);
+           int numberOfRows= preparedStatement.executeUpdate();
+           System.out.println("Completed delete. Number of rows affected:"+numberOfRows);
+       } catch (SQLException e)
+       {
+           e.printStackTrace();
+       }
+   }
+       }
+
+
