@@ -15,6 +15,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 /**
  * Created by krist on 25/02/2016.
  */
@@ -23,42 +25,67 @@ public class MainAdminScene {
     TableView<Activity> activityTableView;
     public void display(){
         window.setTitle("Adventure something");
-
-       /* TableColumn<Activity, String> activityColumn = new TableColumn<>("Activity");
+        TableColumn<Activity, String> activityColumn = new TableColumn<>("Activity");
         activityColumn.setMinWidth(200);
         activityColumn.setCellValueFactory(new PropertyValueFactory<>("activity"));
+        activityTableView = new TableView<>();
         activityTableView.setItems(getActivity());
-        activityTableView.getColumns().add(activityColumn);*/
-        Button newButton = new Button("New");
+        activityTableView.getColumns().add(activityColumn);
         Button homeButton = new Button("Home");
+        Button newButton = new Button("New");
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
-        javafx.scene.image.Image image = new javafx.scene.image.Image("Logo.jpg");
+        javafx.scene.image.Image image = new javafx.scene.image.Image("com/Logo2.jpg");
         ImageView iv1 = new ImageView();
         iv1.setImage(image);
         iv1.setFitWidth(80);
-        iv1.setFitHeight(40);
+        iv1.setFitHeight(50);
         layout.setTop(iv1);
         HBox hBox = new HBox();
         hBox.getChildren().add(iv1);
         hBox.setAlignment(Pos.TOP_LEFT);
         layout.setTop(hBox);
         HBox hBox1 = new HBox();
-        hBox1.getChildren().addAll(newButton, homeButton);
+        hBox1.getChildren().addAll( homeButton, newButton);
         hBox1.setSpacing(10);
         hBox1.setAlignment(Pos.BOTTOM_LEFT);
         GridPane gridPane = new GridPane();
         gridPane.getChildren().add(hBox1);
         layout.setBottom(gridPane);
+        layout.setCenter(activityTableView);
         Scene scene = new Scene(layout, 600, 500);
         window.setScene(scene);
         window.show();
     }
-   /* public ObservableList<Activity> getActivity(){
-        ObservableList<Activity> activities = FXCollections.observableArrayList();
-        activities.add(new Activity("Killing yourself"));
-        return activities;
-    }*/
+   public ObservableList<Activity> getActivity(){
+       ModelClass modelClass = new ModelClass();
+       ArrayList<Activity> list = new ArrayList<>();
+       ObservableList<Activity> activities = FXCollections.observableArrayList();
+
+       list = modelClass.getDBactivities();
+
+       for (Activity a: list)
+       {
+           activities.add(new Activity(a.getName()));
+           System.out.println(a.toString());
+       }
+       /*ObservableList<String> activities = FXCollections.observableArrayList();
+       ModelClass modelClass = new ModelClass();
+       ArrayList<Activity> list = new ArrayList<>();
+       list = modelClass.getDBactivities();
+       for (Activity a: list)
+       {
+           System.out.println(a.toString());
+           activities.add(a);
+       }
+
+      // for(int i=0;i<activities.size();i++){
+       //    String[] a= activities.get(i)
+
+       return activities;*/
+
+       return activities;
+    }
 
 
 }

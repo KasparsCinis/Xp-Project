@@ -32,7 +32,7 @@ public class View extends Application{
 
     Button manageBtn;
     Button reserveBtn;
-
+    MainAdminScene m = new MainAdminScene();
 
     @Override
     public void start(Stage primaryStage)
@@ -42,6 +42,7 @@ public class View extends Application{
         scene = new Scene(grid, 800, 600);
 
         manageBtn = new Button("Manage \nActivity");
+        manageBtn.setOnAction(event -> m.display());
         reserveBtn = new Button("Make \nReservation");
 
         img = new Image("com/Logo2.jpg");

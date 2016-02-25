@@ -4,6 +4,38 @@ package com.company;
  * Created by Dom on 2016-02-25.
  */
 public class Activity {
+    public String getActivity() {
+        return activity;
+    }
+
+    public void setActivity(String activity) {
+        this.activity = activity;
+    }
+
+    public String activity;
+    public Activity (){
+        this.activity = "";
+    }
+    public Activity(String activity){
+        this.activity = activity;
+    }
+    public Activity(String idActivity, String name, int ageLimit, double price, String description)
+    {
+        this.idActivity = idActivity;
+        this.name = name;
+        this.ageLimit = ageLimit;
+        this.price = price;
+        this.description = description;
+    }
+
+    public Activity( String name, int ageLimit, double price, String description)
+    {
+        this.name = name;
+        this.ageLimit = ageLimit;
+        this.price = price;
+        this.description = description;
+    }
+
 
     private String idActivity;
 
@@ -52,28 +84,7 @@ public class Activity {
     private double price;
     private String description;
 
-    public Activity(String idActivity, String name, int ageLimit, double price, String description)
-    {
-        this.idActivity = idActivity;
-        this. name = name;
-        this.ageLimit = ageLimit;
-        this.price = price;
-        this.description = description;
-    }
 
-    public Activity( String name, int ageLimit, double price, String description)
-    {
-        this. name = name;
-        this.ageLimit = ageLimit;
-        this.price = price;
-        this.description = description;
-    }
-
-    public Activity(String idActivity)
-    {
-        this.idActivity = idActivity;
-
-    }
 
     public String toString()
     {

@@ -102,7 +102,8 @@ public class ModelClass {
             e.printStackTrace();
         }
         return activitiesList;
-    } }
+    }
+   }
 
 
 
