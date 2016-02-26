@@ -7,14 +7,13 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -22,7 +21,20 @@ import java.util.ArrayList;
 /**
  * Created by krist on 25/02/2016.
  */
+
 public class MainAdminScene {
+
+    ArrayList<Activity> activities = new ArrayList<>();
+    ActivityInfoWindow a;
+
+
+    TextField nameTextField = new TextField();
+
+    TextArea descriptionArea = new TextArea();
+    TextField ageLimitTextfield = new TextField();
+    TextField priceTextField = new TextField();
+
+
     Stage window = new Stage();
     TableView<Activity> activityTableView;
     public void display(Stage primaryStage){
@@ -39,10 +51,21 @@ public class MainAdminScene {
         activityTableView.setItems(getActivity());
         activityTableView.getColumns().add(activityColumn2);
         activityTableView.getColumns().add(activityColumn);
-
+        activityTableView.setRowFactory(activityTableView-> {
+            TableRow<Activity>row = new TableRow<Activity>();
+            row.setOnMouseClicked(event -> {if (event.getClickCount() ==2&&(! row.isEmpty())){
+                Activity rowData = row.getItem();
+                System.out.println(rowData);
+                nameTextField.setText(rowData.getName());
+                ageLimitTextfield.setText(String.valueOf(rowData.getAgeLimit()));
+                priceTextField.setText(String.valueOf(rowData.getPrice()));
+                descriptionArea.setText(rowData.getDescription());
+            }
+            });
+            return row;
+        });
 
         Button homeButton = new Button("Home");
-
         Button newButton = new Button("New");
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
@@ -66,6 +89,93 @@ public class MainAdminScene {
         hBox2.getChildren().addAll(activityTableView);
         layout.setBottom(gridPane);
         layout.setCenter(hBox2);
+
+
+
+        HBox nameHBox = new HBox();
+        HBox descriptionHBox = new HBox();
+        HBox priceHBox= new HBox();
+        HBox ageLimitHBox= new HBox();
+        HBox deleteSaveHBox= new HBox();
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(nameHBox,descriptionHBox,priceHBox,ageLimitHBox,deleteSaveHBox);
+        //Scene scene = new Scene(vBox, 300,300);
+
+        Label nameLabel = new Label("Activity name: ");
+        nameHBox.getChildren().addAll(nameTextField,nameLabel );
+
+        Label descriptionLabel = new Label("Description: ");
+
+
+        descriptionArea.setPrefSize(187,100);
+        descriptionHBox.getChildren().addAll(descriptionArea,descriptionLabel);
+
+        Label priceLabel = new Label("Price: ");
+        priceHBox.getChildren().addAll(priceTextField,priceLabel );
+
+        Label ageLimitLabel = new Label("Age Limit: ");
+        ageLimitHBox.getChildren().addAll( ageLimitTextfield,ageLimitLabel);
+
+        Button deleteButton = new Button("Delete");
+        Button saveButton = new Button("Save");
+        deleteSaveHBox.getChildren().addAll(saveButton,deleteButton);
+
+        deleteButton.setOnAction(event ->{
+                    nameTextField.clear();
+                    descriptionArea.clear();
+                    priceTextField.clear();
+                    ageLimitTextfield.clear();
+
+                }
+
+        );
+
+
+        System.out.println(activities.get(0).getName());
+        saveButton.setOnAction(event -> {
+            System.out.println(validate());
+            if (validate()) {
+
+
+                boolean nameb = true;
+                boolean descb = true;
+                boolean ageb = true;
+                boolean priceb = true;
+                String name = getNameTextField();
+                if (name.equals("")) {
+
+                    nameb = false;
+                }
+                String description = getDescriptionArea();
+                if (description.equals("")) {
+                    descb = false;
+                }
+                getAgeLimitTextfield();
+                Integer age = getAgeLimitTextfield();
+                if (age == null) {
+                    ageb = false;
+                }
+
+                Double price = getPriceTextField();
+                if (price == null) {
+                    priceb = false;
+                }
+
+                if (nameb == false || descb == false || ageb == false || priceb == false) {
+                    alertMessage();
+                }
+
+
+                System.out.println("Hi............");
+            }
+
+
+
+        });
+
+        layout.setRight(vBox);
+
+
         Scene scene = new Scene(layout, 600, 500);
         window.setScene(scene);
 
@@ -80,23 +190,98 @@ public class MainAdminScene {
                 view.start(primaryStage);
             }
         });
-       // window.show();
+        // window.show();
     }
-   public ObservableList<Activity> getActivity(){
-       ModelClass modelClass = new ModelClass();
-       ArrayList<Activity> list = new ArrayList<>();
-       ObservableList<Activity> activities = FXCollections.observableArrayList();
+    public ObservableList<Activity> getActivity(){
+        ModelClass modelClass = new ModelClass();
+        ArrayList<Activity> list = new ArrayList<>();
+        ObservableList<Activity> activities2 = FXCollections.observableArrayList();
 
-       list = modelClass.getDBactivities();
+        list = modelClass.getDBactivities();
 
-       for (Activity a: list)
-       {
-           activities.add(a);
-           System.out.println(a.toString());
-       }
+        for (Activity a: list)
+        {
+            activities.add(a);
+            activities2.add(a);
+            System.out.println(a.toString());
+        }
 
-       return activities;
+        return activities2;
     }
 
 
+
+
+
+
+
+    public String getNameTextField() {
+        return nameTextField.getText().toString();
+    }
+
+    public void setNameTextField(String nameText) {
+        nameTextField.setText(nameText);
+    }
+
+    public String getDescriptionArea() {
+        return descriptionArea.getText().toString();
+    }
+
+    public void setDescriptionArea(String description) {
+        descriptionArea.setText(description);
+    }
+
+    public int getAgeLimitTextfield() {
+
+        if(ageLimitTextfield.getText().toString()!=""){
+            return Integer.valueOf(ageLimitTextfield.getText().toString());
+
+        }
+        return 0;
+    }
+
+    public void setAgeLimitTextfield(int ageLimitTextfield) {
+
+        this.ageLimitTextfield.setText( String.valueOf(ageLimitTextfield));
+
+    }
+
+    public Double getPriceTextField() {
+        //check if it's a double first?
+        return Double.valueOf(priceTextField.getText().toString());
+    }
+
+    public void setPriceTextField(Double priceTextField) {
+        this.priceTextField.setText(String.valueOf(priceTextField));
+    }
+    public void alertMessage(){
+        Alert noname = new Alert(Alert.AlertType.ERROR);
+        noname.setContentText("Error Message");
+        noname.showAndWait();
+    }
+    public boolean validate()
+    {
+        boolean result=true;
+        if(getNameTextField().equals("")) {
+            result = false;
+        }
+
+
+        if(getDescriptionArea().equals("")) {
+            result = false;
+        }
+
+
+        if(ageLimitTextfield.getText().toString().equals(""))
+        {
+            result = false;
+        }
+
+
+        if(priceTextField.getText().toString().equals("")) {
+            result = false;
+        }
+
+        return result;
+    }
 }
