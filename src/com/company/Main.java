@@ -73,13 +73,11 @@ public class Main extends Application {
         scene = new Scene(button, 500, 600);
         window.setScene(scene);
         window.show();*/
-        boolean running = true;
+
         View view = new View();
-        while (running == true)
-        {
 
             view.start(primaryStage);
-        }
+
 
     }
 
