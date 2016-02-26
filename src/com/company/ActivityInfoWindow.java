@@ -75,9 +75,9 @@ public class ActivityInfoWindow {
         }
         return result;
     }
-    public void start(){
-        window = new Stage();
-        window.setTitle("Add Adventure");
+    public void start(Stage primaryStage){
+       // window = new Stage();
+       // window.setTitle("Add Adventure");
         nameTextField = new TextField();
         descriptionArea = new TextArea();
         ageLimitTextfield = new TextField();
@@ -108,6 +108,7 @@ public class ActivityInfoWindow {
         ageLimitHBox.getChildren().addAll( ageLimitTextfield,ageLimitLabel);
         Button deleteButton = new Button("Clear");
         Button saveButton = new Button("Save");
+<<<<<<< HEAD
         deleteSaveHBox.getChildren().addAll(saveButton,deleteButton);
 
 
@@ -124,6 +125,9 @@ public class ActivityInfoWindow {
         hBox.getChildren().addAll(labelVBox, textVBox);
         Scene scene = new Scene(hBox, 300,300);
 
+=======
+        deleteSaveHBox.getChildren().addAll(saveButton, deleteButton);
+>>>>>>> origin/master
         deleteButton.setOnAction(event ->{
                     nameTextField.clear();
                     descriptionArea.clear();
@@ -134,22 +138,27 @@ public class ActivityInfoWindow {
         saveButton.setOnAction(event -> {
             if (validate() && validateType()) {
                 m = new MainAdminScene();
-                String name= getNameTextField();
-                String description= getDescriptionArea();
-                int age= getAgeLimitTextfield();
-                double price= getPriceTextField();
-                ModelClass modelClass= new ModelClass();
-                modelClass.writeToDB(name,age,price,description );
+                String name = getNameTextField();
+                String description = getDescriptionArea();
+                int age = getAgeLimitTextfield();
+                double price = getPriceTextField();
+                ModelClass modelClass = new ModelClass();
+                modelClass.writeToDB(name, age, price, description);
                 System.out.println("Hi............");
-            }
-            else if (validate()){
+
+                m.display(primaryStage);
+                primaryStage.setScene(m.window.getScene());
+            } else if (validate()) {
                 System.out.println("wrong type");
-            }
-            else {
+            } else {
                 System.out.println("fill the fields");
             }
         });
-        window.setScene(scene);
-        window.show();
+
+        primaryStage.setTitle("Add adventure");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+       // window.setScene(scene);
+       // window.show();
     }
 }
