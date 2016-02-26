@@ -24,6 +24,7 @@ public class Main extends Application {
         ModelClass modelClass = new ModelClass();
         //modelClass.writeToDB("DD", 12, 25, "sdsd");
         ArrayList<Activity> list = new ArrayList<>();
+        //list.
         list = modelClass.getDBactivities();
 
         modelClass.writeToDB("DD", 12, 25, "sdsd");
