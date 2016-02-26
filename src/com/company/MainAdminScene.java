@@ -27,6 +27,9 @@ public class MainAdminScene {
     TextField priceTextField = new TextField();
     VBox vBox;
     Stage window = new Stage();
+
+    String intID;
+    ModelClass modelClass = new ModelClass();
     TableView<Activity> activityTableView;
     public String getNameTextField() {
         return nameTextField.getText().toString();
@@ -101,6 +104,9 @@ public class MainAdminScene {
                 ageLimitTextfield.setText(String.valueOf(rowData.getAgeLimit()));
                 priceTextField.setText(String.valueOf(rowData.getPrice()));
                 descriptionArea.setText(rowData.getDescription());
+
+
+                intID = rowData.getIdActivity();
             }
             });
             return row;
@@ -109,8 +115,8 @@ public class MainAdminScene {
         Button newButton = new Button("New");
         newButton.setOnAction(event -> {
             a = new ActivityInfoWindow();
-            a.start();
-            vBox.setVisible(false);
+            a.start(primaryStage);
+            //vBox.setVisible(false);
         });
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
@@ -124,8 +130,15 @@ public class MainAdminScene {
         hBox.getChildren().add(iv1);
         hBox.setAlignment(Pos.TOP_LEFT);
         layout.setTop(hBox);
+        Button deleteButton2 = new Button("Delete");
+        deleteButton2.setOnAction(event ->{
+                    modelClass.deleteDB(intID);
+                    activityTableView.setItems(getActivity());
+                }
+        );
+
         HBox hBox1 = new HBox();
-        hBox1.getChildren().addAll( homeButton, newButton);
+        hBox1.getChildren().addAll( homeButton, newButton, deleteButton2);
         hBox1.setSpacing(10);
         hBox1.setAlignment(Pos.BOTTOM_LEFT);
         GridPane gridPane = new GridPane();

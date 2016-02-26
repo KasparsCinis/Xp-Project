@@ -108,7 +108,7 @@ public class ActivityInfoWindow {
         ageLimitHBox.getChildren().addAll( ageLimitTextfield,ageLimitLabel);
         Button deleteButton = new Button("Clear");
         Button saveButton = new Button("Save");
-<<<<<<< HEAD
+
         deleteSaveHBox.getChildren().addAll(saveButton,deleteButton);
 
 
@@ -125,9 +125,8 @@ public class ActivityInfoWindow {
         hBox.getChildren().addAll(labelVBox, textVBox);
         Scene scene = new Scene(hBox, 300,300);
 
-=======
-        deleteSaveHBox.getChildren().addAll(saveButton, deleteButton);
->>>>>>> origin/master
+       // deleteSaveHBox.getChildren().addAll(saveButton, deleteButton);
+
         deleteButton.setOnAction(event ->{
                     nameTextField.clear();
                     descriptionArea.clear();
