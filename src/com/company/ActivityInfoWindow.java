@@ -88,8 +88,15 @@ public class ActivityInfoWindow {
         HBox ageLimitHBox= new HBox();
         HBox deleteSaveHBox= new HBox();
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(nameHBox,descriptionHBox,priceHBox,ageLimitHBox,deleteSaveHBox);
-        Scene scene = new Scene(vBox, 300,300);
+        //vBox.getChildren().addAll(nameHBox,descriptionHBox,priceHBox,ageLimitHBox,deleteSaveHBox);
+        //Scene scene = new Scene(vBox, 300,300);
+
+
+
+        VBox labelVBox = new VBox();
+        VBox textVBox = new VBox();
+        HBox hBox = new HBox();
+
         Label nameLabel = new Label("Activity name: ");
         nameHBox.getChildren().addAll(nameTextField,nameLabel );
         Label descriptionLabel = new Label("Description: ");
@@ -102,6 +109,21 @@ public class ActivityInfoWindow {
         Button deleteButton = new Button("Clear");
         Button saveButton = new Button("Save");
         deleteSaveHBox.getChildren().addAll(saveButton,deleteButton);
+
+
+
+        labelVBox.getChildren().addAll(nameLabel, descriptionLabel, ageLimitLabel, priceLabel);
+        textVBox.getChildren().addAll(nameTextField, descriptionArea, ageLimitTextfield, priceTextField, deleteSaveHBox);
+        descriptionLabel.setPrefHeight(45);
+        ageLimitLabel.setTranslateY(70);
+        priceLabel.setTranslateY(75);
+        //saveButton.setTranslateX(-20);
+        deleteSaveHBox.setTranslateY(10);
+        saveButton.setTranslateX(0);
+        deleteButton.setTranslateX(0);
+        hBox.getChildren().addAll(labelVBox, textVBox);
+        Scene scene = new Scene(hBox, 300,300);
+
         deleteButton.setOnAction(event ->{
                     nameTextField.clear();
                     descriptionArea.clear();
