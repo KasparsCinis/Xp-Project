@@ -4,21 +4,7 @@ package com.company;
  * Created by Dom on 2016-02-25.
  */
 public class Activity {
-    public String getActivity() {
-        return activity;
-    }
 
-    public void setActivity(String activity) {
-        this.activity = activity;
-    }
-
-    public String activity;
-    public Activity (){
-        this.activity = "";
-    }
-    public Activity(String activity){
-        this.activity = activity;
-    }
     public Activity(String idActivity, String name, int ageLimit, double price, String description)
     {
         this.idActivity = idActivity;

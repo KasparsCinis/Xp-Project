@@ -27,10 +27,17 @@ public class MainAdminScene {
         window.setTitle("Adventure something");
         TableColumn<Activity, String> activityColumn = new TableColumn<>("Activity");
         activityColumn.setMinWidth(200);
-        activityColumn.setCellValueFactory(new PropertyValueFactory<>("activity"));
+        activityColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableColumn<Activity, String> activityColumn2 = new TableColumn<>("ID");
+        activityColumn2.setMinWidth(200);
+        activityColumn2.setCellValueFactory(new PropertyValueFactory<>("idActivity"));
+
         activityTableView = new TableView<>();
         activityTableView.setItems(getActivity());
         activityTableView.getColumns().add(activityColumn);
+        activityTableView.getColumns().add(activityColumn2);
+
         Button homeButton = new Button("Home");
         Button newButton = new Button("New");
         BorderPane layout = new BorderPane();
@@ -66,7 +73,8 @@ public class MainAdminScene {
 
        for (Activity a: list)
        {
-           activities.add(new Activity(a.getName()));
+           //activities.add(new Activity(a.getName(), a.getIdActivity()));
+           activities.add(a);
            System.out.println(a.toString());
        }
        /*ObservableList<String> activities = FXCollections.observableArrayList();
