@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c816f39-2e48-4ffe-a7a2-a499d45e082c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Xp-Project/com/company/MainAdminScene$1.class" afterPath="$PROJECT_DIR$/out/production/Xp-Project/com/company/MainAdminScene$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Xp-Project/com/company/MainAdminScene.class" afterPath="$PROJECT_DIR$/out/production/Xp-Project/com/company/MainAdminScene.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Xp-Project/com/company/View.class" afterPath="$PROJECT_DIR$/out/production/Xp-Project/com/company/View.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Xp-Project/com/company/ActivityInfoWindow.class" afterPath="$PROJECT_DIR$/out/production/Xp-Project/com/company/ActivityInfoWindow.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java" afterPath="$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/MainAdminScene.java" afterPath="$PROJECT_DIR$/src/com/company/MainAdminScene.java" />
     </list>
     <ignored path="Xp-Project.iws" />
@@ -58,8 +55,8 @@
       <file leaf-file-name="MainAdminScene.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/MainAdminScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.548718">
-              <caret line="110" column="15" selection-start-line="110" selection-start-column="15" selection-end-line="110" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.6017094">
+              <caret line="163" column="32" selection-start-line="163" selection-start-column="32" selection-end-line="163" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="112" column="67" selection-start-line="112" selection-start-column="67" selection-end-line="112" selection-end-column="67" />
+              <caret line="105" column="31" selection-start-line="105" selection-start-column="31" selection-end-line="105" selection-end-column="31" />
               <folding>
                 <element signature="e#555#556#0" expanded="true" />
                 <element signature="e#612#613#0" expanded="true" />
@@ -769,12 +766,19 @@
       <workItem from="1456402160891" duration="4200000" />
       <workItem from="1456410269401" duration="5246000" />
       <workItem from="1456485647218" duration="117000" />
-      <workItem from="1456492801276" duration="2190000" />
+      <workItem from="1456492801276" duration="4459000" />
     </task>
+    <task id="LOCAL-00001" summary="Last push for today">
+      <created>1456495030725</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1456495030726</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11753000" />
+    <option name="totallyTimeSpent" value="14022000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -808,6 +812,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Last push for today" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last push for today" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1001,13 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24671052">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/Logo2.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1038,31 +1039,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="31" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="31" />
-          <folding>
-            <element signature="e#896#897#0" expanded="true" />
-            <element signature="e#929#930#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="67" selection-start-line="112" selection-start-column="67" selection-end-line="112" selection-end-column="67" />
+          <caret line="105" column="31" selection-start-line="105" selection-start-column="31" selection-end-line="105" selection-end-column="31" />
           <folding>
             <element signature="e#555#556#0" expanded="true" />
             <element signature="e#612#613#0" expanded="true" />
@@ -1078,10 +1058,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="31" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="31" />
+          <folding>
+            <element signature="e#896#897#0" expanded="true" />
+            <element signature="e#929#930#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/MainAdminScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.548718">
-          <caret line="110" column="15" selection-start-line="110" selection-start-column="15" selection-end-line="110" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.6017094">
+          <caret line="163" column="32" selection-start-line="163" selection-start-column="32" selection-end-line="163" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

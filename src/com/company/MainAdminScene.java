@@ -13,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 /**
@@ -122,14 +123,12 @@ public class MainAdminScene {
         layout.setPadding(new Insets(10, 10, 10, 10));
         javafx.scene.image.Image image = new javafx.scene.image.Image("com/Logo2.jpg");
         ImageView iv1 = new ImageView();
+        Label edit = new Label("EDIT: ");
+        edit.setFont(new Font("Serif",30));
         iv1.setImage(image);
         iv1.setFitWidth(80);
         iv1.setFitHeight(50);
         layout.setTop(iv1);
-        HBox hBox = new HBox();
-        hBox.getChildren().add(iv1);
-        hBox.setAlignment(Pos.TOP_LEFT);
-        layout.setTop(hBox);
         Button deleteButton2 = new Button("Delete");
         deleteButton2.setOnAction(event ->{
                     modelClass.deleteDB(intID);
@@ -159,11 +158,12 @@ public class MainAdminScene {
         descriptionArea.setPrefSize(187,100);
         Label priceLabel = new Label("Price: ");
         Label ageLimitLabel = new Label("Age Limit: ");
-        descriptionLabel.setPrefHeight(45);
-        ageLimitLabel.setTranslateY(70);
-        priceLabel.setTranslateY(75);
+        nameLabel.setPrefHeight(115);
+        descriptionLabel.setTranslateY(1);
+        ageLimitLabel.setTranslateY(45);
+        priceLabel.setTranslateY(60);
         VBox labelVbox = new VBox(nameLabel,descriptionLabel,ageLimitLabel,priceLabel);
-        VBox textfieldsVbox = new VBox(ageLimitTextfield, descriptionArea, priceTextField,nameTextField,vBox);
+        VBox textfieldsVbox = new VBox(edit,ageLimitTextfield, descriptionArea, priceTextField,nameTextField,vBox);
         HBox labelandtextField = new HBox(labelVbox, textfieldsVbox);
         Button deleteButton = new Button("Clear");
         Button saveButton = new Button("Save");
