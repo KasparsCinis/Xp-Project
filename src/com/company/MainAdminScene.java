@@ -28,6 +28,10 @@ public class MainAdminScene {
     VBox vBox;
     Stage window = new Stage();
     TableView<Activity> activityTableView;
+    String intID;
+    ModelClass modelClass = new ModelClass();
+
+
     public String getNameTextField() {
         return nameTextField.getText().toString();
     }
@@ -101,6 +105,8 @@ public class MainAdminScene {
                 ageLimitTextfield.setText(String.valueOf(rowData.getAgeLimit()));
                 priceTextField.setText(String.valueOf(rowData.getPrice()));
                 descriptionArea.setText(rowData.getDescription());
+
+                intID = rowData.getIdActivity();
             }
             });
             return row;
@@ -109,8 +115,11 @@ public class MainAdminScene {
         Button newButton = new Button("New");
         newButton.setOnAction(event -> {
             a = new ActivityInfoWindow();
-            a.start();
-            vBox.setVisible(false);
+            a.start(primaryStage);
+            //vBox.setVisible(false);
+
+           // View view = new View();
+           // view.start(primaryStage);
         });
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
@@ -125,7 +134,13 @@ public class MainAdminScene {
         hBox.setAlignment(Pos.TOP_LEFT);
         layout.setTop(hBox);
         HBox hBox1 = new HBox();
-        hBox1.getChildren().addAll( homeButton, newButton);
+        Button deleteButton2 = new Button("Delete");
+        deleteButton2.setOnAction(event ->{
+                    modelClass.deleteDB(intID);
+                    activityTableView.setItems(getActivity());
+                }
+        );
+        hBox1.getChildren().addAll( homeButton, newButton, deleteButton2);
         hBox1.setSpacing(10);
         hBox1.setAlignment(Pos.BOTTOM_LEFT);
         GridPane gridPane = new GridPane();
@@ -149,7 +164,9 @@ public class MainAdminScene {
         Label priceLabel = new Label("Price: ");
         priceHBox.getChildren().addAll(priceTextField,priceLabel );
         Label ageLimitLabel = new Label("Age Limit: ");
-        ageLimitHBox.getChildren().addAll( ageLimitTextfield,ageLimitLabel);
+        ageLimitHBox.getChildren().addAll(ageLimitTextfield, ageLimitLabel);
+
+
         Button deleteButton = new Button("Clear");
         Button saveButton = new Button("Save");
         deleteSaveHBox.getChildren().addAll(saveButton,deleteButton);
@@ -198,7 +215,7 @@ public class MainAdminScene {
             @Override
             public void handle(ActionEvent e) {
                 View view = new View();
-                Stage window2 = new Stage();
+               // Stage window2 = new Stage();
                 view.start(primaryStage);
             }
         });
