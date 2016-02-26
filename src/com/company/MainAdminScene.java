@@ -25,18 +25,19 @@ public class MainAdminScene {
     TableView<Activity> activityTableView;
     public void display(){
         window.setTitle("Adventure something");
+        TableColumn<Activity, String> activityColumn2 = new TableColumn<>("ID");
+        activityColumn2.setMinWidth(50);
+        activityColumn2.setCellValueFactory(new PropertyValueFactory<>("idActivity"));
+
         TableColumn<Activity, String> activityColumn = new TableColumn<>("Activity");
         activityColumn.setMinWidth(200);
         activityColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        TableColumn<Activity, String> activityColumn2 = new TableColumn<>("ID");
-        activityColumn2.setMinWidth(200);
-        activityColumn2.setCellValueFactory(new PropertyValueFactory<>("idActivity"));
-
         activityTableView = new TableView<>();
         activityTableView.setItems(getActivity());
-        activityTableView.getColumns().add(activityColumn);
         activityTableView.getColumns().add(activityColumn2);
+        activityTableView.getColumns().add(activityColumn);
+
 
         Button homeButton = new Button("Home");
         Button newButton = new Button("New");
@@ -58,8 +59,10 @@ public class MainAdminScene {
         hBox1.setAlignment(Pos.BOTTOM_LEFT);
         GridPane gridPane = new GridPane();
         gridPane.getChildren().add(hBox1);
+        HBox hBox2 = new HBox();
+        hBox2.getChildren().addAll(activityTableView);
         layout.setBottom(gridPane);
-        layout.setCenter(activityTableView);
+        layout.setCenter(hBox2);
         Scene scene = new Scene(layout, 600, 500);
         window.setScene(scene);
         window.show();
@@ -73,24 +76,9 @@ public class MainAdminScene {
 
        for (Activity a: list)
        {
-           //activities.add(new Activity(a.getName(), a.getIdActivity()));
            activities.add(a);
            System.out.println(a.toString());
        }
-       /*ObservableList<String> activities = FXCollections.observableArrayList();
-       ModelClass modelClass = new ModelClass();
-       ArrayList<Activity> list = new ArrayList<>();
-       list = modelClass.getDBactivities();
-       for (Activity a: list)
-       {
-           System.out.println(a.toString());
-           activities.add(a);
-       }
-
-      // for(int i=0;i<activities.size();i++){
-       //    String[] a= activities.get(i)
-
-       return activities;*/
 
        return activities;
     }
