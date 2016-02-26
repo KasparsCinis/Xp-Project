@@ -71,6 +71,11 @@ public class Activity {
 
 
 
+    public Activity()
+    {
+
+    }
+
 
 
     public String toString()

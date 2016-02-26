@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Main extends Application {
 
-    /*  @Test //#1
+      @Test //#1
     public void testDBinsertion()
     {
     ModelClass modelClass = new ModelClass();
@@ -30,15 +30,24 @@ public class Main extends Application {
     public void testDBupdate()
     {
         ModelClass modelClass = new ModelClass();
+        ArrayList<Activity> list = new ArrayList<>();
+        list = modelClass.getDBactivities();
+
+
         modelClass.writeToDB("DD", 12, 25, "sdsd");
         assertEquals("DD", modelClass.toString());
 
+        modelClass.updateDB("testActivity", 15, 20, "This is an description", list.get(list.size()-1).getIdActivity());
     }
 
     @Test //#4
     public void testDBdelete()
     {
         ModelClass modelClass = new ModelClass();
+        assertNotNull(modelClass.getDBactivities2("4").getName());
+        //System.out.println(modelClass.getDBactivities2("2").toString());
+
+
         modelClass.writeToDB("DD", 12, 25, "sdsd");
         assertEquals("DD", modelClass.toString());
     }
@@ -47,10 +56,13 @@ public class Main extends Application {
     public void testDBretrieve()
     {
         ModelClass modelClass = new ModelClass();
-        modelClass.writeToDB("DD", 12, 25, "sdsd");
-        assertEquals("DD", modelClass.toString());
-    } */
+        ArrayList<Activity> list = new ArrayList<>();
+        list = modelClass.getDBactivities();
 
+
+        modelClass.deleteDB(list.get(list.size() - 1).getIdActivity());
+    }
+    
 
     MainAdminScene m = new MainAdminScene();
     Stage window;
