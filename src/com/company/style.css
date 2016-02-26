@@ -1,0 +1,38 @@
+/*
+
+.button etc - styles all the buttons
+# style one thing - place id in main file..
+
+
+
+.grid {
+    -fx-font-size: 10pt;
+
+
+}
+
+*/
+
+.root {
+    -fx-background-color: #FFFFFF;
+}
+
+
+
+#manageBtnStyle
+{
+
+   -fx-font-family: "Arial Black", Gadget, sans-serif;
+   -fx-font-size: 12pt;
+
+
+}
+
+
+#reserveBtnStyle
+{
+     -fx-font-family: "Arial Black", Gadget, sans-serif;
+     -fx-font-size: 12pt;
+}
+
+

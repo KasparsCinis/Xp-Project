@@ -37,9 +37,14 @@ public class View extends Application{
     @Override
     public void start(Stage primaryStage)
     {
+
+
+
         grid = new GridPane();
         hBox = new HBox();
         scene = new Scene(grid, 800, 600);
+
+        scene.getStylesheets().add("com/company/style.css");
 
         manageBtn = new Button("Manage \nActivity");
         manageBtn.setOnAction(event -> m.display());
@@ -70,11 +75,16 @@ public class View extends Application{
         reserveBtn.setMinWidth(200);
         reserveBtn.setMaxWidth(200);
 
-        manageBtn.setFont(Font.font(null, FontWeight.BOLD, 20));
-        reserveBtn.setFont(Font.font(null, FontWeight.BOLD, 20));
+        //manageBtn.setFont(Font.font(null, FontWeight.BOLD, 20));
+       // reserveBtn.setFont(Font.font(null, FontWeight.BOLD, 20));
 
         grid.setHgap(10);
         grid.setVgap(50);
+
+
+        // setId - links to style in css style sheet..
+        manageBtn.setId("manageBtnStyle");
+        reserveBtn.setId("reserveBtnStyle");
 
 
 
