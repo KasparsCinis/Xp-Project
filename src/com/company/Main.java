@@ -18,20 +18,34 @@ import java.util.ArrayList;
 
 public class Main extends Application {
 
-    /*  @Test //#1
+     @Test //#1
     public void testDBinsertion()
     {
-    ModelClass modelClass = new ModelClass();
+        ModelClass modelClass = new ModelClass();
+        //modelClass.writeToDB("DD", 12, 25, "sdsd");
+        ArrayList<Activity> list = new ArrayList<>();
+        list = modelClass.getDBactivities();
+
         modelClass.writeToDB("DD", 12, 25, "sdsd");
-        assertEquals("DD", modelClass.toString());
+        assertEquals(list.size() + 1, modelClass.getDBactivities().size());
     }
 
     @Test //#2
     public void testDBupdate()
     {
+       // ModelClass modelClass = new ModelClass();
+       // modelClass.
+
+
+    }
+
+
+
+    @Test //#5
+    public void testDBretrieve()
+    {
         ModelClass modelClass = new ModelClass();
         modelClass.writeToDB("DD", 12, 25, "sdsd");
-        assertEquals("DD", modelClass.toString());
 
     }
 
@@ -40,19 +54,10 @@ public class Main extends Application {
     {
         ModelClass modelClass = new ModelClass();
         modelClass.writeToDB("DD", 12, 25, "sdsd");
-        assertEquals("DD", modelClass.toString());
+
     }
 
-    @Test //#5
-    public void testDBretrieve()
-    {
-        ModelClass modelClass = new ModelClass();
-        modelClass.writeToDB("DD", 12, 25, "sdsd");
-        assertEquals("DD", modelClass.toString());
-    } */
-
-
-    MainAdminScene m = new MainAdminScene();
+//    MainAdminScene m = new MainAdminScene();
     Stage window;
     Scene scene;
 
