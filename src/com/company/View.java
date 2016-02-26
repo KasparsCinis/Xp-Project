@@ -47,8 +47,12 @@ public class View extends Application{
         scene.getStylesheets().add("com/company/style.css");
 
         manageBtn = new Button("Manage \nActivity");
-        manageBtn.setOnAction(event -> m.display());
-        reserveBtn = new Button("Make \nReservation");
+        manageBtn.setOnAction(event -> {
+            m.display(primaryStage);
+            primaryStage.setScene(m.window.getScene());
+            //primaryStage.close();
+        });
+        reserveBtn = new Button("    Make \nReservation");
 
         img = new Image("com/Logo2.jpg");
         imgView = new ImageView();
@@ -59,10 +63,10 @@ public class View extends Application{
         hBox.setAlignment(Pos.TOP_CENTER);
         hBox.getChildren().addAll(imgView);
 
-        grid.add(imgView, 0,0);
-        //grid.add(hBox, 0, 0);
+        //grid.add(imgView, 0,0);
+        grid.add(hBox, 0, 0);
 
-        grid.setColumnSpan(imgView, 3);
+        grid.setColumnSpan(hBox, 3);
         imgView.setFitHeight(200);
         imgView.setFitWidth(350);
 
@@ -75,8 +79,6 @@ public class View extends Application{
         reserveBtn.setMinWidth(200);
         reserveBtn.setMaxWidth(200);
 
-        //manageBtn.setFont(Font.font(null, FontWeight.BOLD, 20));
-       // reserveBtn.setFont(Font.font(null, FontWeight.BOLD, 20));
 
         grid.setHgap(10);
         grid.setVgap(50);
@@ -89,7 +91,7 @@ public class View extends Application{
 
 
         //grid.setGridLinesVisible(true);
-        //grid.setPadding(new Insets(50, 20, 20, 50));
+
 
         grid.add(manageBtn, 1, 1);
         grid.add(reserveBtn, 2, 1);

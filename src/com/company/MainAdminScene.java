@@ -2,6 +2,8 @@ package com.company;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -23,14 +25,14 @@ import java.util.ArrayList;
 public class MainAdminScene {
     Stage window = new Stage();
     TableView<Activity> activityTableView;
-    public void display(){
+    public void display(Stage primaryStage){
         window.setTitle("Adventure something");
         TableColumn<Activity, String> activityColumn2 = new TableColumn<>("ID");
         activityColumn2.setMinWidth(50);
         activityColumn2.setCellValueFactory(new PropertyValueFactory<>("idActivity"));
 
         TableColumn<Activity, String> activityColumn = new TableColumn<>("Activity");
-        activityColumn.setMinWidth(200);
+        activityColumn.setMinWidth(240);
         activityColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         activityTableView = new TableView<>();
@@ -40,6 +42,7 @@ public class MainAdminScene {
 
 
         Button homeButton = new Button("Home");
+
         Button newButton = new Button("New");
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
@@ -65,7 +68,19 @@ public class MainAdminScene {
         layout.setCenter(hBox2);
         Scene scene = new Scene(layout, 600, 500);
         window.setScene(scene);
-        window.show();
+
+
+        homeButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+
+                View view = new View();
+
+                Stage window2 = new Stage();
+                view.start(primaryStage);
+            }
+        });
+       // window.show();
     }
    public ObservableList<Activity> getActivity(){
        ModelClass modelClass = new ModelClass();
