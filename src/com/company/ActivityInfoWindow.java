@@ -1,5 +1,7 @@
 package com.company;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -108,11 +110,7 @@ public class ActivityInfoWindow {
         ageLimitHBox.getChildren().addAll( ageLimitTextfield,ageLimitLabel);
         Button deleteButton = new Button("Clear");
         Button saveButton = new Button("Save");
-
         deleteSaveHBox.getChildren().addAll(saveButton,deleteButton);
-
-
-
         labelVBox.getChildren().addAll(nameLabel, descriptionLabel, ageLimitLabel, priceLabel);
         textVBox.getChildren().addAll(nameTextField, descriptionArea, ageLimitTextfield, priceTextField, deleteSaveHBox);
         descriptionLabel.setPrefHeight(45);

@@ -111,7 +111,7 @@ public class MainAdminScene {
             });
             return row;
         });
-        Button homeButton = new Button("Home");
+        Button homeButton = new Button("Back");
         Button newButton = new Button("New");
         newButton.setOnAction(event -> {
             a = new ActivityInfoWindow();
@@ -155,14 +155,16 @@ public class MainAdminScene {
         vBox.getChildren().addAll(nameHBox,descriptionHBox,priceHBox,ageLimitHBox,deleteSaveHBox);
         //Scene scene = new Scene(vBox, 300,300);
         Label nameLabel = new Label("Activity name: ");
-        nameHBox.getChildren().addAll(nameTextField, nameLabel );
         Label descriptionLabel = new Label("Description: ");
         descriptionArea.setPrefSize(187,100);
-        descriptionHBox.getChildren().addAll(descriptionArea,descriptionLabel);
         Label priceLabel = new Label("Price: ");
-        priceHBox.getChildren().addAll(priceTextField,priceLabel );
         Label ageLimitLabel = new Label("Age Limit: ");
-        ageLimitHBox.getChildren().addAll( ageLimitTextfield,ageLimitLabel);
+        descriptionLabel.setPrefHeight(45);
+        ageLimitLabel.setTranslateY(70);
+        priceLabel.setTranslateY(75);
+        VBox labelVbox = new VBox(nameLabel,descriptionLabel,ageLimitLabel,priceLabel);
+        VBox textfieldsVbox = new VBox(ageLimitTextfield, descriptionArea, priceTextField,nameTextField,vBox);
+        HBox labelandtextField = new HBox(labelVbox, textfieldsVbox);
         Button deleteButton = new Button("Clear");
         Button saveButton = new Button("Save");
         deleteSaveHBox.getChildren().addAll(saveButton,deleteButton);
@@ -204,7 +206,7 @@ public class MainAdminScene {
                 System.out.println("Hi............");
             }
         });
-        layout.setRight(vBox);
+        layout.setRight(labelandtextField);
         Scene scene = new Scene(layout, 600, 500);
         window.setScene(scene);
         homeButton.setOnAction(new EventHandler<ActionEvent>() {
