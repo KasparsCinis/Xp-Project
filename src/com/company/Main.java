@@ -67,12 +67,20 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        window = primaryStage;
+       /* window = primaryStage;
         Button button = new Button("button");
         button.setOnAction(event -> m.display());
         scene = new Scene(button, 500, 600);
         window.setScene(scene);
-        window.show();
+        window.show();*/
+        boolean running = true;
+        View view = new View();
+        while (running == true)
+        {
+
+            view.start(primaryStage);
+        }
+
     }
 
 }

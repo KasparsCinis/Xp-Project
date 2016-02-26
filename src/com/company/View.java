@@ -42,7 +42,11 @@ public class View extends Application{
         scene = new Scene(grid, 800, 600);
 
         manageBtn = new Button("Manage \nActivity");
-        manageBtn.setOnAction(event -> m.display());
+        manageBtn.setOnAction(event -> {
+            m.display(primaryStage);
+            primaryStage.setScene(m.window.getScene());
+            //primaryStage.close();
+        });
         reserveBtn = new Button("Make \nReservation");
 
         img = new Image("com/Logo2.jpg");
