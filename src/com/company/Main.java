@@ -30,27 +30,50 @@ public class Main extends Application {
     public void testDBupdate()
     {
         ModelClass modelClass = new ModelClass();
+<<<<<<< HEAD
+        ArrayList<Activity> list = new ArrayList<>();
+        list = modelClass.getDBactivities();
+
+=======
         modelClass.writeToDB("DD", 12, 25, "sdsd");
         assertEquals("DD", modelClass.toString());
+>>>>>>> origin/master
 
+        modelClass.updateDB("testActivity", 15, 20, "This is an description", list.get(list.size()-1).getIdActivity());
     }
 
     @Test //#4
     public void testDBdelete()
     {
         ModelClass modelClass = new ModelClass();
+<<<<<<< HEAD
+        assertNotNull(modelClass.getDBactivities2("4").getName());
+        //System.out.println(modelClass.getDBactivities2("2").toString());
+
+
+=======
         modelClass.writeToDB("DD", 12, 25, "sdsd");
         assertEquals("DD", modelClass.toString());
+>>>>>>> origin/master
     }
 
     @Test //#5
     public void testDBretrieve()
     {
         ModelClass modelClass = new ModelClass();
+<<<<<<< HEAD
+        ArrayList<Activity> list = new ArrayList<>();
+        list = modelClass.getDBactivities();
+
+
+        modelClass.deleteDB(list.get(list.size() - 1).getIdActivity());
+    }
+=======
         modelClass.writeToDB("DD", 12, 25, "sdsd");
         assertEquals("DD", modelClass.toString());
     } */
 
+>>>>>>> origin/master
 
     MainAdminScene m = new MainAdminScene();
     Stage window;

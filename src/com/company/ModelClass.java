@@ -47,7 +47,7 @@ public class ModelClass {
         }
     }
 
-    public void updateDB(String name, int ageLimit, double price, String description, int idActivity)
+    public void updateDB(String name, int ageLimit, double price, String description, String idActivity)
     {
         String sql="UPDATE activities SET name = ?, ageLimit = ?, price = ?, description = ?WHERE idActivity = ?";
 
@@ -58,7 +58,7 @@ public class ModelClass {
                     preparedStatement.setInt(2, ageLimit);
                     preparedStatement.setDouble(3, price);
                     preparedStatement.setString(4, description);
-                    preparedStatement.setInt(5, idActivity);
+                    preparedStatement.setString(5, idActivity);
 
                     int numberOfRows = preparedStatement.executeUpdate();
                     System.out.println("Completed insert. Number of rows affected:" + numberOfRows);
@@ -69,13 +69,13 @@ public class ModelClass {
         }
     }
 
-   public void deleteDB(int idActivity)
+   public void deleteDB(String idActivity)
    {
        String sql = "DELETE FROM activities WHERE idActivity = ?";
 
        try {
            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-           preparedStatement.setInt(1, idActivity);
+           preparedStatement.setString(1, idActivity);
            int numberOfRows= preparedStatement.executeUpdate();
            System.out.println("Completed delete. Number of rows affected:"+numberOfRows);
        } catch (SQLException e)
@@ -102,6 +102,26 @@ public class ModelClass {
             e.printStackTrace();
         }
         return activitiesList;
+    }
+    public Activity getDBactivities2(String idActivity) {
+       // ArrayList<Activity> activitiesList = new ArrayList<>();
+        Activity activity = new Activity();
+        try {
+            String sql = "SELECT * FROM activities WHERE idActivity = ?";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, idActivity);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                 activity = new Activity (resultSet.getString(1),resultSet.getString(2), resultSet.getInt(3), resultSet.getDouble(4), resultSet.getString(5) );
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return activity;
     }
    }
 

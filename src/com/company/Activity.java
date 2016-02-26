@@ -70,6 +70,11 @@ public class Activity {
     private double price;
     private String description;
 
+    public Activity()
+    {
+
+    }
+
 
 
     public String toString()
