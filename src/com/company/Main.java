@@ -18,12 +18,17 @@ import java.util.ArrayList;
 
 public class Main extends Application {
 
-      @Test //#1
+    @Test //#1
     public void testDBinsertion()
     {
-    ModelClass modelClass = new ModelClass();
+        ModelClass modelClass = new ModelClass();
+
+
+        ArrayList<Activity> list = modelClass.getDBactivities();
+
         modelClass.writeToDB("DD", 12, 25, "sdsd");
-        assertEquals("DD", modelClass.toString());
+
+        assertEquals(list.size()+1, modelClass.getDBactivities().size());
     }
 
     @Test //#2
@@ -35,38 +40,34 @@ public class Main extends Application {
 
 
         modelClass.writeToDB("DD", 12, 25, "sdsd");
-        assertEquals("DD", modelClass.toString());
+        //
 
         modelClass.updateDB("testActivity", 15, 20, "This is an description", list.get(list.size()-1).getIdActivity());
+        assertEquals("testActivity", list.get(list.size() - 1).getName());
     }
 
     @Test //#4
     public void testDBdelete()
     {
         ModelClass modelClass = new ModelClass();
-        assertNotNull(modelClass.getDBactivities2("4").getName());
         //System.out.println(modelClass.getDBactivities2("2").toString());
+        ArrayList<Activity> list = new ArrayList<>();
+        list = modelClass.getDBactivities();
 
 
-        modelClass.writeToDB("DD", 12, 25, "sdsd");
-        assertEquals("DD", modelClass.toString());
+        modelClass.deleteDB(list.get(list.size() - 1).getIdActivity());
+       // modelClass.writeToDB("DD", 12, 25, "sdsd");
+        assertEquals(modelClass.getDBactivities().size(), list.size()-1);
     }
 
     @Test //#5
     public void testDBretrieve()
     {
         ModelClass modelClass = new ModelClass();
-        ArrayList<Activity> list = new ArrayList<>();
-        list = modelClass.getDBactivities();
 
-
-        modelClass.deleteDB(list.get(list.size() - 1).getIdActivity());
+        assertNotNull(modelClass.getDBactivities2("4").getName());
     }
     
-
-    MainAdminScene m = new MainAdminScene();
-    Stage window;
-    Scene scene;
 
     @Before
     public void setUp() throws Exception {
