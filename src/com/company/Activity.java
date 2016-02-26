@@ -5,6 +5,12 @@ package com.company;
  */
 public class Activity {
 
+    private String idActivity;
+    private String name;
+    private int ageLimit;
+    private double price;
+    private String description;
+
     public Activity(String idActivity, String name, int ageLimit, double price, String description)
     {
         this.idActivity = idActivity;
@@ -22,8 +28,6 @@ public class Activity {
         this.description = description;
     }
 
-
-    private String idActivity;
 
     public String getName() {
         return name;
@@ -65,10 +69,7 @@ public class Activity {
         this.description = description;
     }
 
-    private String name;
-    private int ageLimit;
-    private double price;
-    private String description;
+
 
 
 
