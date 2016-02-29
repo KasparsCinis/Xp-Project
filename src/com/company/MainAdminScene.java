@@ -174,9 +174,11 @@ public class MainAdminScene {
         priceLabel.setTranslateY(60);
         VBox labelVbox = new VBox(nameLabel,descriptionLabel,ageLimitLabel,priceLabel);
         VBox textfieldsVbox = new VBox(edit,nameTextField, descriptionArea, ageLimitTextfield, priceTextField,vBox);
+
         HBox labelandtextField = new HBox(labelVbox, textfieldsVbox);
-        labelandtextField.setPadding(new Insets(10, 10, 10, 10));
+        labelandtextField.setPadding(new Insets(20, 10, 10, 50));
         labelandtextField.setSpacing(10);
+
         Button deleteButton = new Button("Clear");
         Button saveButton = new Button("Save");
         deleteSaveHBox.getChildren().addAll(saveButton,deleteButton);
