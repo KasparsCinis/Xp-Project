@@ -1,4 +1,5 @@
 package com.company;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -120,7 +121,10 @@ public class ActivityInfoWindow {
         saveButton.setTranslateX(0);
         deleteButton.setTranslateX(0);
         hBox.getChildren().addAll(labelVBox, textVBox);
-        Scene scene = new Scene(hBox, 300,300);
+
+        hBox.setPadding(new Insets(20, 10, 10, 30));
+        hBox.setSpacing(30);
+        Scene scene = new Scene(hBox, 350,350);
 
        // deleteSaveHBox.getChildren().addAll(saveButton, deleteButton);
 
