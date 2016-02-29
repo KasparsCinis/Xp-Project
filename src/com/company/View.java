@@ -46,13 +46,18 @@ public class View extends Application{
 
         scene.getStylesheets().add("com/company/style.css");
 
-        manageBtn = new Button("Manage \nActivity");
+        manageBtn = new Button("Activities");
         manageBtn.setOnAction(event -> {
             m.display(primaryStage);
             primaryStage.setScene(m.window.getScene());
             //primaryStage.close();
         });
-        reserveBtn = new Button("    Make \nReservation");
+        reserveBtn = new Button("Reservations");
+        reserveBtn.setOnAction(event -> {
+            m.display(primaryStage);
+            primaryStage.setScene(m.window.getScene());
+            //primaryStage.close();
+        });
 
         img = new Image("com/Logo2.jpg");
         imgView = new ImageView();
@@ -93,8 +98,8 @@ public class View extends Application{
         //grid.setGridLinesVisible(true);
 
 
-        grid.add(manageBtn, 1, 1);
-        grid.add(reserveBtn, 2, 1);
+        grid.add(manageBtn, 2, 1);
+        grid.add(reserveBtn, 1, 1);
         grid.setAlignment(Pos.CENTER);
 
 
