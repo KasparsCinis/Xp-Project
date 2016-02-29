@@ -176,7 +176,7 @@ public class MainAdminScene {
         VBox textfieldsVbox = new VBox(edit,nameTextField, descriptionArea, ageLimitTextfield, priceTextField,vBox);
 
         HBox labelandtextField = new HBox(labelVbox, textfieldsVbox);
-        labelandtextField.setPadding(new Insets(20, 10, 10, 45));
+        labelandtextField.setPadding(new Insets(20, 10, 10, 50));
         labelandtextField.setSpacing(10);
 
         Button deleteButton = new Button("Clear");
