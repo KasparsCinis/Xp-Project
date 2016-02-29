@@ -83,6 +83,16 @@ public class MainAdminScene {
         }
         return result;
     }
+    public boolean validateType()
+    {
+        try{
+            Integer.valueOf(ageLimitTextfield.getText().toString()) ;
+            Double.valueOf(priceTextField.getText().toString());
+        }catch (NumberFormatException nfe){
+            return false;
+        }
+        return true;
+    }
     public void display(Stage primaryStage){
         vBox = new VBox();
         window.setTitle("Adventure something");
@@ -177,35 +187,27 @@ public class MainAdminScene {
         );
         System.out.println(activities.get(0).getName());
         saveButton.setOnAction(event -> {
-            System.out.println(validate());
-            if (validate()) {
-                boolean nameb = true;
-                boolean descb = true;
-                boolean ageb = true;
-                boolean priceb = true;
+            if (validate() && validateType()) {
+
                 String name = getNameTextField();
-                if (name.equals("")) {
-                    nameb = false;
-                }
                 String description = getDescriptionArea();
-                if (description.equals("")) {
-                    descb = false;
-                }
-                getAgeLimitTextfield();
-                Integer age = getAgeLimitTextfield();
-                if (age == null) {
-                    ageb = false;
-                }
-                Double price = getPriceTextField();
-                if (price == null) {
-                    priceb = false;
-                }
-                if (nameb == false || descb == false || ageb == false || priceb == false) {
-                    alertMessage();
-                }
+                int age = getAgeLimitTextfield();
+                double price = getPriceTextField();
+                ModelClass modelClass = new ModelClass();
+                modelClass.updateDB(name, age, price, description, intID);
                 System.out.println("Hi............");
+
+                display(primaryStage);
+                primaryStage.setScene(window.getScene());
+            } else if (validate()) {
+                System.out.println("wrong type");
+            } else {
+                System.out.println("fill the fields");
             }
+
         });
+
+
         layout.setRight(labelandtextField);
         Scene scene = new Scene(layout, 600, 500);
         window.setScene(scene);
