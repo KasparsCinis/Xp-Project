@@ -1,7 +1,4 @@
 package com.company;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -110,7 +107,9 @@ public class ActivityInfoWindow {
         ageLimitHBox.getChildren().addAll( ageLimitTextfield,ageLimitLabel);
         Button deleteButton = new Button("Clear");
         Button saveButton = new Button("Save");
-        deleteSaveHBox.getChildren().addAll(saveButton,deleteButton);
+        Button backButton = new Button("Back");
+
+        deleteSaveHBox.getChildren().addAll(backButton, saveButton,deleteButton);
         labelVBox.getChildren().addAll(nameLabel, descriptionLabel, ageLimitLabel, priceLabel);
         textVBox.getChildren().addAll(nameTextField, descriptionArea, ageLimitTextfield, priceTextField, deleteSaveHBox);
         descriptionLabel.setPrefHeight(45);
@@ -125,6 +124,12 @@ public class ActivityInfoWindow {
 
        // deleteSaveHBox.getChildren().addAll(saveButton, deleteButton);
 
+        backButton.setOnAction(event1 -> {
+            m = new MainAdminScene();
+            m.display(primaryStage);
+            primaryStage.setScene(m.window.getScene());
+
+        });
         deleteButton.setOnAction(event ->{
                     nameTextField.clear();
                     descriptionArea.clear();

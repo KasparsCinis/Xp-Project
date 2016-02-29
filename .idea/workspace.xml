@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9c816f39-2e48-4ffe-a7a2-a499d45e082c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Xp-Project/com/company/ActivityInfoWindow.class" afterPath="$PROJECT_DIR$/out/production/Xp-Project/com/company/ActivityInfoWindow.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Xp-Project/com/company/MainAdminScene.class" afterPath="$PROJECT_DIR$/out/production/Xp-Project/com/company/MainAdminScene.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/MainAdminScene.java" afterPath="$PROJECT_DIR$/src/com/company/MainAdminScene.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java" afterPath="$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java" />
     </list>
     <ignored path="Xp-Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,9 +32,11 @@
         <entry file="file://$PROJECT_DIR$/src/com/company/View.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
+              <caret line="77" column="33" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#546#547#0" expanded="true" />
+                <element signature="e#574#575#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,44 +46,47 @@
         <entry file="file://$PROJECT_DIR$/src/com/company/Activity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="31" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="31" />
+              <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
               <folding>
-                <element signature="e#896#897#0" expanded="true" />
-                <element signature="e#929#930#0" expanded="true" />
+                <element signature="e#981#982#0" expanded="true" />
+                <element signature="e#1025#1026#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainAdminScene.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainAdminScene.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/MainAdminScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6017094">
-              <caret line="163" column="32" selection-start-line="163" selection-start-column="32" selection-end-line="163" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="173" column="43" selection-start-line="173" selection-start-column="43" selection-end-line="173" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ModelClass.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/ModelClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="87" column="4" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="4" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1456746816000" expanded="true" signature="745:793" placeholder="INSERT INTO activities..." />
+                <marker date="1456746816000" expanded="true" signature="1492:1584" placeholder="UPDATE activ..." />
+                <marker date="1456746816000" expanded="true" signature="2348:2391" placeholder="DELETE FROM ..." />
+                <marker date="1456746816000" expanded="true" signature="2938:2962" placeholder="SELECT * FRO..activities..." />
+                <marker date="1456746816000" expanded="true" signature="3704:3749" placeholder="SELECT * FRO..activities..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActivityInfoWindow.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ActivityInfoWindow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="105" column="31" selection-start-line="105" selection-start-column="31" selection-end-line="105" selection-end-column="31" />
-              <folding>
-                <element signature="e#555#556#0" expanded="true" />
-                <element signature="e#612#613#0" expanded="true" />
-                <element signature="e#664#665#0" expanded="true" />
-                <element signature="e#711#712#0" expanded="true" />
-                <element signature="e#752#753#0" expanded="true" />
-                <element signature="e#811#812#0" expanded="true" />
-                <element signature="e#868#869#0" expanded="true" />
-                <element signature="e#920#921#0" expanded="true" />
-                <element signature="e#1310#1311#0" expanded="true" />
-                <element signature="e#1384#1385#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.27902946">
+              <caret line="129" column="12" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,8 +121,8 @@
         <option value="$PROJECT_DIR$/src/com/company/ModelClass.java" />
         <option value="$PROJECT_DIR$/src/com/company/View.java" />
         <option value="$PROJECT_DIR$/src/com/company/style.css" />
-        <option value="$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java" />
         <option value="$PROJECT_DIR$/src/com/company/MainAdminScene.java" />
+        <option value="$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java" />
       </list>
     </option>
   </component>
@@ -126,10 +132,9 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="845" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -156,7 +161,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -233,6 +237,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -705,6 +710,11 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -767,6 +777,7 @@
       <workItem from="1456410269401" duration="5246000" />
       <workItem from="1456485647218" duration="117000" />
       <workItem from="1456492801276" duration="4459000" />
+      <workItem from="1456746839073" duration="1099000" />
     </task>
     <task id="LOCAL-00001" summary="Last push for today">
       <created>1456495030725</created>
@@ -774,14 +785,25 @@
       <option name="project" value="LOCAL" />
       <updated>1456495030726</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="FIxed labels and fields">
+      <created>1456747446639</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1456747446639</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="MainTest - 2016.02.29 at 12h 54m 14s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14022000" />
+    <option name="totallyTimeSpent" value="15121000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="845" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -791,10 +813,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32459018" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19654715" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.246875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24678111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -815,10 +837,20 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Last push for today" />
-    <option name="LAST_COMMIT_MESSAGE" value="Last push for today" />
+    <MESSAGE value="FIxed labels and fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIxed labels and fields" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/View.java</url>
+          <line>22</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -829,19 +861,11 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+          <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/MainAdminScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -851,28 +875,25 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="39" column="31" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="31" />
           <folding>
-            <element signature="e#896#897#0" expanded="true" />
-            <element signature="e#929#930#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/MainAdminScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="24" selection-start-line="127" selection-start-column="10" selection-end-line="127" selection-end-column="24" />
-          <folding>
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#612#613#0" expanded="true" />
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#711#712#0" expanded="true" />
-            <element signature="e#752#753#0" expanded="true" />
-            <element signature="e#811#812#0" expanded="true" />
-            <element signature="e#868#869#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-            <element signature="e#1310#1311#0" expanded="true" />
-            <element signature="e#1384#1385#0" expanded="true" />
-          </folding>
+          <caret line="105" column="31" selection-start-line="105" selection-start-column="31" selection-end-line="105" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -882,6 +903,8 @@
           <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -890,9 +913,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="31" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="31" />
+          <folding>
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="127" column="24" selection-start-line="127" selection-start-column="10" selection-end-line="127" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/MainAdminScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -902,6 +962,8 @@
           <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -919,6 +981,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -942,9 +1006,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="64" column="28" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -953,7 +1015,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="87" column="4" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="4" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1456746816000" expanded="true" signature="745:793" placeholder="INSERT INTO activities..." />
+            <marker date="1456746816000" expanded="true" signature="1492:1584" placeholder="UPDATE activ..." />
+            <marker date="1456746816000" expanded="true" signature="2348:2391" placeholder="DELETE FROM ..." />
+            <marker date="1456746816000" expanded="true" signature="2938:2962" placeholder="SELECT * FRO..activities..." />
+            <marker date="1456746816000" expanded="true" signature="3704:3749" placeholder="SELECT * FRO..activities..." />
           </folding>
         </state>
       </provider>
@@ -969,6 +1035,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -986,7 +1054,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="72" selection-start-line="22" selection-start-column="72" selection-end-line="22" selection-end-column="72" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1456746816000" expanded="true" signature="745:793" placeholder="INSERT INTO activities..." />
+            <marker date="1456746816000" expanded="true" signature="1492:1584" placeholder="UPDATE activ..." />
+            <marker date="1456746816000" expanded="true" signature="2348:2391" placeholder="DELETE FROM ..." />
+            <marker date="1456746816000" expanded="true" signature="2938:2962" placeholder="SELECT * FRO..activities..." />
+            <marker date="1456746816000" expanded="true" signature="3704:3749" placeholder="SELECT * FRO..activities..." />
           </folding>
         </state>
       </provider>
@@ -997,6 +1069,8 @@
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1014,16 +1088,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/ModelClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.045180723">
-          <caret line="87" column="4" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.045180723">
@@ -1039,21 +1103,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="105" column="31" selection-start-line="105" selection-start-column="31" selection-end-line="105" selection-end-column="31" />
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
           <folding>
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#612#613#0" expanded="true" />
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#711#712#0" expanded="true" />
-            <element signature="e#752#753#0" expanded="true" />
-            <element signature="e#811#812#0" expanded="true" />
-            <element signature="e#868#869#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-            <element signature="e#1310#1311#0" expanded="true" />
-            <element signature="e#1384#1385#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1061,31 +1117,42 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
+          <caret line="77" column="33" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Activity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/ModelClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="31" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="31" />
+          <caret line="87" column="4" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="4" />
           <folding>
-            <element signature="e#896#897#0" expanded="true" />
-            <element signature="e#929#930#0" expanded="true" />
+            <marker date="1456746816000" expanded="true" signature="745:793" placeholder="INSERT INTO activities..." />
+            <marker date="1456746816000" expanded="true" signature="1492:1584" placeholder="UPDATE activ..." />
+            <marker date="1456746816000" expanded="true" signature="2348:2391" placeholder="DELETE FROM ..." />
+            <marker date="1456746816000" expanded="true" signature="2938:2962" placeholder="SELECT * FRO..activities..." />
+            <marker date="1456746816000" expanded="true" signature="3704:3749" placeholder="SELECT * FRO..activities..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/MainAdminScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6017094">
-          <caret line="163" column="32" selection-start-line="163" selection-start-column="32" selection-end-line="163" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="173" column="43" selection-start-line="173" selection-start-column="43" selection-end-line="173" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/ActivityInfoWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27902946">
+          <caret line="129" column="12" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
