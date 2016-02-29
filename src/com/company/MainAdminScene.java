@@ -163,7 +163,7 @@ public class MainAdminScene {
         ageLimitLabel.setTranslateY(45);
         priceLabel.setTranslateY(60);
         VBox labelVbox = new VBox(nameLabel,descriptionLabel,ageLimitLabel,priceLabel);
-        VBox textfieldsVbox = new VBox(edit,ageLimitTextfield, descriptionArea, priceTextField,nameTextField,vBox);
+        VBox textfieldsVbox = new VBox(edit,nameTextField, descriptionArea, ageLimitTextfield, priceTextField,vBox);
         HBox labelandtextField = new HBox(labelVbox, textfieldsVbox);
         Button deleteButton = new Button("Clear");
         Button saveButton = new Button("Save");
