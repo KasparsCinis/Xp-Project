@@ -122,8 +122,8 @@ public class ActivityInfoWindow {
         deleteButton.setTranslateX(0);
         hBox.getChildren().addAll(labelVBox, textVBox);
 
-        hBox.setPadding(new Insets(20, 10, 10, 30));
-        hBox.setSpacing(30);
+        hBox.setPadding(new Insets(20, 10, 10, 35));
+        hBox.setSpacing(20);
         Scene scene = new Scene(hBox, 350,350);
 
        // deleteSaveHBox.getChildren().addAll(saveButton, deleteButton);
