@@ -148,6 +148,13 @@ public class MainAdminScene {
         deleteButton2.setOnAction(event ->{
                     modelClass.deleteDBActivity(intID);
                     activityTableView.setItems(getActivity());
+                notificationLabel.setText("Activity deleted successfully!");
+                notificationLabel.setTextFill(Color.web("green"));
+                Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.millis(5000),
+                    ae ->   notificationLabel.setVisible(false)));
+                timeline.play();
+
                 }
         );
 
@@ -165,6 +172,7 @@ public class MainAdminScene {
         hBox.getChildren().addAll(gridPane, notificationLabel);
         notificationLabel.setTranslateX(100);
         notificationLabel.setStyle("-fx-font-size: 20");
+        notificationLabel.setVisible(true);
 
         hBox2.getChildren().addAll(activityTableView);
         layout.setBottom(hBox);
@@ -203,6 +211,7 @@ public class MainAdminScene {
                     edit.setText("EDIT ACTIVITY: ");
                 }
         );
+
         System.out.println(activities.get(0).getName());
         saveButton.setOnAction(event -> {
             if (validate() && validateType()) {
@@ -214,16 +223,18 @@ public class MainAdminScene {
                 ModelClass modelClass = new ModelClass();
                 if (edit.getText().equals("EDIT ACTIVITY: ")) {
                     modelClass.updateDBActivity(name, age, price, description, intID);
-                    notificationLabel.setText("Activity edit successful");
+                    notificationLabel.setText("Activity edit successful!");
+
                     notificationLabel.setTextFill(Color.web("green"));
                     Timeline timeline = new Timeline(new KeyFrame(
-                            Duration.millis(5000),
+                            Duration.millis(2000),
                             ae ->   notificationLabel.setVisible(false)));
                     timeline.play();
                 }
+
                 if (edit.getText().equals("NEW ACTIVITY: ")) {
                     modelClass.writeToDBActivity(name, age, price, description);
-                    notificationLabel.setText("Activity add successful");
+                    notificationLabel.setText("Activity add successful!");
                     notificationLabel.setTextFill(Color.web("green"));
                     Timeline timeline = new Timeline(new KeyFrame(
                             Duration.millis(5000),
