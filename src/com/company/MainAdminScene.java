@@ -1,4 +1,6 @@
 package com.company;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,8 +15,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.util.ArrayList;
 /**
  * Created by krist on 25/02/2016.
@@ -28,6 +33,8 @@ public class MainAdminScene {
     TextField priceTextField = new TextField();
     VBox vBox;
     Stage window = new Stage();
+    Label notificationLabel = new Label("");
+    Label edit = new Label("EDIT ACTIVITY: ");
 
     String intID;
     ModelClass modelClass = new ModelClass();
@@ -106,34 +113,32 @@ public class MainAdminScene {
         activityTableView.setItems(getActivity());
         activityTableView.getColumns().add(activityColumn2);
         activityTableView.getColumns().add(activityColumn);
-        activityTableView.setRowFactory(activityTableView-> {
-            TableRow<Activity>row = new TableRow<Activity>();
-            row.setOnMouseClicked(event -> {if (event.getClickCount() ==1&&(! row.isEmpty())){
-                Activity rowData = row.getItem();
-                System.out.println(rowData);
-                nameTextField.setText(rowData.getName());
-                ageLimitTextfield.setText(String.valueOf(rowData.getAgeLimit()));
-                priceTextField.setText(String.valueOf(rowData.getPrice()));
-                descriptionArea.setText(rowData.getDescription());
+        activityTableView.setRowFactory(activityTableView -> {
+            TableRow<Activity> row = new TableRow<Activity>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 1 && (!row.isEmpty())) {
+                    Activity rowData = row.getItem();
+                    System.out.println(rowData);
+                    nameTextField.setText(rowData.getName());
+                    ageLimitTextfield.setText(String.valueOf(rowData.getAgeLimit()));
+                    priceTextField.setText(String.valueOf(rowData.getPrice()));
+                    descriptionArea.setText(rowData.getDescription());
 
 
-                intID = rowData.getIdActivity();
-            }
+                    intID = rowData.getIdActivity();
+                }
             });
             return row;
         });
         Button homeButton = new Button("Back");
         Button newButton = new Button("New");
         newButton.setOnAction(event -> {
-            activityInfoWindow = new ActivityInfoWindow();
-            activityInfoWindow.start(primaryStage);
-            //vBox.setVisible(false);
+            edit.setText("NEW ACTIVITY: ");
         });
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
         javafx.scene.image.Image image = new javafx.scene.image.Image("com/Logo2.jpg");
         ImageView iv1 = new ImageView();
-        Label edit = new Label("EDIT: ");
         edit.setFont(new Font("Serif",30));
         iv1.setImage(image);
         iv1.setFitWidth(80);
@@ -154,8 +159,15 @@ public class MainAdminScene {
         GridPane gridPane = new GridPane();
         gridPane.getChildren().add(activityTableHbox);
         HBox hBox2 = new HBox();
+
+        //notification label
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(gridPane, notificationLabel);
+        notificationLabel.setTranslateX(100);
+        notificationLabel.setStyle("-fx-font-size: 20");
+
         hBox2.getChildren().addAll(activityTableView);
-        layout.setBottom(gridPane);
+        layout.setBottom(hBox);
         layout.setCenter(hBox2);
         HBox nameHBox = new HBox();
         HBox descriptionHBox = new HBox();
@@ -188,6 +200,7 @@ public class MainAdminScene {
                     descriptionArea.clear();
                     priceTextField.clear();
                     ageLimitTextfield.clear();
+                    edit.setText("EDIT ACTIVITY: ");
                 }
         );
         System.out.println(activities.get(0).getName());
@@ -199,19 +212,56 @@ public class MainAdminScene {
                 int age = getAgeLimitTextfield();
                 double price = getPriceTextField();
                 ModelClass modelClass = new ModelClass();
-                modelClass.updateDBActivity(name, age, price, description, intID);
+                if (edit.getText().equals("EDIT ACTIVITY: ")) {
+                    modelClass.updateDBActivity(name, age, price, description, intID);
+                    notificationLabel.setText("Activity edit successful");
+                    notificationLabel.setTextFill(Color.web("green"));
+                    Timeline timeline = new Timeline(new KeyFrame(
+                            Duration.millis(5000),
+                            ae ->   notificationLabel.setVisible(false)));
+                    timeline.play();
+                }
+                if (edit.getText().equals("NEW ACTIVITY: ")) {
+                    modelClass.writeToDBActivity(name, age, price, description);
+                    notificationLabel.setText("Activity add successful");
+                    notificationLabel.setTextFill(Color.web("green"));
+                    Timeline timeline = new Timeline(new KeyFrame(
+                            Duration.millis(5000),
+                            ae ->   notificationLabel.setVisible(false)));
+                    timeline.play();
+                }
+
                 System.out.println("Hi............");
 
                 display(primaryStage);
                 primaryStage.setScene(window.getScene());
             } else if (validate()) {
-                System.out.println("wrong type");
+                if (edit.getText().equals("EDIT ACTIVITY: ")){
+                    notificationLabel.setText("Activity edit unsuccessful. Wrong type.");
+                    notificationLabel.setTextFill(Color.web("red"));
+                    Timeline timeline = new Timeline(new KeyFrame(
+                            Duration.millis(5000),
+                            ae ->   notificationLabel.setVisible(false)));
+                    timeline.play();
+                } else {
+                    notificationLabel.setText("Activity add unsuccessful. Wrong type.");
+                    notificationLabel.setTextFill(Color.web("red"));
+                    Timeline timeline = new Timeline(new KeyFrame(
+                            Duration.millis(5000),
+                            ae ->   notificationLabel.setVisible(false)));
+                    timeline.play();
+                }
             } else {
-                System.out.println("fill the fields");
+                notificationLabel.setText("Fill the fields");
+                notificationLabel.setTextFill(Color.web("red"));
+                Timeline timeline = new Timeline(new KeyFrame(
+                        Duration.millis(5000),
+                        ae ->   notificationLabel.setVisible(false)));
+                timeline.play();
+
             }
 
         });
-
 
         layout.setRight(labelandtextField);
         Scene scene = new Scene(layout, 600, 500);
