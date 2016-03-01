@@ -34,7 +34,6 @@ public class ActivityScene {
     VBox vBox;
     Stage window = new Stage();
     Label notificationLabel = new Label("");
-    Label edit = new Label("EDIT ACTIVITY: ");
 
     String intID;
     ModelClass modelClass = new ModelClass();
@@ -132,6 +131,7 @@ public class ActivityScene {
         });
         Button homeButton = new Button("Back");
         Button newButton = new Button("New");
+        Label edit = new Label("EDIT ACTIVITY: ");
         newButton.setOnAction(event -> {
             edit.setText("NEW ACTIVITY: ");
         });
@@ -141,7 +141,7 @@ public class ActivityScene {
         ImageView iv1 = new ImageView();
 
 
-        Label edit = new Label("EDIT: ");
+
 
         edit.setFont(new Font("Serif",30));
         iv1.setImage(image);
@@ -158,6 +158,13 @@ public class ActivityScene {
         deleteButton2.setOnAction(event ->{
                     modelClass.deleteDBActivity(intID);
                     activityTableView.setItems(getActivity());
+
+                    notificationLabel.setText("Activity deleted successful");
+                    notificationLabel.setTextFill(Color.web("green"));
+                    Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.millis(3000),
+                    ae ->   notificationLabel.setVisible(false)));
+                    timeline.play();
                 }
         );
 
@@ -173,8 +180,9 @@ public class ActivityScene {
         //notification label
         HBox hBox = new HBox();
         hBox.getChildren().addAll(gridPane, notificationLabel);
-        notificationLabel.setTranslateX(100);
+        notificationLabel.setTranslateX(250);
         notificationLabel.setStyle("-fx-font-size: 20");
+        notificationLabel.setVisible(true);
 
         hBox2.getChildren().addAll(activityTableView);
         layout.setBottom(hBox);
@@ -212,6 +220,12 @@ public class ActivityScene {
                     descriptionArea.clear();
                     priceTextField.clear();
                     ageLimitTextfield.clear();
+                    notificationLabel.setText("Cleared successfull!");
+                    notificationLabel.setTextFill(Color.web("green"));
+                    Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.millis(3000),
+                    ae ->   notificationLabel.setVisible(false)));
+                    timeline.play();
                     edit.setText("EDIT ACTIVITY: ");
                 }
         );
@@ -226,19 +240,19 @@ public class ActivityScene {
                 ModelClass modelClass = new ModelClass();
                 if (edit.getText().equals("EDIT ACTIVITY: ")) {
                     modelClass.updateDBActivity(name, age, price, description, intID);
-                    notificationLabel.setText("Activity edit successful");
+                    notificationLabel.setText("Activity edit successful!");
                     notificationLabel.setTextFill(Color.web("green"));
                     Timeline timeline = new Timeline(new KeyFrame(
-                            Duration.millis(5000),
+                            Duration.millis(3000),
                             ae ->   notificationLabel.setVisible(false)));
                     timeline.play();
                 }
                 if (edit.getText().equals("NEW ACTIVITY: ")) {
                     modelClass.writeToDBActivity(name, age, price, description);
-                    notificationLabel.setText("Activity add successful");
+                    notificationLabel.setText("Activity add successful!");
                     notificationLabel.setTextFill(Color.web("green"));
                     Timeline timeline = new Timeline(new KeyFrame(
-                            Duration.millis(5000),
+                            Duration.millis(3000),
                             ae ->   notificationLabel.setVisible(false)));
                     timeline.play();
                 }
@@ -249,17 +263,17 @@ public class ActivityScene {
                 primaryStage.setScene(window.getScene());
             } else if (validate()) {
                 if (edit.getText().equals("EDIT ACTIVITY: ")){
-                    notificationLabel.setText("Activity edit unsuccessful. Wrong type.");
+                    notificationLabel.setText("Activity edit unsuccessful. Wrong type!");
                     notificationLabel.setTextFill(Color.web("red"));
                     Timeline timeline = new Timeline(new KeyFrame(
-                            Duration.millis(5000),
+                            Duration.millis(3000),
                             ae ->   notificationLabel.setVisible(false)));
                     timeline.play();
                 } else {
-                    notificationLabel.setText("Activity add unsuccessful. Wrong type.");
+                    notificationLabel.setText("Activity add unsuccessful. Wrong type!");
                     notificationLabel.setTextFill(Color.web("red"));
                     Timeline timeline = new Timeline(new KeyFrame(
-                            Duration.millis(5000),
+                            Duration.millis(3000),
                             ae ->   notificationLabel.setVisible(false)));
                     timeline.play();
                 }
@@ -267,7 +281,7 @@ public class ActivityScene {
                 notificationLabel.setText("Fill the fields");
                 notificationLabel.setTextFill(Color.web("red"));
                 Timeline timeline = new Timeline(new KeyFrame(
-                        Duration.millis(5000),
+                        Duration.millis(3000),
                         ae ->   notificationLabel.setVisible(false)));
                 timeline.play();
 
