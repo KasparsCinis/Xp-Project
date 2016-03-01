@@ -211,6 +211,10 @@ public class ReservationScene {
         deleteButton2.setOnAction(event ->{
                     modelClass.deleteDBActivity(intID);
                     activityTableView.setItems(getActivity());
+                    date.clear();
+                    commentArea.clear();
+                    phoneNumber.clear();
+                    customerName.clear();
                 }
         );
 
