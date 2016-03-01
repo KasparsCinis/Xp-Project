@@ -141,7 +141,7 @@ public class MainAdminScene {
         layout.setTop(iv1);
         Button deleteButton2 = new Button("Delete");
         deleteButton2.setOnAction(event ->{
-                    modelClass.deleteDB(intID);
+                    modelClass.deleteDBActivity(intID);
                     activityTableView.setItems(getActivity());
                 }
         );
@@ -199,7 +199,7 @@ public class MainAdminScene {
                 int age = getAgeLimitTextfield();
                 double price = getPriceTextField();
                 ModelClass modelClass = new ModelClass();
-                modelClass.updateDB(name, age, price, description, intID);
+                modelClass.updateDBActivity(name, age, price, description, intID);
                 System.out.println("Hi............");
 
                 display(primaryStage);

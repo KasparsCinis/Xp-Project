@@ -149,7 +149,7 @@ public class ActivityInfoWindow {
                 int age = getAgeLimitTextfield();
                 double price = getPriceTextField();
                 ModelClass modelClass = new ModelClass();
-                modelClass.writeToDB(name, age, price, description);
+                modelClass.writeToDBActivity(name, age, price, description);
                 System.out.println("Hi............");
 
                 m.display(primaryStage);
