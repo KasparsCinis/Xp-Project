@@ -9,8 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 
@@ -32,7 +30,8 @@ public class View extends Application{
 
     Button manageBtn;
     Button reserveBtn;
-    MainAdminScene m = new MainAdminScene();
+    ActivityScene m = new ActivityScene();
+    ReservationScene reservationScene = new ReservationScene();
 
     @Override
     public void start(Stage primaryStage)
@@ -54,8 +53,8 @@ public class View extends Application{
         });
         reserveBtn = new Button("Reservations");
         reserveBtn.setOnAction(event -> {
-            m.display(primaryStage);
-            primaryStage.setScene(m.window.getScene());
+            reservationScene.display(primaryStage);
+            primaryStage.setScene(reservationScene.window.getScene());
             //primaryStage.close();
         });
 

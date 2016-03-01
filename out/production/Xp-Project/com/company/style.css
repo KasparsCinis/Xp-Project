@@ -41,7 +41,9 @@
      -fx-font-size: 12pt;
 
 
-
 }
 
+#calendarIconStyle:hover{
+    -fx-opacity: 0.5;
+}
 
