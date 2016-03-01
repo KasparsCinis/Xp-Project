@@ -68,4 +68,57 @@ public class Reservation2 {
         this.idInstructor = idInstructor;
     }
 
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerMobilePhone() {
+        return customerMobilePhone;
+    }
+
+    public void setCustomerMobilePhone(String customerMobilePhone) {
+        this.customerMobilePhone = customerMobilePhone;
+    }
+
+    public int getNumberOfPeple() {
+        return numberOfPeple;
+    }
+
+    public void setNumberOfPeple(int numberOfPeple) {
+        this.numberOfPeple = numberOfPeple;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String toString()
+    {
+        return idReservation + " " + idActivity + " " + idInstructor + " " + time + " " + date;
+    }
+
 }

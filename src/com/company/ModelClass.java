@@ -147,7 +147,7 @@ public class ModelClass {
     {
         ArrayList<Reservation2> list = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM activities";
+            String sql = "SELECT * FROM reservations";
 
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
