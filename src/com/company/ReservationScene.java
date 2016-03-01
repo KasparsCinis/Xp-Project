@@ -140,6 +140,7 @@ public class ReservationScene {
         activityTableView.setRowFactory(activityTableView-> {
             TableRow<Activity>row = new TableRow<Activity>();
             row.setOnMouseClicked(event -> {if (event.getClickCount() ==1&&(! row.isEmpty())){
+                editLabel.setText("EDIT");
                 Activity rowData = row.getItem();
                 System.out.println(rowData);
                 date.setText(rowData.getName());
@@ -157,6 +158,11 @@ public class ReservationScene {
         newButton = new Button("New");
         newButton.setOnAction(event -> {
             editLabel.setText("NEW: ");
+            date.clear();
+            commentArea.clear();
+            phoneNumber.clear();
+            customerName.clear();
+
             // a = new ActivityInfoWindow();
             //a.start(primaryStage);
             //vBox.setVisible(false);
