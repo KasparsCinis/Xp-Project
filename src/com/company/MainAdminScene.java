@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public class MainAdminScene {
     ArrayList<Activity> activities = new ArrayList<>();
-    ActivityInfoWindow a;
+    ActivityInfoWindow activityInfoWindow;
     TextField nameTextField = new TextField();
     TextArea descriptionArea = new TextArea();
     TextField ageLimitTextfield = new TextField();
@@ -125,8 +125,8 @@ public class MainAdminScene {
         Button homeButton = new Button("Back");
         Button newButton = new Button("New");
         newButton.setOnAction(event -> {
-            a = new ActivityInfoWindow();
-            a.start(primaryStage);
+            activityInfoWindow = new ActivityInfoWindow();
+            activityInfoWindow.start(primaryStage);
             //vBox.setVisible(false);
         });
         BorderPane layout = new BorderPane();
@@ -146,12 +146,13 @@ public class MainAdminScene {
                 }
         );
 
-        HBox hBox1 = new HBox();
-        hBox1.getChildren().addAll( homeButton, newButton, deleteButton2);
-        hBox1.setSpacing(10);
-        hBox1.setAlignment(Pos.BOTTOM_LEFT);
+        HBox activityTableHbox = new HBox(); // Buttons under the tableview "Back,New, Edit"
+        //hBox1.setStyle("-fx-background-color: cyan");
+        activityTableHbox.getChildren().addAll( homeButton, newButton, deleteButton2);
+        activityTableHbox.setSpacing(10);
+        activityTableHbox.setAlignment(Pos.BOTTOM_LEFT);
         GridPane gridPane = new GridPane();
-        gridPane.getChildren().add(hBox1);
+        gridPane.getChildren().add(activityTableHbox);
         HBox hBox2 = new HBox();
         hBox2.getChildren().addAll(activityTableView);
         layout.setBottom(gridPane);
@@ -226,7 +227,7 @@ public class MainAdminScene {
         // window.show();
     }
     public ObservableList<Activity> getActivity(){
-        ModelClass modelClass = new ModelClass();
+         modelClass = new ModelClass();
         ArrayList<Activity> list = new ArrayList<>();
         ObservableList<Activity> activities2 = FXCollections.observableArrayList();
         list = modelClass.getDBactivities();
