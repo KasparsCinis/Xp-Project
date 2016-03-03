@@ -243,6 +243,7 @@ public class ActivityScene {
                 ModelClass modelClass = new ModelClass();
                 if (edit.getText().equals("EDIT: ")) {
                     modelClass.updateDBActivity(name, age, price, description, intID);
+                    notificationLabel.setVisible(true);
                     notificationLabel.setText("Activity edit successful!");
                     notificationLabel.setTextFill(Color.web("green"));
                     Timeline timeline = new Timeline(new KeyFrame(
@@ -252,6 +253,7 @@ public class ActivityScene {
                 }
                 if (edit.getText().equals("NEW: ")) {
                     modelClass.writeToDBActivity(name, age, price, description);
+                    notificationLabel.setVisible(true);
                     notificationLabel.setText("Activity add successful!");
                     notificationLabel.setTextFill(Color.web("green"));
                     Timeline timeline = new Timeline(new KeyFrame(
@@ -266,6 +268,7 @@ public class ActivityScene {
                 primaryStage.setScene(window.getScene());
             } else if (validate()) {   //Do we need this else if statement???
                 if (edit.getText().equals("EDIT: ")){
+                    notificationLabel.setVisible(true);
                     notificationLabel.setText("Activity edit unsuccessful. Wrong type!");
                     notificationLabel.setTextFill(Color.web("red"));
                     Timeline timeline = new Timeline(new KeyFrame(
@@ -273,6 +276,7 @@ public class ActivityScene {
                             ae ->   notificationLabel.setVisible(false)));
                     timeline.play();
                 } else {
+                    notificationLabel.setVisible(true);
                     notificationLabel.setText("Activity add unsuccessful. Wrong type!");
                     notificationLabel.setTextFill(Color.web("red"));
                     Timeline timeline = new Timeline(new KeyFrame(
@@ -281,6 +285,7 @@ public class ActivityScene {
                     timeline.play();
                 }
             } else {
+                notificationLabel.setVisible(true);
                 notificationLabel.setText("Fill the fields");
                 notificationLabel.setTextFill(Color.web("red"));
                 Timeline timeline = new Timeline(new KeyFrame(
