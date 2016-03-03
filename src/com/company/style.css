@@ -22,8 +22,8 @@
     text-align: center;
 }
 
-.date-picker .text-field {
-    -fx-font: 15px "Arial";
+.date-picker .date-field {
+    -fx-font: 30px "Arial";
 }
 
 
