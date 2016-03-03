@@ -172,7 +172,17 @@ public class ReservationScene {
                 FXCollections.observableArrayList(
 
                 );
-        instructorsList.addAll(modelClass.getDBInstructors().get(0).getName());
+
+        ArrayList<Instructor> instructorList = new ArrayList<>();
+        instructorList = modelClass.getDBInstructors();
+        for (Instructor a : instructorList)
+        {
+            instructorsList.addAll(a.getName());
+        }
+
+
+
+
         instructors = new ComboBox(instructorsList);
         instructors.setPromptText("click for instructors");
 
@@ -317,8 +327,8 @@ public class ReservationScene {
                     editLabel.setText("EDIT: ");
                 }
         );
-        instructors.setMinSize(200,10);
-        instructors.setMaxSize(200,30);
+        instructors.setMinSize(200, 10);
+        instructors.setMaxSize(200, 30);
         date.setMinWidth(200);
         date.setText("click for calendar");
         date.setOnAction(new EventHandler<ActionEvent>() {
