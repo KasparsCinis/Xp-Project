@@ -25,8 +25,7 @@ public class ModelClass {
         }
     }
 
-    public void updateDBreservations()
-    {}
+
 
     public void writeToDBActivity(String name, int ageLimit, double price, String description)
     {
@@ -81,10 +80,9 @@ public class ModelClass {
 
         for (ActivitiesInReservation air : list)
         {
-            sql="UPDATE activitiesInReservation SET idInstructor = ?, date = ?, customerName = ?, customerMobilePhone = ?, numberOfPeople = ?, comment = ? WHERE idReservation = ?";
+            sql="UPDATE activitiesInReservation SET idActivity = ?, startTime = ?, endTime = ? WHERE idReservation = ?";
             try {
                 PreparedStatement preparedStatement = conn.prepareStatement(sql);
-                preparedStatement.setInt(1, getLastReservationID());
                 preparedStatement.setInt(2, air.getIdActivity());
                 preparedStatement.setInt(3, air.getStartTime());
                 preparedStatement.setInt(4, air.getEndTime());
@@ -101,7 +99,30 @@ public class ModelClass {
 
     }
 
+    public ArrayList<Instructor> getDBInstructors()
+    {
+        ArrayList<Instructor> list = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM instructor";
 
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                Instructor instructor = new Instructor(
+                        resultSet.getInt(1),
+                        resultSet.getInt(2),
+                        resultSet.getString(3));
+
+                list.add(instructor);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     public void writeToDBReservation(ArrayList<ActivitiesInReservation> list, int idInstructor,  String date, String customerName, String customerMobilePhone, int numberOfPeple, String comment)
     {
         String sql="INSERT INTO reservations VALUES (null, ?, ?, ?, ?, ?, ?, ?)\n";
