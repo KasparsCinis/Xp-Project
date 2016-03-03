@@ -102,7 +102,37 @@ public class Reservation2 {
 
     public String toString()
     {
-        return idReservation + " " + idActivity + " " + idInstructor + " " + date;
+        String toReturn = idReservation + " " + idActivity + " " + idInstructor + " " + date;
+
+        for (int i = 0; i <activitiesInReservations.size(); i++ )
+        {
+           toReturn += activitiesInReservations.get(i).getIdActivity();
+        }
+
+        return toReturn ;
     }
 
+    public int getStartTime(int activityId)
+    {
+        for (ActivitiesInReservation a : activitiesInReservations)
+        {
+            if (a.getIdActivity() == activityId)
+            {
+                return a.getStartTime();
+            }
+        }
+        return 0;
+    }
+
+    public int getEndTime(int activityId)
+    {
+        for (ActivitiesInReservation a : activitiesInReservations)
+        {
+            if (a.getIdActivity() == activityId)
+            {
+                return a.getEndTime();
+            }
+        }
+        return 0;
+    }
 }

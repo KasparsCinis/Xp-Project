@@ -48,20 +48,73 @@ public class ModelClass {
             e.printStackTrace();
         }
     }
-    public void writeToDBReservation(int idActivity, int idInstructor, int time, String date, String customerName, String customerMobilePhone, int numberOfPeple, String comment)
+    //Later
+    public void updateDBReservation(ArrayList<ActivitiesInReservation> list,
+                                    int idInstructor,
+                                    int reservationID,
+                                    String date,
+                                    String customerName,
+                                    String customerMobilePhone,
+                                    int numberOfPeople,
+                                    String comment)
     {
-        String sql="INSERT INTO reservations VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)\n";
+        String sql="UPDATE reservations SET idInstructor = ?, date = ?, customerName = ?, customerMobilePhone = ?, numberOfPeople = ?, comment = ? WHERE idReservation = ?";
+
+        try {
+
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, idInstructor);
+            preparedStatement.setString(2, date);
+            preparedStatement.setString(3, customerName);
+            preparedStatement.setString(4, customerMobilePhone);
+            preparedStatement.setInt(5, numberOfPeople);
+            preparedStatement.setString(6, comment);
+            preparedStatement.setInt(7, reservationID);
+
+            int numberOfRows = preparedStatement.executeUpdate();
+            System.out.println("Completed insert. Number of rows affected:" + numberOfRows);
+
+        }catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        for (ActivitiesInReservation air : list)
+        {
+            sql="UPDATE activitiesInReservation SET idInstructor = ?, date = ?, customerName = ?, customerMobilePhone = ?, numberOfPeople = ?, comment = ? WHERE idReservation = ?";
+            try {
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                preparedStatement.setInt(1, getLastReservationID());
+                preparedStatement.setInt(2, air.getIdActivity());
+                preparedStatement.setInt(3, air.getStartTime());
+                preparedStatement.setInt(4, air.getEndTime());
+
+                int numberOfRows= preparedStatement.executeUpdate();
+                System.out.println("Completed insert. Number of rows affected:" + numberOfRows);
+
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+
+    public void writeToDBReservation(ArrayList<ActivitiesInReservation> list, int idInstructor,  String date, String customerName, String customerMobilePhone, int numberOfPeple, String comment)
+    {
+        String sql="INSERT INTO reservations VALUES (null, ?, ?, ?, ?, ?, ?, ?)\n";
 
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, idActivity);
+            preparedStatement.setInt(1, 0);
             preparedStatement.setInt(2, idInstructor);
-            preparedStatement.setInt(3, time);
-            preparedStatement.setString(4, date);
-            preparedStatement.setString(5, customerName);
-            preparedStatement.setString(6, customerMobilePhone);
-            preparedStatement.setInt(7, numberOfPeple);
-            preparedStatement.setString(8, comment);
+            preparedStatement.setString(3, date);
+            preparedStatement.setString(4, customerName);
+            preparedStatement.setString(5, customerMobilePhone);
+            preparedStatement.setInt(6, numberOfPeple);
+            preparedStatement.setString(7, comment);
 
             int numberOfRows= preparedStatement.executeUpdate();
             System.out.println("Completed insert. Number of rows affected:" + numberOfRows);
@@ -70,6 +123,27 @@ public class ModelClass {
         catch (SQLException e)
         {
             e.printStackTrace();
+        }
+
+        //Add the ActivitiesInReservation in the database
+        for (ActivitiesInReservation air : list)
+        {
+            sql="INSERT INTO activitiesInReservation VALUES (null, ?, ?, ?, ?)\n";
+            try {
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                preparedStatement.setInt(1, getLastReservationID());
+                preparedStatement.setInt(2, air.getIdActivity());
+                preparedStatement.setInt(3, air.getStartTime());
+                preparedStatement.setInt(4, air.getEndTime());
+
+                int numberOfRows= preparedStatement.executeUpdate();
+                System.out.println("Completed insert. Number of rows affected:" + numberOfRows);
+
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
     public void writeToDBInstructor(int idActivity, String name)
@@ -149,7 +223,39 @@ public class ModelClass {
 
         return activitiesInReservations;
     }
+    public int getLastReservationID()
+    {
+        int lastId = 0;
+        try {
+            String sql = "SELECT * FROM reservations";
 
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+
+            while (resultSet.next()) {
+                ArrayList<ActivitiesInReservation> activitiesInReservations = new ArrayList<>();
+
+                lastId = resultSet.getInt(1);
+                Reservation2 reserv = new Reservation2(activitiesInReservations,
+                        resultSet.getInt(1),
+                        resultSet.getInt(2),
+                        resultSet.getInt(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6),
+                        resultSet.getInt(7),
+                        resultSet.getString(8));
+
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lastId;
+    }
 
 
 
@@ -248,7 +354,7 @@ public class ModelClass {
     }
     public void deleteDBInstructor(int ID)
     {
-        String sql = "DELETE FROM instructor’ WHERE idInstructor = ?";
+        String sql = "DELETE FROM instructor WHERE idInstructor = ?";
 
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
