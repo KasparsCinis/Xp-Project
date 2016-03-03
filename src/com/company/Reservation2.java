@@ -35,26 +35,6 @@ public class Reservation2 {
     {
 
     }
-    public Reservation2(int idReservation, int idActivity, int idInstructor,  String date, String customerName, String customerMobilePhone, int numberOfPeple, String comment) {
-        this.idReservation = idReservation;
-        this.idActivity = idActivity;
-        this.idInstructor = idInstructor;
-
-        this.date = date;
-        this.customerName = customerName;
-        this.customerMobilePhone = customerMobilePhone;
-        this.numberOfPeple = numberOfPeple;
-        this.comment = comment;
-    }
-    public Reservation2(int idReservation, int idActivity, int idInstructor,  String date, String customerName, String customerMobilePhone, int numberOfPeple) {
-        this.idReservation = idReservation;
-        this.idActivity = idActivity;
-        this.idInstructor = idInstructor;
-        this.date = date;
-        this.customerName = customerName;
-        this.customerMobilePhone = customerMobilePhone;
-        this.numberOfPeple = numberOfPeple;
-    }
 
     public int getIdReservation() {
         return idReservation;

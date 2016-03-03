@@ -99,15 +99,18 @@ public class ModelClass {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                reserv = new Reservation2(resultSet.getInt(1),
+                //Get the ActivitiesInReservation
+                ArrayList<ActivitiesInReservation> activitiesInReservations = new ArrayList<>();
+
+                reserv = new Reservation2(activitiesInReservations,
+                        resultSet.getInt(1),
                         resultSet.getInt(2),
                         resultSet.getInt(3),
-                        resultSet.getInt(4),
+                        resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getString(6),
-                        resultSet.getString(7),
-                        resultSet.getInt(8),
-                        resultSet.getString(9));
+                        resultSet.getInt(7),
+                        resultSet.getString(8));
 
             }
         } catch (SQLException e) {
@@ -116,6 +119,39 @@ public class ModelClass {
 
         return reserv;
     }
+
+    public ArrayList<ActivitiesInReservation> getDBActivitiesInReservation(int reservationID)
+    {
+        ArrayList<ActivitiesInReservation> activitiesInReservations = new ArrayList<>();
+
+        ActivitiesInReservation reserv = new ActivitiesInReservation();
+        try {
+            String sql = "SELECT * FROM activitiesInReservation WHERE idReservation  = '" + reservationID + "'";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                reserv = new ActivitiesInReservation(resultSet.getInt(1),
+                        resultSet.getInt(2),
+                        resultSet.getInt(3),
+                        resultSet.getInt(4),
+                        resultSet.getInt(5));
+
+                activitiesInReservations.add(reserv);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return activitiesInReservations;
+    }
+
+
+
+
+
     public ArrayList<Reservation2> getDBReservationsOnDay(String date)
     {
         ArrayList<Reservation2> list = new ArrayList<>();
@@ -127,15 +163,18 @@ public class ModelClass {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Reservation2 reserv = new Reservation2(resultSet.getInt(1),
+                ArrayList<ActivitiesInReservation> activitiesInReservations = new ArrayList<>();
+
+                Reservation2 reserv = new Reservation2(activitiesInReservations,
+                        resultSet.getInt(1),
                         resultSet.getInt(2),
                         resultSet.getInt(3),
-                        resultSet.getInt(4),
+                        resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getString(6),
-                        resultSet.getString(7),
-                        resultSet.getInt(8),
-                        resultSet.getString(9));
+                        resultSet.getInt(7),
+                        resultSet.getString(8));
+
                 list.add(reserv);
             }
         } catch (SQLException e) {
@@ -154,15 +193,16 @@ public class ModelClass {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Reservation2 reserv = new Reservation2(resultSet.getInt(1),
+                ArrayList<ActivitiesInReservation> activitiesInReservations = new ArrayList<>();
+                Reservation2 reserv = new Reservation2(activitiesInReservations,
+                        resultSet.getInt(1),
                         resultSet.getInt(2),
                         resultSet.getInt(3),
-                        resultSet.getInt(4),
+                        resultSet.getString(4),
                         resultSet.getString(5),
                         resultSet.getString(6),
-                        resultSet.getString(7),
-                        resultSet.getInt(8),
-                        resultSet.getString(9));
+                        resultSet.getInt(7),
+                        resultSet.getString(8));
                 list.add(reserv);
             }
         } catch (SQLException e) {
