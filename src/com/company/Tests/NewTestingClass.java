@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by kasdi on 01.03.2016.
  */
-public class DatabaseTests {
+public class NewTestingClass {
     @Test //#1
     public void testDBinsertionActivity()
     {
@@ -36,8 +36,9 @@ public class DatabaseTests {
 
         modelClass.writeToDBActivity("testActivity", 12, 25, "sdsd");
         //
-
         modelClass.updateDBActivity("testActivity", 15, 20, "This is an description", list.get(list.size() - 1).getIdActivity());
+
+        list = modelClass.getDBactivities();
         assertEquals("testActivity", list.get(list.size() - 1).getName());
     }
     @Test //#4
@@ -70,7 +71,7 @@ public class DatabaseTests {
         }
         //modelClass.writeToDBReservation(2, 1, 12, "12/12/2014", "John", "+12345678", 7, "This is a very long comment");
         //modelClass.writeToDBReservation();
-        assertEquals(list.size() + 1, modelClass.getDBReservationsOnDay("12/12/2014").size());
+        assertEquals(list.size(), modelClass.getDBReservationsOnDay("12/12/2014").size());
     }
     @Test //#7
     public void testDBinsertReservation()
@@ -84,13 +85,12 @@ public class DatabaseTests {
         list.add(new ActivitiesInReservation(4, 29, 5, 11, 23));
         list.add(new ActivitiesInReservation(4, 29, 74, 11, 23));
 
-        Reservation2 reservation = new Reservation2(list, 23, 23, 2, "12/12/2014", "blabla", "123123", 2, "llalalala");
-        modelClass.writeToDBReservation(list, 2, "12/12/2014", "blabla", "123123", 2, "llalalala");
+        modelClass.writeToDBReservation(list, 2, "12/12/2014", "Blablabla2", "lalalala2", 2, "rororo2");
 
 
         assertEquals(listReservation.size() + 1, modelClass.getDBReservationsOnDay("12/12/2014").size());
 
-       // System.out.println(modelClass.getLastReservationID());
+        // System.out.println(modelClass.getLastReservationID());
     }
 
     @Test //#7
@@ -99,9 +99,10 @@ public class DatabaseTests {
         ModelClass modelClass = new ModelClass();
         int something = modelClass.getDBInstructors().size();
         assertEquals(1,something );
-
-
+        System.out.println(modelClass.getDBInstructors().get(0).getName());
     }
+
+
     @Before
     public void setUp() throws Exception {
     }
