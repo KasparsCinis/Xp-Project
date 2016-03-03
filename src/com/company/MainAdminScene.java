@@ -220,7 +220,6 @@ public class MainAdminScene {
                 String description = getDescriptionArea();
                 int age = getAgeLimitTextfield();
                 double price = getPriceTextField();
-                ModelClass modelClass = new ModelClass();
                 if (edit.getText().equals("EDIT: ")) {
                     modelClass.updateDBActivity(name, age, price, description, intID);
                     notificationLabel.setText("Activity edit successful!");
@@ -288,7 +287,6 @@ public class MainAdminScene {
         // window.show();
     }
     public ObservableList<Activity> getActivity(){
-         modelClass = new ModelClass();
         ArrayList<Activity> list = new ArrayList<>();
         ObservableList<Activity> activities2 = FXCollections.observableArrayList();
         list = modelClass.getDBactivities();
