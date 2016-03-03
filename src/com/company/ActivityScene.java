@@ -162,7 +162,7 @@ public class ActivityScene {
         deleteButton2.setOnAction(event ->{
             modelClass.deleteDBActivity(intID);
             activityTableView.setItems(getActivity());
-
+            notificationLabel.setVisible(true);
             notificationLabel.setText("Activity deleted successful");
             notificationLabel.setTextFill(Color.web("green"));
             Timeline timeline = new Timeline(new KeyFrame(
