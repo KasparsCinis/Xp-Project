@@ -173,6 +173,7 @@ public class ReservationScene {
 
                 );
         instructorsList.addAll(modelClass.getDBInstructors().get(0).getName());
+        //instructorsList.addAll(modelClass.getDBInstructors().get(0).getName());
         instructors = new ComboBox(instructorsList);
         instructors.setPromptText("click for instructors");
 
