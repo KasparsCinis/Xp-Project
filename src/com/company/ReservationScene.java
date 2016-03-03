@@ -31,7 +31,7 @@ import java.util.List;
 public class ReservationScene {
 
     ArrayList<Activity> activities = new ArrayList<>();
-    ActivityInfoWindow a;
+    //ActivityInfoWindow a;
     Button date = new Button();
     ComboBox instructors;
     TextArea activitiesAndTime = new TextArea();
@@ -55,8 +55,11 @@ public class ReservationScene {
 
     String intID;
     int resId;
+
     ModelClass modelClass = new ModelClass();
     TableView<Activity> activityTableView;
+
+
     public String getDate() {
         return date.getText().toString();
     }
@@ -89,11 +92,7 @@ public class ReservationScene {
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber.setText(String.valueOf(phoneNumber));
     }
-    public void alertMessage(){
-        Alert noname = new Alert(Alert.AlertType.ERROR);
-        noname.setContentText("Error Message");
-        noname.showAndWait();
-    }
+
     public boolean validate()
     {
         boolean result=true;
@@ -140,7 +139,7 @@ public class ReservationScene {
         TableColumn<Activity, String> customerColumn = new TableColumn<>("Customer");
         customerColumn.setMinWidth(100);
         customerColumn.setCellValueFactory(new PropertyValueFactory<>("customerName"));
-        activityColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        //activityColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumn<Activity, String> nrOfPeopleColumn = new TableColumn<>("No of ppl");
         nrOfPeopleColumn.setMinWidth(20);
         nrOfPeopleColumn.setCellValueFactory(new PropertyValueFactory<>("nrOfPeople"));
@@ -202,8 +201,8 @@ public class ReservationScene {
         });
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
-        javafx.scene.image.Image image = new javafx.scene.image.Image("com/Logo2.jpg");
-        javafx.scene.image.Image calendarImg = new javafx.scene.image.Image("com/cal.jpg");
+        javafx.scene.image.Image image = new javafx.scene.image.Image("com/company/images/Logo2.jpg");
+        javafx.scene.image.Image calendarImg = new javafx.scene.image.Image("com/company/images/cal.jpg");
 
         layout.getStylesheets().add("com/company/style.css");
 
@@ -352,7 +351,7 @@ public class ReservationScene {
                 String comment = getCommentArea();
                 int time = 11;
 
-                ModelClass modelClass = new ModelClass();
+                //ModelClass modelClass = new ModelClass();
                 // modelClass.writeToDBReservation(getActivity(), getInstructor(), time, getDate(), getCustomerName(), getPhoneNumber(), getNrOfPeople(), getCommentArea());
                 System.out.println("Hi............");
 
@@ -402,8 +401,9 @@ public class ReservationScene {
         });
         // window.show();
     }
+
     public ObservableList<Activity> getActivity(){
-        ModelClass modelClass = new ModelClass();
+        //ModelClass modelClass = new ModelClass();
         ArrayList<Activity> list = new ArrayList<>();
         ObservableList<Activity> activities2 = FXCollections.observableArrayList();
         list = modelClass.getDBactivities();

@@ -1,7 +1,6 @@
 package com.company;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -56,7 +55,7 @@ public class View extends Application{
             //primaryStage.close();
         });
 
-        img = new Image("com/Logo2.jpg");
+        img = new Image("com/company/images/Logo2.jpg");
         imgView = new ImageView();
         imgView.setImage(img);
         imgView.setVisible(true);

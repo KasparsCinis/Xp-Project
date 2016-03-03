@@ -137,7 +137,7 @@ public class MainAdminScene {
         });
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
-        javafx.scene.image.Image image = new javafx.scene.image.Image("com/Logo2.jpg");
+        javafx.scene.image.Image image = new javafx.scene.image.Image("com/company/images/Logo2.jpg");
         ImageView iv1 = new ImageView();
         edit.setFont(new Font("Serif",30));
         iv1.setImage(image);

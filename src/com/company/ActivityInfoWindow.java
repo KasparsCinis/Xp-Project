@@ -5,9 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-/**
- * Created by St_Muerte on 2/25/16.
- */
+
 public class ActivityInfoWindow {
     TextField nameTextField;
     TextArea descriptionArea;
