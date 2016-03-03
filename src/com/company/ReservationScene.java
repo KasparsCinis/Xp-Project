@@ -173,6 +173,7 @@ public class ReservationScene {
 
                 );
 
+
         ArrayList<Instructor> instructorList = new ArrayList<>();
         instructorList = modelClass.getDBInstructors();
         for (Instructor a : instructorList)
@@ -181,8 +182,10 @@ public class ReservationScene {
         }
 
 
-
-
+        
+        instructorsList.addAll(modelClass.getDBInstructors().get(0).getName());
+        //instructorsList.addAll(modelClass.getDBInstructors().get(0).getName());
+>>>>>>> origin/master
         instructors = new ComboBox(instructorsList);
         instructors.setPromptText("click for instructors");
 

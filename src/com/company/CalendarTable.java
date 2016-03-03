@@ -96,7 +96,7 @@ public class CalendarTable extends Application {
             button.setPrefWidth(100);
             button.setText(Integer.toString(listRes.get(i).getIdInstructor()));
             button.setStyle("-fx-background-color:green;");
-            int time = listRes.get(i).getTime();
+           // int time = listRes.get(i).getTime();
             int column = 0;
             //Search for the correct column
            // System.out.println(ArrayIdColumn.get(listRes.get(i).getIdActivity()));
@@ -106,7 +106,7 @@ public class CalendarTable extends Application {
                 if (Integer.toString(listRes.get(i).getIdActivity()).equals(ArrayIdColumn.get(i2)))
                     column = i2 +1;
             }
-            gridpane.add(button, column, time);
+           // gridpane.add(button, column, time);
 
             String text = Integer.toString(listRes.get(i).getIdActivity());
             button.setOnAction(event -> {
