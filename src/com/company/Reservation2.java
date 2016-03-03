@@ -1,48 +1,39 @@
 package com.company;
 
+import java.util.ArrayList;
+
 /**
 <<<<<<< HEAD
  * Created by kasdi on 01.03.2016.
  */
 public class Reservation2 {
 
-
-
+    ArrayList<ActivitiesInReservation> activitiesInReservations = new ArrayList<>();
 
     private int idReservation;
     private int idActivity;
     private int idInstructor;
-    private int time;
     private String date;
     private String customerName;
     private String customerMobilePhone;
     private int numberOfPeple;
     private String comment;
 
-    public Reservation2()
-    {
-
-    }
-    public Reservation2(int idReservation, int idActivity, int idInstructor, int time, String date, String customerName, String customerMobilePhone, int numberOfPeple, String comment) {
+    public Reservation2(ArrayList<ActivitiesInReservation> activitiesInReservations, int idReservation, int idActivity, int idInstructor, String date, String customerName, String customerMobilePhone, int numberOfPeple, String comment) {
+        this.activitiesInReservations = activitiesInReservations;
         this.idReservation = idReservation;
         this.idActivity = idActivity;
         this.idInstructor = idInstructor;
-        this.time = time;
         this.date = date;
         this.customerName = customerName;
         this.customerMobilePhone = customerMobilePhone;
         this.numberOfPeple = numberOfPeple;
         this.comment = comment;
     }
-    public Reservation2(int idReservation, int idActivity, int idInstructor, int time, String date, String customerName, String customerMobilePhone, int numberOfPeple) {
-        this.idReservation = idReservation;
-        this.idActivity = idActivity;
-        this.idInstructor = idInstructor;
-        this.time = time;
-        this.date = date;
-        this.customerName = customerName;
-        this.customerMobilePhone = customerMobilePhone;
-        this.numberOfPeple = numberOfPeple;
+
+    public Reservation2()
+    {
+
     }
 
     public int getIdReservation() {
@@ -68,13 +59,6 @@ public class Reservation2 {
         this.idInstructor = idInstructor;
     }
 
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
 
     public String getDate() {
         return date;
@@ -118,7 +102,7 @@ public class Reservation2 {
 
     public String toString()
     {
-        return idReservation + " " + idActivity + " " + idInstructor + " " + time + " " + date;
+        return idReservation + " " + idActivity + " " + idInstructor + " " + date;
     }
 
 }
