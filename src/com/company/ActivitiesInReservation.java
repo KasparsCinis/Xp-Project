@@ -11,6 +11,9 @@ public class ActivitiesInReservation {
     private int startTime;
     private int endTime;
 
+    public ActivitiesInReservation() {
+    }
+
     public int getActivitiesInReservationID() {
         return activitiesInReservationID;
     }
