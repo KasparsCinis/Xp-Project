@@ -133,7 +133,7 @@ public class MainAdminScene {
         Button homeButton = new Button("Back");
         Button newButton = new Button("New");
         newButton.setOnAction(event -> {
-            edit.setText("NEW ACTIVITY: ");
+            edit.setText("NEW: ");
         });
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
@@ -208,7 +208,7 @@ public class MainAdminScene {
                     descriptionArea.clear();
                     priceTextField.clear();
                     ageLimitTextfield.clear();
-                    edit.setText("EDIT ACTIVITY: ");
+                    edit.setText("EDIT: ");
                 }
         );
 
@@ -221,7 +221,7 @@ public class MainAdminScene {
                 int age = getAgeLimitTextfield();
                 double price = getPriceTextField();
                 ModelClass modelClass = new ModelClass();
-                if (edit.getText().equals("EDIT ACTIVITY: ")) {
+                if (edit.getText().equals("EDIT: ")) {
                     modelClass.updateDBActivity(name, age, price, description, intID);
                     notificationLabel.setText("Activity edit successful!");
 
@@ -232,7 +232,7 @@ public class MainAdminScene {
                     timeline.play();
                 }
 
-                if (edit.getText().equals("NEW ACTIVITY: ")) {
+                if (edit.getText().equals("NEW: ")) {
                     modelClass.writeToDBActivity(name, age, price, description);
                     notificationLabel.setText("Activity add successful!");
                     notificationLabel.setTextFill(Color.web("green"));

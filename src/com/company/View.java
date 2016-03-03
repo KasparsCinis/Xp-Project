@@ -37,8 +37,6 @@ public class View extends Application{
     public void start(Stage primaryStage)
     {
 
-
-
         grid = new GridPane();
         hBox = new HBox();
         scene = new Scene(grid, 800, 600);

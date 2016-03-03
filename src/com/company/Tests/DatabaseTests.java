@@ -23,7 +23,7 @@ public class DatabaseTests {
 
         ArrayList<Activity> list = modelClass.getDBactivities();
 
-        modelClass.writeToDBActivity("DD", 12, 25, "sdsd");
+        modelClass.writeToDBActivity("testActivity", 12, 25, "sdsd");
 
         assertEquals(list.size()+1, modelClass.getDBactivities().size());
     }
@@ -31,11 +31,9 @@ public class DatabaseTests {
     public void testDBupdateActivity()
     {
         ModelClass modelClass = new ModelClass();
-        ArrayList<Activity> list = new ArrayList<>();
-        list = modelClass.getDBactivities();
+        ArrayList<Activity> list = modelClass.getDBactivities();
 
-
-        modelClass.writeToDBActivity("DD", 12, 25, "sdsd");
+        modelClass.writeToDBActivity("testActivity", 12, 25, "sdsd");
         //
 
         modelClass.updateDBActivity("testActivity", 15, 20, "This is an description", list.get(list.size() - 1).getIdActivity());
@@ -46,9 +44,7 @@ public class DatabaseTests {
     {
         ModelClass modelClass = new ModelClass();
         //System.out.println(modelClass.getDBactivities2("2").toString());
-        ArrayList<Activity> list = new ArrayList<>();
-        list = modelClass.getDBactivities();
-
+        ArrayList<Activity> list = modelClass.getDBactivities();
 
         modelClass.deleteDBActivity(list.get(list.size() - 1).getIdActivity());
         // modelClass.writeToDB("DD", 12, 25, "sdsd");
@@ -59,7 +55,7 @@ public class DatabaseTests {
     {
         ModelClass modelClass = new ModelClass();
 
-        assertNotNull(modelClass.getDBactivities2("4").getName());
+        assertNotNull(modelClass.getDBactivities2("5").getName());
     }
     @Test //#6
     public void testDBinsertionReservation()

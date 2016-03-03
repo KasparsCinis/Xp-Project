@@ -8,23 +8,25 @@ import java.util.ArrayList;
  */
 public class ModelClass {
 
-    private Connection conn=null;
+    private Connection conn = null;
 
-    public ModelClass(){
+    public ModelClass() {
 
-        try
-        {
+        try {
             String DB_URL = "jdbc:mysql://85.10.205.173:3306/xpproject";
             String USER = "keauser";
             String PASS = "Passwordpass";
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            System.out.println("conn obj created "+conn + " message: ");
+            System.out.println("conn obj created " + conn + " message: ");
 
 
-        } catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println("db error" + e.getMessage());
-        }}
+        }
+    }
+
+    public void updateDBreservations()
+    {}
 
     public void writeToDBActivity(String name, int ageLimit, double price, String description)
     {

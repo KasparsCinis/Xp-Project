@@ -1,5 +1,7 @@
 package com.company;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,10 +17,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Donika on 3/1/2016.
@@ -28,6 +33,7 @@ public class ReservationScene {
     ArrayList<Activity> activities = new ArrayList<>();
     ActivityInfoWindow a;
     TextField date = new TextField();
+    TextField instructor = new TextField();
     TextField activitiesAndTime = new TextField();
     TextField customerName = new TextField();
     TextField phoneNumber = new TextField();
@@ -44,13 +50,19 @@ public class ReservationScene {
     Button deleteButton2;
 
 
-    Label editLabel;
+    Label editLabel = new Label("EDIT: ");
+    Label notificationLabel = new Label();
 
     String intID;
+    int resId;
     ModelClass modelClass = new ModelClass();
     TableView<Activity> activityTableView;
     public String getDate() {
         return date.getText().toString();
+    }
+    public int getNrOfPeople(){return Integer.valueOf(numberOfPeople.getText().toString());}
+    public int getInstructor() {
+        return Integer.valueOf(instructor.getText().toString());
     }
     public void setDate(String nameText) {
         date.setText(nameText);
@@ -63,20 +75,20 @@ public class ReservationScene {
     }
 
 
-    public int getCustomerName() {
+    public String getCustomerName() {
         if(customerName.getText().toString()!=""){
-            return Integer.valueOf(customerName.getText().toString());
+            return customerName.getText().toString();
         }
-        return 0;
+        return null;
     }
-    public void setCustomerName(int customerName) {
+    public void setCustomerName(String customerName) {
         this.customerName.setText( String.valueOf(customerName));
     }
-    public Double getPhoneNumber() {
-        //check if it's a double first?
-        return Double.valueOf(phoneNumber.getText().toString());
+    public int getPhoneNumber() {
+        //check if it's a int first?
+        return Integer.valueOf(phoneNumber.getText().toString());
     }
-    public void setPhoneNumber(Double phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber.setText(String.valueOf(phoneNumber));
     }
     public void alertMessage(){
@@ -90,6 +102,10 @@ public class ReservationScene {
         if(getDate().equals("")) {
             result = false;
         }
+//        if(getInstructor().equals(""))
+//        {
+//            result = false;
+//        }
         if(getCommentArea().equals("")) {
             result = false;
         }
@@ -102,16 +118,16 @@ public class ReservationScene {
         }
         return result;
     }
-    public boolean validateType()
-    {
-        try{
-            Integer.valueOf(customerName.getText().toString()) ;
-            Double.valueOf(phoneNumber.getText().toString());
-        }catch (NumberFormatException nfe){
-            return false;
-        }
-        return true;
-    }
+    //    public boolean validateType()
+//    {
+//        try{
+//            Integer.valueOf(customerName.getText().toString()) ;
+//            Double.valueOf(phoneNumber.getText().toString());
+//        }catch (NumberFormatException nfe){
+//            return false;
+//        }
+//        return true;
+//    }
     public void display(Stage primaryStage){
         vBox = new VBox();
 
@@ -140,11 +156,11 @@ public class ReservationScene {
         activityTableView.setRowFactory(activityTableView-> {
             TableRow<Activity>row = new TableRow<Activity>();
             row.setOnMouseClicked(event -> {if (event.getClickCount() ==1&&(! row.isEmpty())){
-                editLabel.setText("EDIT");
+                editLabel.setText("EDIT: ");
                 Activity rowData = row.getItem();
                 System.out.println(rowData);
                 date.setText(rowData.getName());
-                customerName.setText(String.valueOf(rowData.getAgeLimit()));
+                customerName.setText(String.valueOf(rowData.getName()));
                 phoneNumber.setText(String.valueOf(rowData.getPrice()));
                 commentArea.setText(rowData.getDescription());
 
@@ -158,10 +174,7 @@ public class ReservationScene {
         newButton = new Button("New");
         newButton.setOnAction(event -> {
             editLabel.setText("NEW: ");
-            date.clear();
-            commentArea.clear();
-            phoneNumber.clear();
-            customerName.clear();
+            clearTextFieldsReservation();
 
             // a = new ActivityInfoWindow();
             //a.start(primaryStage);
@@ -197,6 +210,9 @@ public class ReservationScene {
         imgHBox = new HBox(200);
         imgHBox.getChildren().addAll(iv1, iv2);
         imgHBox.setPadding(new Insets(0,0,5,0));
+        GridPane gridPane;
+
+        //notification label
 
         iv2.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
@@ -209,28 +225,38 @@ public class ReservationScene {
 
         deleteButton2 = new Button("Delete");
         deleteButton2.setOnAction(event ->{
-                    modelClass.deleteDBActivity(intID);
-                    activityTableView.setItems(getActivity());
-                    date.clear();
-                    commentArea.clear();
-                    phoneNumber.clear();
-                    customerName.clear();
-                }
+                modelClass.deleteDBReservation(resId);
+                activityTableView.setItems(getActivity());
+                clearTextFieldsReservation();
+            }
         );
 
+        gridPane = new GridPane();
         HBox homeNewDeleteBtnHBox = new HBox();
+        gridPane.getChildren().add(homeNewDeleteBtnHBox);
+
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(gridPane, notificationLabel);
+
+        notificationLabel.setTranslateX(250);
+        notificationLabel.setStyle("-fx-font-size: 20");
+        notificationLabel.setVisible(true);
+
+
         homeNewDeleteBtnHBox.getChildren().addAll( homeButton, newButton, deleteButton2);
         homeNewDeleteBtnHBox.setSpacing(10);
         homeNewDeleteBtnHBox.setAlignment(Pos.BOTTOM_LEFT);
-        GridPane gridPane = new GridPane();
-        gridPane.getChildren().add(homeNewDeleteBtnHBox);
+
         HBox hBox2 = new HBox();
         hBox2.getChildren().addAll(activityTableView);
-        layout.setBottom(gridPane);
+        layout.setBottom(hBox);
         layout.setCenter(hBox2);
         layout.setTop(imgHBox);
 
-        editLabel = new Label("EDIT: ");
+
+
+
+
         editLabel.setFont(new Font("Serif",30));
 
 //        HBox nameHBox = new HBox();
@@ -240,22 +266,26 @@ public class ReservationScene {
         HBox deleteSaveHBox= new HBox();
         vBox.getChildren().addAll(deleteSaveHBox); //nameHBox,descriptionHBox,priceHBox,ageLimitHBox,
         //Scene scene = new Scene(vBox, 300,300);
-        Label dateLabel = new Label("Date: ");
-        Label actAndTimeLabel = new Label("Activity & time: ");
 
+
+        Label dateLabel = new Label("Date: ");
+        Label instructorLabel = new Label("Instructor: ");
+        Label actAndTimeLabel = new Label("Activity & time: ");
         Label cNameLabel = new Label("Customer name: ");
         Label phoneLabel = new Label("Phone number: ");
         Label nrOfPeopleLabel = new Label("Number of people: ");
         Label commentLabel = new Label("Comment: ");
+
         commentArea.setPrefSize(187,100);
         dateLabel.setPrefHeight(115);
-        actAndTimeLabel.setTranslateY(-35);
-        cNameLabel.setTranslateY(-25);
-        phoneLabel.setTranslateY(-15);
-        nrOfPeopleLabel.setTranslateY(-5);
-        commentLabel.setTranslateY(3);
-        VBox labelVbox = new VBox(dateLabel,actAndTimeLabel,cNameLabel,phoneLabel,nrOfPeopleLabel,commentLabel);
-        VBox textfieldsVbox = new VBox(editLabel, date, activitiesAndTime, customerName, phoneNumber, numberOfPeople,commentArea, vBox);
+        instructorLabel.setTranslateY(-35);
+        actAndTimeLabel.setTranslateY(-25);
+        cNameLabel.setTranslateY(-15);
+        phoneLabel.setTranslateY(-5);
+        nrOfPeopleLabel.setTranslateY(5);
+        commentLabel.setTranslateY(15);
+        VBox labelVbox = new VBox(dateLabel,instructorLabel,actAndTimeLabel,cNameLabel,phoneLabel,nrOfPeopleLabel,commentLabel);
+        VBox textfieldsVbox = new VBox(editLabel, date,instructor, activitiesAndTime, customerName, phoneNumber, numberOfPeople,commentArea, vBox);
 
         HBox labelandtextField = new HBox(labelVbox, textfieldsVbox);
         labelandtextField.setPadding(new Insets(20, 10, 10, 50));
@@ -265,27 +295,59 @@ public class ReservationScene {
         saveButton = new Button("Save");
         deleteSaveHBox.getChildren().addAll(saveButton,deleteButton);
         deleteButton.setOnAction(event ->{
-                    date.clear();
-                    commentArea.clear();
-                    phoneNumber.clear();
-                    customerName.clear();
-                }
+
+            clearTextFieldsReservation();
+                notificationLabel.setVisible(true);
+                notificationLabel.setText("Cleared successful!");
+                notificationLabel.setTextFill(Color.web("green"));
+                Timeline timeline = new Timeline(new KeyFrame(
+                        Duration.millis(3000),
+                        ae ->   notificationLabel.setVisible(false)));
+                timeline.play();
+                editLabel.setText("EDIT: ");
+            }
         );
         System.out.println(activities.get(0).getName());
         saveButton.setOnAction(event -> {
-            if (validate() && validateType()) {
+            if (validate()) {
+                String date = getDate();
+                int instructor = getInstructor();
+                List activity = getActivity();
+                String cName = getCustomerName();
+                int phone = getPhoneNumber();
+                int nrPeople = getNrOfPeople();
+                String comment = getCommentArea();
+                int time = 11;
 
-                String name = getDate();
-                String description = getCommentArea();
-                int age = getCustomerName();
-                double price = getPhoneNumber();
                 ModelClass modelClass = new ModelClass();
-                modelClass.updateDBActivity(name, age, price, description, intID);
+               // modelClass.writeToDBReservation(getActivity(), getInstructor(), time, getDate(), getCustomerName(), getPhoneNumber(), getNrOfPeople(), getCommentArea());
                 System.out.println("Hi............");
 
                 display(primaryStage);
                 primaryStage.setScene(window.getScene());
-            } else if (validate()) {
+
+                if (editLabel.getText().equals("EDIT: ")) {
+                    modelClass.updateDBreservations();
+                    notificationLabel.setText("Reservation edit successful!");
+
+                    notificationLabel.setTextFill(Color.web("green"));
+                    Timeline timeline = new Timeline(new KeyFrame(
+                            Duration.millis(2000),
+                            ae ->   notificationLabel.setVisible(false)));
+                    timeline.play();
+                }
+
+                if (editLabel.getText().equals("NEW: ")) {
+                    modelClass.writeToDBReservation(1,1,1,"","","",1,"");
+                    notificationLabel.setText("Activity added successful!");
+                    notificationLabel.setTextFill(Color.web("green"));
+                    Timeline timeline = new Timeline(new KeyFrame(
+                            Duration.millis(5000),
+                            ae ->   notificationLabel.setVisible(false)));
+                    timeline.play();
+                }
+            }
+                else if (validate()) {
                 System.out.println("wrong type");
             } else {
                 System.out.println("fill the fields");
@@ -321,10 +383,14 @@ public class ReservationScene {
         return activities2;
     }
 
-    public Label changeLabel(Label newLabel){
-        editLabel = newLabel;
-        editLabel.setVisible(true);
-        return editLabel;
-
+    public void clearTextFieldsReservation()
+    {
+        date.clear();
+        activitiesAndTime.clear();
+        instructor.clear();
+        customerName.clear();
+        phoneNumber.clear();
+        numberOfPeople.clear();
+        commentArea.clear();
     }
 }

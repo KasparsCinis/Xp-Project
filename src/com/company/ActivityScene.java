@@ -35,6 +35,10 @@ public class ActivityScene {
     Stage window = new Stage();
     Label notificationLabel = new Label("");
 
+    Button homeButton = new Button("Back");
+    Button newButton = new Button("New");
+    Label edit = new Label("EDIT: ");
+
     String intID;
     ModelClass modelClass = new ModelClass();
     TableView<Activity> activityTableView;
@@ -116,6 +120,7 @@ public class ActivityScene {
             TableRow<Activity> row = new TableRow<Activity>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 1 && (!row.isEmpty())) {
+                    edit.setText("EDIT: ");
                     Activity rowData = row.getItem();
                     System.out.println(rowData);
                     nameTextField.setText(rowData.getName());
@@ -129,11 +134,10 @@ public class ActivityScene {
             });
             return row;
         });
-        Button homeButton = new Button("Back");
-        Button newButton = new Button("New");
-        Label edit = new Label("EDIT ACTIVITY: ");
+
         newButton.setOnAction(event -> {
-            edit.setText("NEW ACTIVITY: ");
+            edit.setText("NEW: ");
+            clearTextFieldsActivity();
         });
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
@@ -156,15 +160,16 @@ public class ActivityScene {
 
         Button deleteButton2 = new Button("Delete");
         deleteButton2.setOnAction(event ->{
-                    modelClass.deleteDBActivity(intID);
-                    activityTableView.setItems(getActivity());
+            modelClass.deleteDBActivity(intID);
+            activityTableView.setItems(getActivity());
 
-                    notificationLabel.setText("Activity deleted successful");
-                    notificationLabel.setTextFill(Color.web("green"));
-                    Timeline timeline = new Timeline(new KeyFrame(
-                    Duration.millis(3000),
-                    ae ->   notificationLabel.setVisible(false)));
-                    timeline.play();
+            notificationLabel.setText("Activity deleted successful");
+            notificationLabel.setTextFill(Color.web("green"));
+            Timeline timeline = new Timeline(new KeyFrame(
+            Duration.millis(3000),
+            ae ->   notificationLabel.setVisible(false)));
+            timeline.play();
+            clearTextFieldsActivity();
                 }
         );
 
@@ -216,17 +221,15 @@ public class ActivityScene {
         Button saveButton = new Button("Save");
         deleteSaveHBox.getChildren().addAll(saveButton,deleteButton);
         deleteButton.setOnAction(event ->{
-                    nameTextField.clear();
-                    descriptionArea.clear();
-                    priceTextField.clear();
-                    ageLimitTextfield.clear();
-                    notificationLabel.setText("Cleared successfull!");
-                    notificationLabel.setTextFill(Color.web("green"));
-                    Timeline timeline = new Timeline(new KeyFrame(
-                    Duration.millis(3000),
-                    ae ->   notificationLabel.setVisible(false)));
-                    timeline.play();
-                    edit.setText("EDIT ACTIVITY: ");
+            clearTextFieldsActivity();
+            notificationLabel.setVisible(true);
+            notificationLabel.setText("Cleared successful!");
+            notificationLabel.setTextFill(Color.web("green"));
+            Timeline timeline = new Timeline(new KeyFrame(
+            Duration.millis(3000),
+            ae ->   notificationLabel.setVisible(false)));
+            timeline.play();
+            edit.setText("EDIT: ");
                 }
         );
         System.out.println(activities.get(0).getName());
@@ -238,7 +241,7 @@ public class ActivityScene {
                 int age = getAgeLimitTextfield();
                 double price = getPriceTextField();
                 ModelClass modelClass = new ModelClass();
-                if (edit.getText().equals("EDIT ACTIVITY: ")) {
+                if (edit.getText().equals("EDIT: ")) {
                     modelClass.updateDBActivity(name, age, price, description, intID);
                     notificationLabel.setText("Activity edit successful!");
                     notificationLabel.setTextFill(Color.web("green"));
@@ -247,7 +250,7 @@ public class ActivityScene {
                             ae ->   notificationLabel.setVisible(false)));
                     timeline.play();
                 }
-                if (edit.getText().equals("NEW ACTIVITY: ")) {
+                if (edit.getText().equals("NEW: ")) {
                     modelClass.writeToDBActivity(name, age, price, description);
                     notificationLabel.setText("Activity add successful!");
                     notificationLabel.setTextFill(Color.web("green"));
@@ -261,8 +264,8 @@ public class ActivityScene {
 
                 display(primaryStage);
                 primaryStage.setScene(window.getScene());
-            } else if (validate()) {
-                if (edit.getText().equals("EDIT ACTIVITY: ")){
+            } else if (validate()) {   //Do we need this else if statement???
+                if (edit.getText().equals("EDIT: ")){
                     notificationLabel.setText("Activity edit unsuccessful. Wrong type!");
                     notificationLabel.setTextFill(Color.web("red"));
                     Timeline timeline = new Timeline(new KeyFrame(
@@ -314,5 +317,13 @@ public class ActivityScene {
             System.out.println(a.toString());
         }
         return activities2;
+    }
+
+    public void clearTextFieldsActivity()
+    {
+        nameTextField.clear();
+        descriptionArea.clear();
+        priceTextField.clear();
+        ageLimitTextfield.clear();
     }
 }
