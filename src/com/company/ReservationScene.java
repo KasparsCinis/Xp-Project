@@ -32,9 +32,9 @@ public class ReservationScene {
 
     ArrayList<Activity> activities = new ArrayList<>();
     ActivityInfoWindow a;
-    TextField date = new TextField();
+    Button date = new Button();
     TextField instructor = new TextField();
-    TextField activitiesAndTime = new TextField();
+    TextArea activitiesAndTime = new TextArea();
     TextField customerName = new TextField();
     TextField phoneNumber = new TextField();
     TextField numberOfPeople = new TextField();
@@ -99,7 +99,7 @@ public class ReservationScene {
     public boolean validate()
     {
         boolean result=true;
-        if(getDate().equals("")) {
+        if(getDate().toString().equals("")) {
             result = false;
         }
 //        if(getInstructor().equals(""))
@@ -276,14 +276,15 @@ public class ReservationScene {
         Label nrOfPeopleLabel = new Label("Number of people: ");
         Label commentLabel = new Label("Comment: ");
 
+        activitiesAndTime.setPrefSize(187,100);
         commentArea.setPrefSize(187,100);
         dateLabel.setPrefHeight(115);
         instructorLabel.setTranslateY(-35);
         actAndTimeLabel.setTranslateY(-25);
-        cNameLabel.setTranslateY(-15);
-        phoneLabel.setTranslateY(-5);
-        nrOfPeopleLabel.setTranslateY(5);
-        commentLabel.setTranslateY(15);
+        cNameLabel.setTranslateY(55);
+        phoneLabel.setTranslateY(65);
+        nrOfPeopleLabel.setTranslateY(75);
+        commentLabel.setTranslateY(85);
         VBox labelVbox = new VBox(dateLabel,instructorLabel,actAndTimeLabel,cNameLabel,phoneLabel,nrOfPeopleLabel,commentLabel);
         VBox textfieldsVbox = new VBox(editLabel, date,instructor, activitiesAndTime, customerName, phoneNumber, numberOfPeople,commentArea, vBox);
 
@@ -307,6 +308,14 @@ public class ReservationScene {
                 editLabel.setText("EDIT: ");
             }
         );
+        date.setMinSize(200,10);
+        date.setText("click for calendar");
+        date.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Calendar opens");
+            }
+        });
         System.out.println(activities.get(0).getName());
         saveButton.setOnAction(event -> {
             if (validate()) {
@@ -385,7 +394,7 @@ public class ReservationScene {
 
     public void clearTextFieldsReservation()
     {
-        date.clear();
+        date.setText("click for calendar");
         activitiesAndTime.clear();
         instructor.clear();
         customerName.clear();
