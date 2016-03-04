@@ -32,6 +32,7 @@ public class View extends Application{
     Button kioskBtn;
     ActivityScene m = new ActivityScene();
     ReservationScene reservationScene = new ReservationScene();
+    KioskScene kioskScene = new KioskScene();
 
     @Override
     public void start(Stage primaryStage)
@@ -58,8 +59,8 @@ public class View extends Application{
 
         kioskBtn = new Button("Kiosk");
         kioskBtn.setOnAction(event -> {
-            //reservationScene.display(primaryStage);
-            //primaryStage.setScene(reservationScene.window.getScene());
+            kioskScene.display(primaryStage);
+            primaryStage.setScene(kioskScene.window.getScene());
             //primaryStage.close();
         });
 
