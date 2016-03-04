@@ -70,11 +70,7 @@ public class ActivityScene {
     public void setPriceTextField(Double priceTextField) {
         this.priceTextField.setText(String.valueOf(priceTextField));
     }
-    public void alertMessage(){
-        Alert noname = new Alert(Alert.AlertType.ERROR);
-        noname.setContentText("Error Message");
-        noname.showAndWait();
-    }
+
     public boolean validate()
     {
         boolean result=true;
@@ -240,7 +236,7 @@ public class ActivityScene {
                 String description = getDescriptionArea();
                 int age = getAgeLimitTextfield();
                 double price = getPriceTextField();
-                ModelClass modelClass = new ModelClass();
+                modelClass = new ModelClass();
                 if (edit.getText().equals("EDIT: ")) {
                     modelClass.updateDBActivity(name, age, price, description, intID);
                     notificationLabel.setVisible(true);
