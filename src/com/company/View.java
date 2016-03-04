@@ -29,6 +29,7 @@ public class View extends Application{
 
     Button manageBtn;
     Button reserveBtn;
+    Button kioskBtn;
     ActivityScene m = new ActivityScene();
     ReservationScene reservationScene = new ReservationScene();
 
@@ -55,6 +56,14 @@ public class View extends Application{
             //primaryStage.close();
         });
 
+        kioskBtn = new Button("Kiosk");
+        kioskBtn.setOnAction(event -> {
+            //reservationScene.display(primaryStage);
+            //primaryStage.setScene(reservationScene.window.getScene());
+            //primaryStage.close();
+        });
+
+
         img = new Image("com/company/images/Logo2.jpg");
         imgView = new ImageView();
         imgView.setImage(img);
@@ -67,19 +76,22 @@ public class View extends Application{
         //grid.add(imgView, 0,0);
         grid.add(hBox, 0, 0);
 
-        grid.setColumnSpan(hBox, 3);
+        grid.setColumnSpan(hBox, 4);
         imgView.setFitHeight(200);
         imgView.setFitWidth(350);
 
 
         manageBtn.setMinHeight(90);
-        manageBtn.setMinWidth(200);
-        manageBtn.setMaxWidth(200);
+        manageBtn.setMinWidth(160);
+        manageBtn.setMaxWidth(160);
 
         reserveBtn.setMinHeight(90);
-        reserveBtn.setMinWidth(200);
-        reserveBtn.setMaxWidth(200);
+        reserveBtn.setMinWidth(160);
+        reserveBtn.setMaxWidth(160);
 
+        kioskBtn.setMinHeight(90);
+        kioskBtn.setMinWidth(160);
+        kioskBtn.setMaxWidth(160);
 
         grid.setHgap(10);
         grid.setVgap(50);
@@ -88,14 +100,17 @@ public class View extends Application{
         // setId - links to style in css style sheet..
         manageBtn.setId("manageBtnStyle");
         reserveBtn.setId("reserveBtnStyle");
+        kioskBtn.setId("kioskBtnStyle");
 
 
 
-        //grid.setGridLinesVisible(true);
 
+       // grid.setGridLinesVisible(true);
 
-        grid.add(manageBtn, 2, 1);
         grid.add(reserveBtn, 1, 1);
+        grid.add(manageBtn, 2, 1);
+        grid.add(kioskBtn, 3, 1);
+
         grid.setAlignment(Pos.CENTER);
 
 
