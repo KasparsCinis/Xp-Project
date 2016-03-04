@@ -47,11 +47,11 @@ public class KioskScene  {
         layout.setPadding(new Insets(10, 10, 10, 10));
         layout.getStylesheets().add("com/company/style.css");
 
-
+        display(primaryStage);
         primaryStage.setScene(window.getScene());
         Scene scene = new Scene(layout, 800, 600);
         window.setScene(scene);
-        display(primaryStage);
+
         window.show();
 
 

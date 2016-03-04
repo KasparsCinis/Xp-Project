@@ -3,17 +3,17 @@ package com.company;
 /**
  * Created by kasdi on 04.03.2016.
  */
-public class KioskItem {
+public class kioskItem {
 
 
     private int idKioskItem;
     private String name;
     private int price;
 
-    public KioskItem() {
+    public kioskItem() {
     }
 
-    public KioskItem(int idKioskItem, String name, int price) {
+    public kioskItem(int idKioskItem, String name, int price) {
         this.idKioskItem = idKioskItem;
         this.name = name;
         this.price = price;
