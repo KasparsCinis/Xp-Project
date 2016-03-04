@@ -277,7 +277,25 @@ public class ModelClass {
 
         return lastId;
     }
+    public int getLastActivityID()
+    {
+        int lastId = 0;
+        try {
+            String sql = "SELECT * FROM activities";
 
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                lastId = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lastId;
+    }
 
 
 
