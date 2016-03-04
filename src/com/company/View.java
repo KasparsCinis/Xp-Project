@@ -60,7 +60,7 @@ public class View extends Application{
         kioskBtn = new Button("Kiosk");
         kioskBtn.setOnAction(event -> {
             kioskScene.display(primaryStage);
-            primaryStage.setScene(kioskScene.window.getScene());
+            //primaryStage.setScene(kioskScene.window.getScene());
             //primaryStage.close();
         });
 
@@ -78,7 +78,7 @@ public class View extends Application{
         //grid.add(imgView, 0,0);
         grid.add(hBox, 0, 0);
 
-        grid.setColumnSpan(hBox, 3);
+        grid.setColumnSpan(hBox, 4);
         imgView.setFitHeight(200);
         imgView.setFitWidth(350);
 

@@ -18,6 +18,12 @@
     -fx-background-color: #FFFFFF ;
 }
 
+
+.layout {
+    -fx-background-color: #FFFFFF ;
+}
+
+
 .button {
     text-align: center;
 }
