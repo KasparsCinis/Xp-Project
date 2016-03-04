@@ -103,7 +103,7 @@ public class NewTestingClass {
     public void testDBAddKioskItem()
     {
         ModelClass modelClass = new ModelClass();
-        modelClass.addDBKioskItem(new kioskItem(1, "Pink t-shirt", 299));
+        modelClass.addDBKioskItem(new KioskItem(1, "Pink t-shirt", 299));
 
     }
     @Test //#8

@@ -1,9 +1,6 @@
 package com.company.Tests;
 
-import com.company.ActivitiesInReservation;
-import com.company.Activity;
-import com.company.ModelClass;
-import com.company.Reservation2;
+import com.company.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -102,6 +99,30 @@ public class DatabaseTests {
 
 
     }
+    @Test //#8
+    public void testDBDeleteKioskItems()
+    {
+        ModelClass modelClass = new ModelClass();
+        //System.out.println(modelClass.getDBactivities2("2").toString());
+        ArrayList<KioskItem> list = modelClass.getDBKioskItems();
+
+        modelClass.deleteDBKioskItems(list.get(list.size() - 1).getIdKioskItem());
+        // modelClass.writeToDB("DD", 12, 25, "sdsd");
+        assertEquals(modelClass.getDBKioskItems().size(), list.size() - 1);
+    }
+    @Test //#9
+    public void testDBUpdateKioskItems()
+    {
+        ModelClass modelClass = new ModelClass();
+        ArrayList<KioskItem> list = modelClass.getDBKioskItems();
+
+        modelClass.updateDBKioskItems(4, "Name", 25);
+        //
+
+        //modelClass.updateDBKioskItems("testActivity", 15, 20, "This is an description", list.get(list.size() - 1).getIdKioskItem());
+        assertEquals("Name", list.get(0).getName());
+    }
+
     @Before
     public void setUp() throws Exception {
     }
