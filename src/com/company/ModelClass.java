@@ -465,20 +465,26 @@ public class ModelClass {
             e.printStackTrace();
         }
     }
-    public void deleteDbReceipt(int idReceipt)
+    public void updateDBKioskItems(int idKioskItem, String name, int price)
     {
-        String sql = "DELETE FROM receipt WHERE idReceipt = ?";
+        String sql="UPDATE kioskItems SET name = ?, price = ? WHERE idKioskItem = ?";
 
         try {
+
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, idReceipt);
-            int numberOfRows= preparedStatement.executeUpdate();
-            System.out.println("Completed delete. Number of rows affected:"+numberOfRows);
-        } catch (SQLException e)
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, price);
+            preparedStatement.setInt(3, idKioskItem);
+
+            int numberOfRows = preparedStatement.executeUpdate();
+            System.out.println("Completed insert. Number of rows affected:" + numberOfRows);
+
+        }catch (SQLException e)
         {
             e.printStackTrace();
         }
     }
+
 
 
 
