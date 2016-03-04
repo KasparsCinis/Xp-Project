@@ -84,12 +84,17 @@ public class View extends Application{
 
 
         manageBtn.setMinHeight(90);
-        manageBtn.setMinWidth(200);
-        manageBtn.setMaxWidth(200);
+        manageBtn.setMinWidth(160);
+        manageBtn.setMaxWidth(160);
 
         reserveBtn.setMinHeight(90);
-        reserveBtn.setMinWidth(200);
-        reserveBtn.setMaxWidth(200);
+        reserveBtn.setMinWidth(160);
+        reserveBtn.setMaxWidth(160);
+
+        kioskBtn.setMinHeight(90);
+        kioskBtn.setMinWidth(160);
+        kioskBtn.setMaxWidth(160);
+
 
 
         grid.setHgap(10);
@@ -99,12 +104,15 @@ public class View extends Application{
         // setId - links to style in css style sheet..
         manageBtn.setId("manageBtnStyle");
         reserveBtn.setId("reserveBtnStyle");
+        kioskBtn.setId("kioskBtnStyle");
 
 
 
         //grid.setGridLinesVisible(true);
 
 
+
+        grid.add(kioskBtn, 3, 1);
         grid.add(manageBtn, 2, 1);
         grid.add(reserveBtn, 1, 1);
         grid.setAlignment(Pos.CENTER);

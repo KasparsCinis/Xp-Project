@@ -5,6 +5,7 @@ package com.company;
  */
 public class KioskItem {
 
+
     private int idKioskItem;
     private String name;
     private int price;

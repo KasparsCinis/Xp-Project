@@ -125,10 +125,10 @@ public class NewTestingClass {
     public void testGetKioskItems()
     {
         ModelClass modelClass = new ModelClass();
-        ArrayList<kioskItem> listy = new ArrayList<>();
+        ArrayList<KioskItem> listy = new ArrayList<>();
         listy = modelClass.getDBKioskItems();
 
-        for (kioskItem k : listy)
+        for (KioskItem k : listy)
         {
             System.out.println(k.getName());
         }
