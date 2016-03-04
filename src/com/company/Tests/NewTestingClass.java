@@ -1,9 +1,6 @@
 package com.company.Tests;
 
-import com.company.ActivitiesInReservation;
-import com.company.Activity;
-import com.company.ModelClass;
-import com.company.Reservation2;
+import com.company.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -98,9 +95,16 @@ public class NewTestingClass {
     {
         ModelClass modelClass = new ModelClass();
         int something = modelClass.getDBInstructors().size();
-        assertEquals(1,something );
+        assertEquals(1, something);
         System.out.println(modelClass.getDBInstructors().get(0).getName());
     }
+    @Test //#7
+    public void testDBAddKioskItem()
+    {
+        ModelClass modelClass = new ModelClass();
+        modelClass.addDBKioskItem(new kioskItem(1, "Pink t-shirt", 299));
+    }
+
 
 
     @Before

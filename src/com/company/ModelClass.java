@@ -493,30 +493,53 @@ public class ModelClass {
     }
 
 
-    //methods dealing with kiosk
-    public void addKioskItem(kioskItem item)
+    /**
+    *methods dealing with the kiosk stuff
+    */
+    public ArrayList<kioskItem> getDBKioskItems()
     {
-        String sql="INSERT INTO kioskItems VALUES (null, ?, ?, ?, ?, ?, ?, ?)\n";
+        ArrayList<kioskItem> list = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM kioskItems";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                kioskItem item = new kioskItem(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getInt(3));
+                list.add(item);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    public void addDBKioskItem(kioskItem item)
+    {
+        String sql="INSERT INTO kioskItems VALUES (null, ?, ?)\n";
 
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, 0);
-            preparedStatement.setInt(2, idInstructor);
-            preparedStatement.setString(3, date);
-            preparedStatement.setString(4, customerName);
-            preparedStatement.setString(5, customerMobilePhone);
-            preparedStatement.setInt(6, numberOfPeple);
-            preparedStatement.setString(7, comment);
+            preparedStatement.setString(1, item.getName());
+            preparedStatement.setInt(2, item.getPrice());
+
 
             int numberOfRows= preparedStatement.executeUpdate();
             System.out.println("Completed insert. Number of rows affected:" + numberOfRows);
-
         }
         catch (SQLException e)
         {
             e.printStackTrace();
         }
     }
+
+
+
+
 
    }
 
