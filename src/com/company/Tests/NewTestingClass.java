@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -103,8 +104,15 @@ public class NewTestingClass {
     {
         ModelClass modelClass = new ModelClass();
         modelClass.addDBKioskItem(new kioskItem(1, "Pink t-shirt", 299));
-    }
 
+    }
+    @Test //#8
+    public void testGetKioskItems()
+    {
+        ModelClass modelClass = new ModelClass();
+        
+        assertNotEquals(0, modelClass.getDBKioskItems().size());
+    }
 
 
     @Before
