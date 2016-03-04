@@ -5,7 +5,20 @@ package com.company;
  */
 public class ActivitiesInReservation {
 
+    public ActivitiesInReservation(int idActivity, int startTime) {
+        this.idActivity = idActivity;
+        this.startTime = startTime;
+
+    }
+
     private int activitiesInReservationID;
+
+    public ActivitiesInReservation(int idActivity, int startTime, int endTime) {
+        this.idActivity = idActivity;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
     private int idReservation;
     private int idActivity;
     private int startTime;

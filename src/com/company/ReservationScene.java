@@ -236,8 +236,9 @@ public class ReservationScene {
         iv2.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("Img was clicked");
 
+                CalendarTable calendarTable= new CalendarTable();
+                calendarTable.start();
                 //iv2.setImage(null);
             }
         });
