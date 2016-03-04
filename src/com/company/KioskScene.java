@@ -8,7 +8,6 @@ package com.company;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 
@@ -25,9 +24,15 @@ import javafx.stage.Stage;
 public class KioskScene  {
 
     Scene scene;
-    GridPane grid;
+    GridPane grid1;
+    GridPane grid2;
     HBox hBoxTop;
     HBox hBoxBottom;
+    VBox vBox;
+
+    Label itemlabel;
+    Label amountlabel;
+    Label paylabel;
 
     Image img;
     ImageView imgView;
@@ -54,15 +59,23 @@ public class KioskScene  {
 
         Stage window = new Stage();
 
-        grid = new GridPane();
-
         hBoxTop = new HBox();
         hBoxBottom = new HBox();
+
 
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
         layout.getStylesheets().add("com/company/style.css");
-        layout.setLeft(grid);
+
+        // grid 1 - kiosk buttons - (left side of window)
+        grid1 = new GridPane();
+
+        layout.setLeft(grid1);
+        //layout.setRight();
+
+
+        //grid1.setGridLinesVisible(true);
+
 
         img = new Image("com/company/images/Logo2.jpg");
         imgView = new ImageView();
@@ -73,21 +86,21 @@ public class KioskScene  {
         //javafx.scene.image.Image image = new javafx.scene.image.Image("com/company/images/Logo2.jpg");
 
 
-        Button  Btn1 = new Button("coke");
-        Button  Btn2 = new Button("coke");
-        Button  Btn3 = new Button("coke");
-        Button  Btn4 = new Button("coke");
-        Button  Btn5 = new Button("coke");
-        Button  Btn6 = new Button("coke");
-        Button  Btn7 = new Button("coke");
-        Button  Btn8 = new Button("coke");
-        Button  Btn9 = new Button("coke");
-        Button  Btn10 = new Button("coke");
-        Button  Btn11 = new Button("coke");
-        Button  Btn12 = new Button("coke");
-        Button  Btn13 = new Button("coke");
-        Button  Btn14 = new Button("coke");
-        Button  Btn15 = new Button("coke");
+        Button  Btn1 = new Button("coffee \n30kr");
+        Button  Btn2 = new Button("cappucino \n40kr");
+        Button  Btn3 = new Button("expresso \n20kr");
+        Button  Btn4 = new Button("coke \n25kr");
+        Button  Btn5 = new Button("diet coke \n25kr");
+        Button  Btn6 = new Button("water \n20kr");
+        Button  Btn7 = new Button("t-shirt \n50kr");
+        Button  Btn8 = new Button("sunglasses \n60kr");
+        Button  Btn9 = new Button("suncream \n55kr");
+        Button  Btn10 = new Button("pizza slice\n30kr");
+        Button  Btn11 = new Button("burger \n45kr");
+        Button  Btn12 = new Button("chips \n35kr");
+        Button  Btn13 = new Button("lollipop \n15kr");
+        Button  Btn14 = new Button("choco bar \n25kr");
+        Button  Btn15 = new Button("ice cream \n30kr");
 
         Button  homeButton = new Button("Back");
 
@@ -98,25 +111,25 @@ public class KioskScene  {
         HBox hBoxTop = new HBox();
         hBoxTop.getChildren().addAll(imgView);
 
-        grid.add(Btn1, 0, 0);
-        grid.add(Btn2, 1, 0);
-        grid.add(Btn3, 2, 0);
+        grid1.add(Btn1, 0, 0);
+        grid1.add(Btn2, 1, 0);
+        grid1.add(Btn3, 2, 0);
 
-        grid.add(Btn4, 0, 1);
-        grid.add(Btn5, 1, 1);
-        grid.add(Btn6, 2, 1);
+        grid1.add(Btn4, 0, 1);
+        grid1.add(Btn5, 1, 1);
+        grid1.add(Btn6, 2, 1);
 
-        grid.add(Btn7, 0, 2);
-        grid.add(Btn8, 1, 2);
-        grid.add(Btn9, 2, 2);
+        grid1.add(Btn7, 0, 2);
+        grid1.add(Btn8, 1, 2);
+        grid1.add(Btn9, 2, 2);
 
-        grid.add(Btn10, 0, 3);
-        grid.add(Btn11, 1, 3);
-        grid.add(Btn12, 2, 3);
+        grid1.add(Btn10, 0, 3);
+        grid1.add(Btn11, 1, 3);
+        grid1.add(Btn12, 2, 3);
 
-        grid.add(Btn13, 0, 4);
-        grid.add(Btn14, 1, 4);
-        grid.add(Btn15, 2, 4);
+        grid1.add(Btn13, 0, 4);
+        grid1.add(Btn14, 1, 4);
+        grid1.add(Btn15, 2, 4);
 
 
         //adding logo to layout
@@ -130,73 +143,72 @@ public class KioskScene  {
         //adding homeButton to layout
         layout.setBottom(hBoxBottom);
 
+        grid1.setHgap(25);
+        grid1.setVgap(25);
 
-        grid.setHgap(30);
-        grid.setVgap(30);
+        grid1.setPadding(new Insets(40, 20, 20, 20));
 
-        grid.setPadding(new Insets(40, 20, 20, 20));
+        Btn1.setMinHeight(55);
+        Btn1.setMinWidth(100);
+        Btn1.setMaxWidth(100);
 
-        Btn1.setMinHeight(50);
-        Btn1.setMinWidth(90);
-        Btn1.setMaxWidth(90);
+        Btn2.setMinHeight(55);
+        Btn2.setMinWidth(100);
+        Btn2.setMaxWidth(100);
 
-        Btn2.setMinHeight(50);
-        Btn2.setMinWidth(90);
-        Btn2.setMaxWidth(90);
+        Btn3.setMinHeight(55);
+        Btn3.setMinWidth(100);
+        Btn3.setMaxWidth(100);
 
-        Btn3.setMinHeight(50);
-        Btn3.setMinWidth(90);
-        Btn3.setMaxWidth(90);
+        Btn4.setMinHeight(55);
+        Btn4.setMinWidth(95);
+        Btn4.setMaxWidth(95);
 
-        Btn4.setMinHeight(50);
-        Btn4.setMinWidth(90);
-        Btn4.setMaxWidth(90);
+        Btn5.setMinHeight(55);
+        Btn5.setMinWidth(95);
+        Btn5.setMaxWidth(95);
 
-        Btn5.setMinHeight(50);
-        Btn5.setMinWidth(90);
-        Btn5.setMaxWidth(90);
+        Btn6.setMinHeight(55);
+        Btn6.setMinWidth(95);
+        Btn6.setMaxWidth(95);
 
-        Btn6.setMinHeight(50);
-        Btn6.setMinWidth(90);
-        Btn6.setMaxWidth(90);
+        Btn7.setMinHeight(55);
+        Btn7.setMinWidth(95);
+        Btn7.setMaxWidth(95);
 
-        Btn7.setMinHeight(50);
-        Btn7.setMinWidth(90);
-        Btn7.setMaxWidth(90);
+        Btn8.setMinHeight(55);
+        Btn8.setMinWidth(95);
+        Btn8.setMaxWidth(95);
 
-        Btn8.setMinHeight(50);
-        Btn8.setMinWidth(90);
-        Btn8.setMaxWidth(90);
+        Btn9.setMinHeight(55);
+        Btn9.setMinWidth(95);
+        Btn9.setMaxWidth(95);
 
-        Btn9.setMinHeight(50);
-        Btn9.setMinWidth(90);
-        Btn9.setMaxWidth(90);
+        Btn10.setMinHeight(55);
+        Btn10.setMinWidth(95);
+        Btn10.setMaxWidth(95);
 
-        Btn10.setMinHeight(50);
-        Btn10.setMinWidth(90);
-        Btn10.setMaxWidth(90);
+        Btn11.setMinHeight(55);
+        Btn11.setMinWidth(95);
+        Btn11.setMaxWidth(95);
 
-        Btn11.setMinHeight(50);
-        Btn11.setMinWidth(90);
-        Btn11.setMaxWidth(90);
+        Btn12.setMinHeight(55);
+        Btn12.setMinWidth(95);
+        Btn12.setMaxWidth(95);
 
-        Btn12.setMinHeight(50);
-        Btn12.setMinWidth(90);
-        Btn12.setMaxWidth(90);
+        Btn13.setMinHeight(55);
+        Btn13.setMinWidth(95);
+        Btn13.setMaxWidth(95);
 
-        Btn13.setMinHeight(50);
-        Btn13.setMinWidth(90);
-        Btn13.setMaxWidth(90);
+        Btn14.setMinHeight(55);
+        Btn14.setMinWidth(95);
+        Btn14.setMaxWidth(95);
 
-        Btn14.setMinHeight(50);
-        Btn14.setMinWidth(90);
-        Btn14.setMaxWidth(90);
+        Btn15.setMinHeight(55);
+        Btn15.setMinWidth(95);
+        Btn15.setMaxWidth(95);
 
-        Btn15.setMinHeight(50);
-        Btn15.setMinWidth(90);
-        Btn15.setMaxWidth(90);
 
-        //grid.setGridLinesVisible(true);
 
         homeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -207,6 +219,10 @@ public class KioskScene  {
             }
         });
 
+
+
+
+        ////////////////////////////////////
 
 
         Scene scene = new Scene(layout, 800, 600);

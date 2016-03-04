@@ -54,12 +54,14 @@
 }
 
 #kioskBtnStyle
-{
-     -fx-font-family: "Arial Black", Gadget, sans-serif;
-     -fx-font-size: 12pt;
+ {
+      -fx-font-family: "Arial Black", Gadget, sans-serif;
+      -fx-font-size: 12pt;
 
 
-}
+ }
+
+
 
 #calendarIconStyle:hover{
     -fx-opacity: 0.5;

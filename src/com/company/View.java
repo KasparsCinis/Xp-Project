@@ -75,7 +75,7 @@ public class View extends Application{
         hBox.setAlignment(Pos.TOP_CENTER);
         hBox.getChildren().addAll(imgView);
 
-        //grid.add(imgView, 0,0);
+        //grid1.add(imgView, 0,0);
         grid.add(hBox, 0, 0);
 
         grid.setColumnSpan(hBox, 4);
@@ -108,7 +108,7 @@ public class View extends Application{
 
 
 
-        //grid.setGridLinesVisible(true);
+        //grid1.setGridLinesVisible(true);
 
 
 
