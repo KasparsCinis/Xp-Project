@@ -359,6 +359,30 @@ public class ModelClass {
 
         return instructor;
     }
+    public ArrayList<Instructor> getDBInstructorsByActivity(ArrayList<Integer> list)
+    {
+        ArrayList<Instructor> instructorList = new ArrayList<>();
+        for (Integer i : list) {
+            try {
+                String sql = "SELECT * FROM instructor WHERE idActivity = '" + i + "'";
+
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    Instructor instructor = new Instructor(resultSet.getInt(1),
+                            resultSet.getInt(2),
+                            resultSet.getString(3));
+
+                    instructorList.add(instructor);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return instructorList;
+    }
     public void deleteDBReservation(int ID)
     {
         String sql = "DELETE FROM reservations WHERE idReservation  = ?";
@@ -467,6 +491,33 @@ public class ModelClass {
         }
         return activity;
     }
+
+
+    //methods dealing with kiosk
+    public void addKioskItem(kioskItem item)
+    {
+        String sql="INSERT INTO kioskItems VALUES (null, ?, ?, ?, ?, ?, ?, ?)\n";
+
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, 0);
+            preparedStatement.setInt(2, idInstructor);
+            preparedStatement.setString(3, date);
+            preparedStatement.setString(4, customerName);
+            preparedStatement.setString(5, customerMobilePhone);
+            preparedStatement.setInt(6, numberOfPeple);
+            preparedStatement.setString(7, comment);
+
+            int numberOfRows= preparedStatement.executeUpdate();
+            System.out.println("Completed insert. Number of rows affected:" + numberOfRows);
+
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
    }
 
 
