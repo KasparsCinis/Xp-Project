@@ -16,88 +16,21 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 
-public class CalendarTable  {
+public class CalendarTable extends Application {
 
     private TableView table = new TableView();
-    String currentDate; // create a getter for current date later to be passed to the reservationi
-    ArrayList<ActivitiesInReservation> reservations= new ArrayList<>();//// this array will store all the activities with the beginning and end time
-
-    public ArrayList<ActivitiesInReservation> getReservationsWithStartEnd() {
-        return reservationsWithStartEnd;
+    public static void main(String[] args) {
+        launch(args);
     }
-    ArrayList<ActivitiesInReservation> reservationsWithStartEnd= new ArrayList<>(); // array that will store id start and ending time
-    int minH=23;// for finding the starting and ending hour
-    int maxH=0;// for finding the starting and ending hour
-    int index=0;// for finding the starting and ending hour
-    public void start() {
-        Stage stage= new Stage();
+
+    @Override
+    public void start(Stage stage) {
         //Scene scene = new Scene();
         stage.setTitle("Table View Sample");
-        stage.setWidth(800);
-        stage.setHeight(600);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        currentDate=dateFormat.format(date);
-        OpenDatePicker openDatePicker= new OpenDatePicker();
-        openDatePicker.setOnAction(event1 -> {
-            System.out.println(openDatePicker.getValue());
-            currentDate=String.valueOf(openDatePicker.getValue());
-            // method that will get all the boookings from the database and update the activities calendar (also colors)
-        });
-        Button backButton= new Button("Back");
-        backButton.setOnAction(event1 -> {
-            stage.close();
-        });
-        Button bookButton= new Button("Book");
-        ArrayList<Integer> activityIdList= new ArrayList<>();
-        activityIdList.add(5);
-        activityIdList.add(3);
-        activityIdList.add(73);
-
-
-        bookButton.setOnAction(event1 -> {
-            /*HashMap<Integer, ArrayList<Integer>> minMax= new HashMap<>();*/
-            System.out.println("gowno");
-            while (index<activityIdList.size()){
-                for(ActivitiesInReservation reservation: reservations){
-                    if (activityIdList.get(index)== reservation.getIdActivity()){
-                        if(reservation.getStartTime()<minH)
-                            minH=reservation.getStartTime();
-                        if(reservation.getStartTime()>maxH)
-                            maxH= reservation.getStartTime();
-
-
-
-
-                    }
-
-
-                }
-                if(minH!=23 && maxH!=0)
-                    reservationsWithStartEnd.add(new ActivitiesInReservation(activityIdList.get(index),minH,maxH));
-                index++;
-                minH=23;
-                maxH=0;
-
-
-
-
-
-            }
-            /** Test */
-            for(ActivitiesInReservation reservation:reservationsWithStartEnd){
-                System.out.println(reservation.getIdActivity()+" from "+ reservation.getStartTime()+" to "+ reservation.getEndTime());
-            }
-            /** Test */
-        });
-        HBox bookBackCalendarHbox= new HBox();
-        bookBackCalendarHbox.getChildren().addAll(openDatePicker,backButton, bookButton);
+        stage.setWidth(1000);
+        stage.setHeight(400);
 
 
         ArrayList<String> ArrayIdColumn = new ArrayList<String>();
@@ -113,26 +46,16 @@ public class CalendarTable  {
         gridpane.getColumnConstraints().add(new ColumnConstraints(100));
         gridpane.getRowConstraints().add(new RowConstraints(50));
         //Make the table full of buttons!
-
-        for (int i = 10; i <= 22; i++)
+        for (int i = 0; i <= 24; i++)
         {
             for (int i2 = 0; i2 < list.size(); i2 ++)
             {
                 Button button = new Button();
-                button.setId(i+" "+list.get(i2).getIdActivity());
                 button.setPrefWidth(100);
                 gridpane.add(button, i2 + 1, i+1);
 
                 button.setOnAction(event -> {
-                    button.setStyle("-fx-base: #00b300");
-                    System.out.println(currentDate + " " + button.getId());
-                    String[] splited = button.getId().split("\\s+");
-                    int startTime= Integer.valueOf(splited[0]);
-                    int reservationNumber= Integer.valueOf(splited[1]);
-                    ActivitiesInReservation activitiesInReservation= new ActivitiesInReservation(reservationNumber,startTime);
-                    reservations.add(activitiesInReservation);
-
-
+                    System.out.println("yes?");
                 });
             }
         }
@@ -147,16 +70,16 @@ public class CalendarTable  {
             //button.setStyle("-fx-width:150px;");
             label.setText(list.get(i).getName());
             ArrayIdColumn.add(list.get(i).getIdActivity());
-            gridpane.add(label, i + 1, 0);
+            gridpane.add(label, i+1, 0);
         }
-        for (int i = 10; i <= 22; i ++)
+        for (int i = 0; i <= 24; i ++)
         {
             Label button = new Label();
             button.setStyle("fx-border-color: blue;\n"
-                    + "-fx-border-insets: 5;\n"
-                    + "-fx-border-width: 3;\n"
-                    + "-fx-border-style: solid;\n"
-                    + "-fx-left: 15px;\n");
+                + "-fx-border-insets: 5;\n"
+                + "-fx-border-width: 3;\n"
+                + "-fx-border-style: solid;\n"
+                + "-fx-left: 15px;\n");
             button.setPadding(new Insets(0, 0, 0, 40));
             button.setPrefWidth(100);
             button.setText(Integer.toString(i));
@@ -173,18 +96,17 @@ public class CalendarTable  {
             button.setPrefWidth(100);
             button.setText(Integer.toString(listRes.get(i).getIdInstructor()));
             button.setStyle("-fx-background-color:green;");
-            //int time = listRes.get(i).getTime();
+           // int time = listRes.get(i).getTime();
             int column = 0;
             //Search for the correct column
-            // System.out.println(ArrayIdColumn.get(listRes.get(i).getIdActivity()));
-            // System.out.println(listRes.get(i).getIdActivity());
+           // System.out.println(ArrayIdColumn.get(listRes.get(i).getIdActivity()));
+           // System.out.println(listRes.get(i).getIdActivity());
             for (int i2 = 0; i2 < ArrayIdColumn.size(); i2++)
             {
                 if (Integer.toString(listRes.get(i).getIdActivity()).equals(ArrayIdColumn.get(i2)))
                     column = i2 +1;
             }
-            gridpane.add(button, column, 12); // 12 is temporary after not working getTime() method
-            //gridpane.add(button, column, time);
+           // gridpane.add(button, column, time);
 
             String text = Integer.toString(listRes.get(i).getIdActivity());
             button.setOnAction(event -> {
@@ -194,20 +116,17 @@ public class CalendarTable  {
         }
 
 
-        gridpane.setPadding(new Insets(200,0,0,0));
-
         Scene scene = new Scene(gridpane, 300, 300);
         //gridpane.getChildren().addAll(scroll);
         Label label = new Label();
-        // GridPane.setConstraints(label, 3, 1); // column=3 row=1
+       // GridPane.setConstraints(label, 3, 1); // column=3 row=1
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(gridpane);
-        root.getChildren().addAll(bookBackCalendarHbox, scrollPane);
+        root.getChildren().addAll(scrollPane);
         scene.setRoot(root);
 
 
         stage.setScene(scene);
         stage.show();
-        openDatePicker.show();
     }
 }

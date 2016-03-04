@@ -277,7 +277,25 @@ public class ModelClass {
 
         return lastId;
     }
+    public int getLastActivityID()
+    {
+        int lastId = 0;
+        try {
+            String sql = "SELECT * FROM activities";
 
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                lastId = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lastId;
+    }
 
 
 
@@ -465,20 +483,26 @@ public class ModelClass {
             e.printStackTrace();
         }
     }
-    public void deleteDbReceipt(int idReceipt)
+    public void updateDBKioskItems(int idKioskItem, String name, int price)
     {
-        String sql = "DELETE FROM receipt WHERE idReceipt = ?";
+        String sql="UPDATE kioskItems SET name = ?, price = ? WHERE idKioskItem = ?";
 
         try {
+
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, idReceipt);
-            int numberOfRows= preparedStatement.executeUpdate();
-            System.out.println("Completed delete. Number of rows affected:"+numberOfRows);
-        } catch (SQLException e)
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, price);
+            preparedStatement.setInt(3, idKioskItem);
+
+            int numberOfRows = preparedStatement.executeUpdate();
+            System.out.println("Completed insert. Number of rows affected:" + numberOfRows);
+
+        }catch (SQLException e)
         {
             e.printStackTrace();
         }
     }
+
 
 
 
@@ -500,6 +524,7 @@ public class ModelClass {
         }
         return activitiesList;
     }
+
     public Activity getDBactivities2(String idActivity) {
        // ArrayList<Activity> activitiesList = new ArrayList<>();
         Activity activity = new Activity();
@@ -525,9 +550,9 @@ public class ModelClass {
     /**
     *methods dealing with the kiosk stuff
     */
-    public ArrayList<kioskItem> getDBKioskItems()
+    public ArrayList<KioskItem> getDBKioskItems()
     {
-        ArrayList<kioskItem> list = new ArrayList<>();
+        ArrayList<KioskItem> list = new ArrayList<>();
         try {
             String sql = "SELECT * FROM kioskItems";
 
@@ -536,7 +561,7 @@ public class ModelClass {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                kioskItem item = new kioskItem(
+                KioskItem item = new KioskItem(
                         resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getInt(3));
@@ -547,7 +572,7 @@ public class ModelClass {
         }
         return list;
     }
-    public void addDBKioskItem(kioskItem item)
+    public void addDBKioskItem(KioskItem item)
     {
         String sql="INSERT INTO kioskItems VALUES (null, ?, ?)\n";
 
