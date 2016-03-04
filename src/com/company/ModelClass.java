@@ -524,6 +524,7 @@ public class ModelClass {
         }
         return activitiesList;
     }
+
     public Activity getDBactivities2(String idActivity) {
        // ArrayList<Activity> activitiesList = new ArrayList<>();
         Activity activity = new Activity();
@@ -549,9 +550,9 @@ public class ModelClass {
     /**
     *methods dealing with the kiosk stuff
     */
-    public ArrayList<kioskItem> getDBKioskItems()
+    public ArrayList<KioskItem> getDBKioskItems()
     {
-        ArrayList<kioskItem> list = new ArrayList<>();
+        ArrayList<KioskItem> list = new ArrayList<>();
         try {
             String sql = "SELECT * FROM kioskItems";
 
@@ -560,7 +561,7 @@ public class ModelClass {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                kioskItem item = new kioskItem(
+                KioskItem item = new KioskItem(
                         resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getInt(3));
@@ -571,7 +572,7 @@ public class ModelClass {
         }
         return list;
     }
-    public void addDBKioskItem(kioskItem item)
+    public void addDBKioskItem(KioskItem item)
     {
         String sql="INSERT INTO kioskItems VALUES (null, ?, ?)\n";
 
