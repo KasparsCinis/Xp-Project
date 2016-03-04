@@ -29,6 +29,7 @@ public class View extends Application{
 
     Button manageBtn;
     Button reserveBtn;
+    Button kioskBtn;
     ActivityScene m = new ActivityScene();
     ReservationScene reservationScene = new ReservationScene();
     KioskScene kioskScene = new KioskScene();
@@ -56,7 +57,6 @@ public class View extends Application{
             //primaryStage.close();
         });
 
-<<<<<<< HEAD
         kioskBtn = new Button("Kiosk");
         kioskBtn.setOnAction(event -> {
             kioskScene.display(primaryStage);
@@ -65,8 +65,7 @@ public class View extends Application{
         });
 
 
-=======
->>>>>>> origin/master
+
         img = new Image("com/company/images/Logo2.jpg");
         imgView = new ImageView();
         imgView.setImage(img);
