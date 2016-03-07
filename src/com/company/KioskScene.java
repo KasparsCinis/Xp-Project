@@ -13,17 +13,17 @@ import javafx.scene.control.*;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 
 public class KioskScene  {
 
     Scene scene;
-    GridPane grid;
+    GridPane grid, rightGrid;
 
     HBox hBoxTop;
     HBox hBoxBottom;
@@ -31,21 +31,11 @@ public class KioskScene  {
     Image img;
     ImageView imgView;
 
-    Button Btn1;
-    Button Btn2;
-    Button Btn3;
-    Button Btn4;
-    Button Btn5;
-    Button Btn6;
-    Button Btn7;
-    Button Btn8;
-    Button Btn9;
-    Button Btn10;
-    Button Btn11;
-    Button Btn12;
-    Button Btn13;
-    Button Btn14;
-    Button Btn15;
+    ModelClass database = new ModelClass();
+    ArrayList<kioskItem> kioskItems = new ArrayList<>();
+    ArrayList<soldItems> itemList = new ArrayList<>();
+
+    ArrayList<Button> buttonList = new ArrayList<>();
 
     Button homeButton;
 
@@ -65,10 +55,32 @@ public class KioskScene  {
 
         // grid 1 - kiosk buttons - (left side of window)
         grid = new GridPane();
+        rightGrid = new GridPane();
 
         layout.setLeft(grid);
+        layout.setRight(rightGrid);
         //layout.setRight(table);
 
+        updateRightGrid();
+        /*rightGrid.add(new Label("Item amount"), 0, 0);
+        rightGrid.add(new Label("                                 "), 1, 0);
+        rightGrid.add(new Label("       "), 2, 0);
+        rightGrid.add(new Label("   "), 3, 0);
+        rightGrid.add(new Label("                                  "), 4, 0);
+        //rightGrid.getColumnConstraints().add(new ColumnConstraints(400));
+
+        rightGrid.add(new Label("Coffee"), 0, 1);
+        rightGrid.add(new Label("3"), 1, 1);
+        rightGrid.add(new Label("30Kr"), 2, 1);
+        rightGrid.add(new Button("+"), 3, 1);
+        rightGrid.add(new Button("-"), 4, 1);*/
+
+        //rightGrid.add(new Label("                                                                                                                                                      "), 1, 0);
+       // rightGrid.add(new Label("aspoldkaspdjfas"), 2, 0);
+        //rightGrid.add(new Label("aspoldkaspdjfas"), 3, 0);
+       // rightGrid.add(new Label("button+"), 45, 1);
+       // rightGrid.setPadding(new Insets(0, 300, 0, 25));
+        rightGrid.setStyle("-fx-background-color:green");
 
         //grid.setGridLinesVisible(true);
 
@@ -78,22 +90,44 @@ public class KioskScene  {
         imgView.setImage(img);
         imgView.setVisible(true);
 
+        //Get stuff from database
+        kioskItems = database.getDBKioskItems();
+        int buttonCounter = 0;
+        for (kioskItem k : kioskItems)
+        {
 
-        Button  Btn1 = new Button("coffee \n30kr");
-        Button  Btn2 = new Button("cappucino \n40kr");
-        Button  Btn3 = new Button("expresso \n20kr");
-        Button  Btn4 = new Button("coke \n25kr");
-        Button  Btn5 = new Button("diet coke \n25kr");
-        Button  Btn6 = new Button("water \n20kr");
-        Button  Btn7 = new Button("t-shirt \n50kr");
-        Button  Btn8 = new Button("sunglasses \n60kr");
-        Button  Btn9 = new Button("suncream \n55kr");
-        Button  Btn10 = new Button("pizza slice\n30kr");
-        Button  Btn11 = new Button("burger \n45kr");
-        Button  Btn12 = new Button("chips \n35kr");
-        Button  Btn13 = new Button("lollipop \n15kr");
-        Button  Btn14 = new Button("choco bar \n25kr");
-        Button  Btn15 = new Button("ice cream \n30kr");
+            int positionY = buttonCounter / 3;
+            int positionX = buttonCounter - positionY * 3;
+            Button button = new Button(k.getName());
+            button.setMinHeight(55);
+            button.setMinWidth(100);
+            button.setMaxWidth(100);
+            button.setOnAction(event -> {
+                //receiptList.add(new );
+                boolean alreadyInTheList = false;
+                for (soldItems s : itemList)
+                {
+                    if (s.getIdKioskItem() == k.getIdKioskItem())
+                    {
+                        //Increment the amount
+                        alreadyInTheList = true;
+                        s.setQuantity(s.getQuantity() + 1);
+                    }
+                }
+
+                if (alreadyInTheList == false)
+                {
+                    //Add it to the list
+                    itemList.add(new soldItems(k.getName(), k.getIdKioskItem(), 1, k.getPrice()));
+                }
+               // System.out.println(k.getIdKioskItem());
+                updateRightGrid();
+            });
+
+            grid.add(button, positionX, positionY);
+
+            buttonCounter += 1;
+        }
 
         Button  homeButton = new Button("Back");
 
@@ -102,27 +136,6 @@ public class KioskScene  {
 
         HBox hBoxTop = new HBox();
         hBoxTop.getChildren().addAll(imgView);
-
-
-        grid.add(Btn1, 0, 0);
-        grid.add(Btn2, 1, 0);
-        grid.add(Btn3, 2, 0);
-
-        grid.add(Btn4, 0, 1);
-        grid.add(Btn5, 1, 1);
-        grid.add(Btn6, 2, 1);
-
-        grid.add(Btn7, 0, 2);
-        grid.add(Btn8, 1, 2);
-        grid.add(Btn9, 2, 2);
-
-        grid.add(Btn10, 0, 3);
-        grid.add(Btn11, 1, 3);
-        grid.add(Btn12, 2, 3);
-
-        grid.add(Btn13, 0, 4);
-        grid.add(Btn14, 1, 4);
-        grid.add(Btn15, 2, 4);
 
 
         //adding logo to layout
@@ -140,67 +153,6 @@ public class KioskScene  {
         grid.setVgap(25);
 
         grid.setPadding(new Insets(40, 20, 20, 20));
-
-        Btn1.setMinHeight(55);
-        Btn1.setMinWidth(100);
-        Btn1.setMaxWidth(100);
-
-        Btn2.setMinHeight(55);
-        Btn2.setMinWidth(100);
-        Btn2.setMaxWidth(100);
-
-        Btn3.setMinHeight(55);
-        Btn3.setMinWidth(100);
-        Btn3.setMaxWidth(100);
-
-        Btn4.setMinHeight(55);
-        Btn4.setMinWidth(95);
-        Btn4.setMaxWidth(95);
-
-        Btn5.setMinHeight(55);
-        Btn5.setMinWidth(95);
-        Btn5.setMaxWidth(95);
-
-        Btn6.setMinHeight(55);
-        Btn6.setMinWidth(95);
-        Btn6.setMaxWidth(95);
-
-        Btn7.setMinHeight(55);
-        Btn7.setMinWidth(95);
-        Btn7.setMaxWidth(95);
-
-        Btn8.setMinHeight(55);
-        Btn8.setMinWidth(95);
-        Btn8.setMaxWidth(95);
-
-        Btn9.setMinHeight(55);
-        Btn9.setMinWidth(95);
-        Btn9.setMaxWidth(95);
-
-        Btn10.setMinHeight(55);
-        Btn10.setMinWidth(95);
-        Btn10.setMaxWidth(95);
-
-        Btn11.setMinHeight(55);
-        Btn11.setMinWidth(95);
-        Btn11.setMaxWidth(95);
-
-        Btn12.setMinHeight(55);
-        Btn12.setMinWidth(95);
-        Btn12.setMaxWidth(95);
-
-        Btn13.setMinHeight(55);
-        Btn13.setMinWidth(95);
-        Btn13.setMaxWidth(95);
-
-        Btn14.setMinHeight(55);
-        Btn14.setMinWidth(95);
-        Btn14.setMaxWidth(95);
-
-        Btn15.setMinHeight(55);
-        Btn15.setMinWidth(95);
-        Btn15.setMaxWidth(95);
-
 
 
         homeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -220,4 +172,52 @@ public class KioskScene  {
 
 
     }
+
+    private void updateRightGrid()
+    {
+        rightGrid.getChildren().clear();
+        rightGrid.add(new Label("Item amount"), 0, 0);
+        rightGrid.add(new Label("                                 "), 1, 0);
+        rightGrid.add(new Label("       "), 2, 0);
+        rightGrid.add(new Label("   "), 3, 0);
+        rightGrid.add(new Label("                                  "), 4, 0);
+
+        int lineY = 1;
+        for (soldItems s : itemList)
+        {
+            rightGrid.add(new Label(s.getName()), 0, lineY);
+            rightGrid.add(new Label(Integer.toString(s.getQuantity())), 1, lineY);
+            rightGrid.add(new Label(Integer.toString(s.getTotalPrice() * s.getQuantity())), 2, lineY);
+            Button buttonPlus = new Button("+");
+            buttonPlus.setOnAction(event -> {
+                    s.setQuantity(s.getQuantity() + 1);
+                updateRightGrid();
+            });
+            rightGrid.add(buttonPlus, 3, lineY);
+            Button buttonMinus = new Button("-");
+            buttonMinus.setOnAction(event -> {
+                if (s.getQuantity() > 0)
+                    s.setQuantity(s.getQuantity() - 1);
+                updateRightGrid();
+            });
+            rightGrid.add(buttonMinus, 4, lineY);
+            lineY += 1;
+        }
+
+        rightGrid.add(new Label("Subtotal:"), 0, lineY);
+        //Calculate total price
+        int totalPrice =  0;
+        for (soldItems s : itemList)
+        {
+            totalPrice += s.getQuantity() * s.getTotalPrice();
+        }
+        rightGrid.add(new Label(Integer.toString(totalPrice)), 3, lineY);
+        rightGrid.add(new Button("Pay"), 3, lineY);
+        lineY += 1;
+        //rightGrid.getColumnConstraints().add(new ColumnConstraints(400));
+
+
+
+    }
+
 }
