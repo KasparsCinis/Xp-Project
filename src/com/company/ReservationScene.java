@@ -58,6 +58,7 @@ public class ReservationScene {
 
     ModelClass modelClass = new ModelClass();
     TableView<Activity> activityTableView;
+    CalendarTable calendarTable;
 
 
     public String getDate() {
@@ -236,7 +237,7 @@ public class ReservationScene {
         iv2.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                CalendarTable calendarTable= new CalendarTable();
+                calendarTable= new CalendarTable();
                 calendarTable.start();
 
                 //iv2.setImage(null);
