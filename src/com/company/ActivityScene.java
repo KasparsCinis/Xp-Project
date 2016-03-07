@@ -26,7 +26,6 @@ import java.util.ArrayList;
  */
 public class ActivityScene {
     ArrayList<Activity> activities = new ArrayList<>();
-    ActivityInfoWindow activityInfoWindow;
     TextField nameTextField = new TextField();
     TextArea descriptionArea = new TextArea();
     TextField ageLimitTextfield = new TextField();
