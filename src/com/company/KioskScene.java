@@ -186,22 +186,23 @@ public class KioskScene  {
             b.setDisable(false);
         }
         rightGrid.getChildren().clear();
-        rightGrid.add(new Label("Item amount"), 0, 0);
-        rightGrid.add(new Label("                                 "), 1, 0);
-        rightGrid.add(new Label("       "), 2, 0);
+        rightGrid.add(new Label("Name                           "), 0, 0);
+        rightGrid.add(new Label("Amount         "), 1, 0);
+        //rightGrid.add(new Label("       "), 1, 0);
+        rightGrid.add(new Label("Price       "), 2, 0);
         rightGrid.add(new Label("   "), 3, 0);
         rightGrid.add(new Label("                                  "), 4, 0);
 
         int lineY = 1;
         for (soldItems s : itemList)
         {
-        rightGrid.add(new Label(s.getName()), 0, lineY);
-        rightGrid.add(new Label(Integer.toString(s.getQuantity())), 1, lineY);
-        rightGrid.add(new Label(Integer.toString(s.getTotalPrice() * s.getQuantity())), 2, lineY);
-        Button buttonPlus = new Button("+");
-        buttonPlus.setOnAction(event -> {
-            s.setQuantity(s.getQuantity() + 1);
-            updateRightGrid();
+            rightGrid.add(new Label(s.getName()), 0, lineY);
+            rightGrid.add(new Label(Integer.toString(s.getQuantity())), 1, lineY);
+            rightGrid.add(new Label(Integer.toString(s.getTotalPrice() * s.getQuantity())+"Kr"), 2, lineY);
+            Button buttonPlus = new Button("+");
+            buttonPlus.setOnAction(event -> {
+                s.setQuantity(s.getQuantity() + 1);
+                updateRightGrid();
         });
             /*buttonPlus.setStyle("-fx-background-color:rgb(255,181,81);" +
                     "fx-border-color: blue;" +
@@ -233,7 +234,7 @@ public class KioskScene  {
         {
             totalPrice += s.getQuantity() * s.getTotalPrice();
         }
-        rightGrid.add(new Label(Integer.toString(totalPrice)), 2, lineY);
+        rightGrid.add(new Label(Integer.toString(totalPrice)+"Kr"), 2, lineY);
 
         Button payButton = new Button("Pay");
         payButton.setOnAction(event -> {
@@ -254,9 +255,10 @@ public class KioskScene  {
             b.setDisable(true);
         }
         rightGrid.getChildren().clear();
-        rightGrid.add(new Label("Payment successful:"), 0, 0);
-        rightGrid.add(new Label("                                 "), 1, 0);
-        rightGrid.add(new Label("       "), 2, 0);
+        rightGrid.add(new Label("Name                           "), 0, 0);
+        rightGrid.add(new Label("Amount         "), 1, 0);
+        //rightGrid.add(new Label("       "), 1, 0);
+        rightGrid.add(new Label("Price       "), 2, 0);
         rightGrid.add(new Label("   "), 3, 0);
         rightGrid.add(new Label("                                  "), 4, 0);
 
@@ -265,7 +267,7 @@ public class KioskScene  {
         {
             rightGrid.add(new Label(s.getName()), 0, lineY);
             rightGrid.add(new Label(Integer.toString(s.getQuantity())), 1, lineY);
-            rightGrid.add(new Label(Integer.toString(s.getTotalPrice() * s.getQuantity())), 2, lineY);
+            rightGrid.add(new Label(Integer.toString(s.getTotalPrice() * s.getQuantity())+"Kr"), 2, lineY);
             lineY += 1;
         }
 
@@ -278,7 +280,7 @@ public class KioskScene  {
         {
             totalPrice += s.getQuantity() * s.getTotalPrice();
         }
-        rightGrid.add(new Label(Integer.toString(totalPrice)), 2, lineY);
+        rightGrid.add(new Label(Integer.toString(totalPrice) +"Kr"), 2, lineY);
         Button okButton = new Button("Ok");
         okButton.setOnAction(event -> {
             itemList.clear();
