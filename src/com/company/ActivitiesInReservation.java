@@ -14,6 +14,18 @@ public class ActivitiesInReservation {
     public ActivitiesInReservation() {
     }
 
+    public ActivitiesInReservation(int idActivity, int startTime) {
+        this.idActivity = idActivity;
+        this.startTime = startTime;
+    }
+
+    public ActivitiesInReservation(int idActivity, int startTime, int endTime) {
+
+        this.idActivity = idActivity;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
     public int getActivitiesInReservationID() {
         return activitiesInReservationID;
     }
