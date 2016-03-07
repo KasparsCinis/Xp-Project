@@ -1,20 +1,20 @@
-//package com.company.Tests;
-//
-//import com.company.*;
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//import java.sql.Array;
-//import java.util.ArrayList;
-//
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.assertNotEquals;
-//import static org.junit.Assert.assertNotNull;
-//
+package com.company.Tests;
+
+import com.company.*;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.sql.Array;
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
 ///**
 // * Created by kasdi on 01.03.2016.
 // */
-//public class NewTestingClass {
+public class NewTestingClass {
 //    /**
 //    * DATABASE TESTS
 //     */
@@ -121,22 +121,26 @@
 //        modelClass.addDBKioskItem(new KioskItem(1, "Pink t-shirt", 299));
 //
 //    }
-//    @Test //#10
-//    public void testGetKioskItems()
-//    {
-//        ModelClass modelClass = new ModelClass();
-//        ArrayList<KioskItem> listy = new ArrayList<>();
-//        listy = modelClass.getDBKioskItems();
-//
-//        for (KioskItem k : listy)
-//        {
-//            System.out.println(k.getName());
-//        }
-//        System.out.println(modelClass.getDBKioskItems().get(0).getName());
-//        assertNotEquals(0, modelClass.getDBKioskItems().size());
-//
-//
-//    }
+    @Test //#10
+    public void testGetKioskItems()
+    {
+        ModelClass modelClass = new ModelClass();
+        ArrayList<Instructor> instructors = new ArrayList<>();
+        ArrayList<Integer> ids = new ArrayList<>();
+        ids.add(3);
+        ids.add(73);
+       /* ArrayList<KioskItem> listy = new ArrayList<>();
+        listy = modelClass.getDBKioskItems();
+
+        for (KioskItem k : listy)
+        {
+            System.out.println(k.getName());
+        }*/
+        System.out.println(modelClass.getDBKioskItems().get(0).getName());
+        assertNotEquals(0, modelClass.getDBKioskItems().size());
+
+
+    }
 //
 //
 //
@@ -147,4 +151,4 @@
 //    }
 //
 //
-//}
+}
