@@ -31,9 +31,31 @@ import java.util.List;
 public class ReservationScene {
 
     ArrayList<Activity> activities = new ArrayList<>();
+
+    public ArrayList<ActivitiesInReservation> getActivitiesInReservationArrayList() {
+        return activitiesInReservationArrayList;
+    }
+
+    ArrayList<ActivitiesInReservation> activitiesInReservationArrayList= new ArrayList<>();
+    public void setActivitiesInReservationArrayList(ArrayList<ActivitiesInReservation> activitiesInReservationArrayList) {
+        this.activitiesInReservationArrayList = activitiesInReservationArrayList;
+    }
+
+
+    ObservableList<String> instructorsList =
+            FXCollections.observableArrayList(
+
+            );
+
+
     //ActivityInfoWindow a;
     Button date = new Button();
     ComboBox instructors;
+
+    public void setActivitiesAndTime(String activitiesAndTime) {
+        this.activitiesAndTime.setText(activitiesAndTime);
+    }
+
     TextArea activitiesAndTime = new TextArea();
     TextField customerName = new TextField();
     TextField phoneNumber = new TextField();
@@ -48,7 +70,7 @@ public class ReservationScene {
     Button deleteButton; //clear textFields button
     Button saveButton;
     Button deleteButton2;
-
+    ArrayList<Instructor> instructorList = new ArrayList<>();
 
     Label editLabel = new Label("EDIT: ");
     Label notificationLabel = new Label();
@@ -58,7 +80,6 @@ public class ReservationScene {
 
     ModelClass modelClass = new ModelClass();
     TableView<Activity> activityTableView;
-    CalendarTable calendarTable;
 
 
     public String getDate() {
@@ -168,22 +189,15 @@ public class ReservationScene {
             });
             return row;
         });
-        ObservableList<String> instructorsList =
-                FXCollections.observableArrayList(
-
-                );
-
-
-        ArrayList<Instructor> instructorList = new ArrayList<>();
-        instructorList = modelClass.getDBInstructors();
-        for (Instructor a : instructorList)
-        {
-            instructorsList.addAll(a.getName());
-        }
 
 
 
-       // instructorsList.addAll(modelClass.getDBInstructors().get(0).getName());
+
+
+
+
+
+
         //instructorsList.addAll(modelClass.getDBInstructors().get(0).getName());
 
         instructors = new ComboBox(instructorsList);
@@ -237,8 +251,9 @@ public class ReservationScene {
         iv2.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                calendarTable= new CalendarTable();
+                CalendarTable calendarTable= new CalendarTable();
                 calendarTable.start();
+                primaryStage.close();
 
                 //iv2.setImage(null);
             }
@@ -352,16 +367,22 @@ public class ReservationScene {
                 int nrPeople = getNrOfPeople();
                 String comment = getCommentArea();
                 int time = 11;
-
-                //ModelClass modelClass = new ModelClass();
-                // modelClass.writeToDBReservation(getActivity(), getInstructor(), time, getDate(), getCustomerName(), getPhoneNumber(), getNrOfPeople(), getCommentArea());
+                int idOfInstructor=0;
+                for (Instructor a : instructorList)
+                {
+                    if(a.getName().equals(instructor)){
+                        idOfInstructor=a.getIdInstructor();
+                    }
+                }
+                ModelClass modelClass = new ModelClass();
+                modelClass.writeToDBReservation(activitiesInReservationArrayList, idOfInstructor, getDate(), getCustomerName(), String.valueOf(getPhoneNumber()), getNrOfPeople(), String.valueOf(getCommentArea()));
                 System.out.println("Hi............");
 
                 display(primaryStage);
                 primaryStage.setScene(window.getScene());
 
                 if (editLabel.getText().equals("EDIT: ")) {
-                   // modelClass.updateDBreservations();
+                    // modelClass.updateDBreservations();
                     notificationLabel.setText("Reservation edit successful!");
 
                     notificationLabel.setTextFill(Color.web("green"));
@@ -372,7 +393,7 @@ public class ReservationScene {
                 }
 
                 if (editLabel.getText().equals("NEW: ")) {
-                  //  modelClass.writeToDBReservation(1,1,1,"","","",1,"");
+                    //  modelClass.writeToDBReservation(1,1,1,"","","",1,"");
                     notificationLabel.setText("Activity added successful!");
                     notificationLabel.setTextFill(Color.web("green"));
                     Timeline timeline = new Timeline(new KeyFrame(
@@ -427,5 +448,17 @@ public class ReservationScene {
         phoneNumber.clear();
         numberOfPeople.clear();
         commentArea.clear();
+    }
+    public void refreshInstructors(){
+        ArrayList<Integer> idsOfActivities= new ArrayList<>();
+        for (ActivitiesInReservation kk: activitiesInReservationArrayList){
+            idsOfActivities.add(kk.getIdActivity());
+
+        }
+        instructorList= modelClass.getDBInstructorsByActivity(idsOfActivities);
+        for (Instructor a : instructorList)
+        {
+            instructorsList.addAll(a.getName());
+        }
     }
 }

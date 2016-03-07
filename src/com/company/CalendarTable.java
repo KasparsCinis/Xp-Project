@@ -1,26 +1,17 @@
 package com.company;
 
-import com.company.Activity;
-import com.company.ModelClass;
-import com.company.Reservation;
-import com.company.Reservation2;
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 public class CalendarTable {
 
@@ -101,17 +92,26 @@ public class CalendarTable {
             }
 
             /** Test */
-       /* ReservationScene reservationScene= new ReservationScene();
-            Stage newStage= new Stage();
-            newStage.show();
-            reservationScene.display(newStage);
+            ReservationScene reservationScene= new ReservationScene();
+            reservationScene.display(stage);
+
+            stage.show();
+            reservationScene.display(stage);
             StringBuilder reservationsss= new StringBuilder();
+            reservationScene.setActivitiesInReservationArrayList(reservationsWithStartEnd);
             for (ActivitiesInReservation reservation : reservationsWithStartEnd) {
                 System.out.println(reservation.getIdActivity() + " from " + reservation.getStartTime() + " to " + reservation.getEndTime());
-                reservationsss.append(String.valueOf(reservation.getIdActivity())+" "+ reservation.getStartTime()+" "+reservation.getEndTime()+"\n");
+                String nameOfActivity=modelClass.getDBactivities2(String.valueOf(reservation.getIdActivity())).getName();
+                reservationsss.append(nameOfActivity + ": " + reservation.getStartTime() + ":00-" + reservation.getEndTime() + ":00\n");
             }
-            reservationScene.setActivitiesAndTime(reservationsss.toString());*/
+            reservationScene.setActivitiesAndTime(reservationsss.toString());
             /** Test */
+
+
+            reservationScene.setDate(currentDate);
+            reservationScene.refreshInstructors();
+            stage.setScene(reservationScene.window.getScene());
+
         });
         HBox bookBackCalendarHbox = new HBox();
         bookBackCalendarHbox.getChildren().addAll(openDatePicker, backButton, bookButton);
