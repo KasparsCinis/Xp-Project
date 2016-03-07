@@ -80,7 +80,11 @@ public class KioskScene  {
         //rightGrid.add(new Label("aspoldkaspdjfas"), 3, 0);
        // rightGrid.add(new Label("button+"), 45, 1);
        // rightGrid.setPadding(new Insets(0, 300, 0, 25));
-        rightGrid.setStyle("-fx-background-color:green");
+        rightGrid.setStyle("-fx-background-color:rgb(255,181,81);" +
+                "fx-border-color: blue;" +
+                "-fx-border-insets: 5;" +
+                "-fx-border-width: 3;" +
+                "-fx-border-style: solid;");
 
         //grid.setGridLinesVisible(true);
 
@@ -99,6 +103,7 @@ public class KioskScene  {
             int positionY = buttonCounter / 3;
             int positionX = buttonCounter - positionY * 3;
             Button button = new Button(k.getName());
+            buttonList.add(button);
             button.setMinHeight(55);
             button.setMinWidth(100);
             button.setMaxWidth(100);
@@ -175,8 +180,81 @@ public class KioskScene  {
 
     private void updateRightGrid()
     {
+        //Set all the buttons editable
+        for (Button b : buttonList)
+        {
+            b.setDisable(false);
+        }
         rightGrid.getChildren().clear();
         rightGrid.add(new Label("Item amount"), 0, 0);
+        rightGrid.add(new Label("                                 "), 1, 0);
+        rightGrid.add(new Label("       "), 2, 0);
+        rightGrid.add(new Label("   "), 3, 0);
+        rightGrid.add(new Label("                                  "), 4, 0);
+
+        int lineY = 1;
+        for (soldItems s : itemList)
+        {
+        rightGrid.add(new Label(s.getName()), 0, lineY);
+        rightGrid.add(new Label(Integer.toString(s.getQuantity())), 1, lineY);
+        rightGrid.add(new Label(Integer.toString(s.getTotalPrice() * s.getQuantity())), 2, lineY);
+        Button buttonPlus = new Button("+");
+        buttonPlus.setOnAction(event -> {
+            s.setQuantity(s.getQuantity() + 1);
+            updateRightGrid();
+        });
+            /*buttonPlus.setStyle("-fx-background-color:rgb(255,181,81);" +
+                    "fx-border-color: blue;" +
+                    "-fx-border-insets: 5;" +
+                    "-fx-border-width: 3;" +
+                    "-fx-border-style: solid;");*/
+        rightGrid.add(buttonPlus, 3, lineY);
+        Button buttonMinus = new Button("-");
+        buttonMinus.setOnAction(event -> {
+            if (s.getQuantity() > 0)
+                s.setQuantity(s.getQuantity() - 1);
+            updateRightGrid();
+        });
+           /* buttonMinus.setStyle("-fx-background-color:rgb(255,181,81);" +
+                    "fx-border-color: blue;" +
+                    "-fx-border-insets: 5;" +
+                    "-fx-border-width: 3;" +
+                    "-fx-border-style: solid;");*/
+        rightGrid.add(buttonMinus, 4, lineY);
+        lineY += 1;
+    }
+
+        rightGrid.add(new Label("               "), 0, lineY);
+        lineY += 1;
+        rightGrid.add(new Label("Subtotal:"), 0, lineY);
+        //Calculate total price
+        int totalPrice =  0;
+        for (soldItems s : itemList)
+        {
+            totalPrice += s.getQuantity() * s.getTotalPrice();
+        }
+        rightGrid.add(new Label(Integer.toString(totalPrice)), 2, lineY);
+
+        Button payButton = new Button("Pay");
+        payButton.setOnAction(event -> {
+            updateRightGridPaymentScreen();
+        });
+        rightGrid.add(payButton, 2, lineY + 1);
+        //lineY += 1;
+        //rightGrid.getColumnConstraints().add(new ColumnConstraints(400));
+
+
+
+    }
+    private void updateRightGridPaymentScreen()
+    {
+        //Set all the buttons uneditable
+        for (Button b : buttonList)
+        {
+            b.setDisable(true);
+        }
+        rightGrid.getChildren().clear();
+        rightGrid.add(new Label("Payment successful:"), 0, 0);
         rightGrid.add(new Label("                                 "), 1, 0);
         rightGrid.add(new Label("       "), 2, 0);
         rightGrid.add(new Label("   "), 3, 0);
@@ -188,22 +266,11 @@ public class KioskScene  {
             rightGrid.add(new Label(s.getName()), 0, lineY);
             rightGrid.add(new Label(Integer.toString(s.getQuantity())), 1, lineY);
             rightGrid.add(new Label(Integer.toString(s.getTotalPrice() * s.getQuantity())), 2, lineY);
-            Button buttonPlus = new Button("+");
-            buttonPlus.setOnAction(event -> {
-                    s.setQuantity(s.getQuantity() + 1);
-                updateRightGrid();
-            });
-            rightGrid.add(buttonPlus, 3, lineY);
-            Button buttonMinus = new Button("-");
-            buttonMinus.setOnAction(event -> {
-                if (s.getQuantity() > 0)
-                    s.setQuantity(s.getQuantity() - 1);
-                updateRightGrid();
-            });
-            rightGrid.add(buttonMinus, 4, lineY);
             lineY += 1;
         }
 
+        rightGrid.add(new Label("               "), 0, lineY);
+        lineY += 1;
         rightGrid.add(new Label("Subtotal:"), 0, lineY);
         //Calculate total price
         int totalPrice =  0;
@@ -211,13 +278,15 @@ public class KioskScene  {
         {
             totalPrice += s.getQuantity() * s.getTotalPrice();
         }
-        rightGrid.add(new Label(Integer.toString(totalPrice)), 3, lineY);
-        rightGrid.add(new Button("Pay"), 3, lineY);
-        lineY += 1;
+        rightGrid.add(new Label(Integer.toString(totalPrice)), 2, lineY);
+        Button okButton = new Button("Ok");
+        okButton.setOnAction(event -> {
+            itemList.clear();
+            updateRightGrid();
+        });
+        rightGrid.add(okButton, 2, lineY+1);
+        //lineY += 1;
         //rightGrid.getColumnConstraints().add(new ColumnConstraints(400));
 
-
-
     }
-
 }
