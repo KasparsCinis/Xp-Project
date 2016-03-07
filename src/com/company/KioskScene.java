@@ -16,7 +16,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 import javafx.stage.Stage;
 
@@ -24,15 +23,10 @@ import javafx.stage.Stage;
 public class KioskScene  {
 
     Scene scene;
-    GridPane grid1;
-    GridPane grid2;
+    GridPane grid;
+
     HBox hBoxTop;
     HBox hBoxBottom;
-    VBox vBox;
-
-    Label itemlabel;
-    Label amountlabel;
-    Label paylabel;
 
     Image img;
     ImageView imgView;
@@ -55,6 +49,7 @@ public class KioskScene  {
 
     Button homeButton;
 
+
     public void display(Stage primaryStage) {
 
         Stage window = new Stage();
@@ -62,28 +57,26 @@ public class KioskScene  {
         hBoxTop = new HBox();
         hBoxBottom = new HBox();
 
-
         BorderPane layout = new BorderPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
         layout.getStylesheets().add("com/company/style.css");
 
+
+
         // grid 1 - kiosk buttons - (left side of window)
-        grid1 = new GridPane();
+        grid = new GridPane();
 
-        layout.setLeft(grid1);
-        //layout.setRight();
+        layout.setLeft(grid);
+        //layout.setRight(table);
 
 
-        //grid1.setGridLinesVisible(true);
+        //grid.setGridLinesVisible(true);
 
 
         img = new Image("com/company/images/Logo2.jpg");
         imgView = new ImageView();
         imgView.setImage(img);
         imgView.setVisible(true);
-
-        //scene.getStylesheets().add("com/company/style.css");
-        //javafx.scene.image.Image image = new javafx.scene.image.Image("com/company/images/Logo2.jpg");
 
 
         Button  Btn1 = new Button("coffee \n30kr");
@@ -107,46 +100,46 @@ public class KioskScene  {
         HBox hBoxBottom = new HBox();
         hBoxBottom.getChildren().addAll(homeButton);
 
-
         HBox hBoxTop = new HBox();
         hBoxTop.getChildren().addAll(imgView);
 
-        grid1.add(Btn1, 0, 0);
-        grid1.add(Btn2, 1, 0);
-        grid1.add(Btn3, 2, 0);
 
-        grid1.add(Btn4, 0, 1);
-        grid1.add(Btn5, 1, 1);
-        grid1.add(Btn6, 2, 1);
+        grid.add(Btn1, 0, 0);
+        grid.add(Btn2, 1, 0);
+        grid.add(Btn3, 2, 0);
 
-        grid1.add(Btn7, 0, 2);
-        grid1.add(Btn8, 1, 2);
-        grid1.add(Btn9, 2, 2);
+        grid.add(Btn4, 0, 1);
+        grid.add(Btn5, 1, 1);
+        grid.add(Btn6, 2, 1);
 
-        grid1.add(Btn10, 0, 3);
-        grid1.add(Btn11, 1, 3);
-        grid1.add(Btn12, 2, 3);
+        grid.add(Btn7, 0, 2);
+        grid.add(Btn8, 1, 2);
+        grid.add(Btn9, 2, 2);
 
-        grid1.add(Btn13, 0, 4);
-        grid1.add(Btn14, 1, 4);
-        grid1.add(Btn15, 2, 4);
+        grid.add(Btn10, 0, 3);
+        grid.add(Btn11, 1, 3);
+        grid.add(Btn12, 2, 3);
+
+        grid.add(Btn13, 0, 4);
+        grid.add(Btn14, 1, 4);
+        grid.add(Btn15, 2, 4);
 
 
         //adding logo to layout
         layout.setTop(hBoxTop);
+
+        //adding homeButton to layout
+        layout.setBottom(hBoxBottom);
 
         //setting size of logo
         imgView.setFitHeight(50);
         imgView.setFitWidth(80);
 
 
-        //adding homeButton to layout
-        layout.setBottom(hBoxBottom);
+        grid.setHgap(25);
+        grid.setVgap(25);
 
-        grid1.setHgap(25);
-        grid1.setVgap(25);
-
-        grid1.setPadding(new Insets(40, 20, 20, 20));
+        grid.setPadding(new Insets(40, 20, 20, 20));
 
         Btn1.setMinHeight(55);
         Btn1.setMinWidth(100);
@@ -218,11 +211,6 @@ public class KioskScene  {
                 view.start(primaryStage);
             }
         });
-
-
-
-
-        ////////////////////////////////////
 
 
         Scene scene = new Scene(layout, 800, 600);
