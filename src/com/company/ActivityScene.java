@@ -199,6 +199,7 @@ public class ActivityScene {
         Label nameLabel = new Label("Activity name: ");
         Label descriptionLabel = new Label("Description: ");
         descriptionArea.setPrefSize(187,100);
+        descriptionArea.setWrapText(true);
         Label priceLabel = new Label("Price: ");
         Label ageLimitLabel = new Label("Age Limit: ");
         nameLabel.setPrefHeight(115);
