@@ -377,6 +377,26 @@ public class ModelClass {
 
         return instructor;
     }
+    public Instructor getDBInstructorByActivityID(String ID)
+    {
+        Instructor instructor = new Instructor();
+        try {
+            String sql = "SELECT * FROM instructor WHERE idActivity  = '" + ID + "'";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                instructor = new Instructor (resultSet.getInt(1),resultSet.getInt(2), resultSet.getString(3));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return instructor;
+    }
     public ArrayList<Instructor> getDBInstructorsByActivity(ArrayList<Integer> list)
     {
         ArrayList<Instructor> instructorList = new ArrayList<>();
@@ -503,7 +523,29 @@ public class ModelClass {
         }
     }
 
+    public void updateDBInstructor(String name, String intID)
+    {
+        String sql="UPDATE instructor SET name = ? WHERE idActivity = ?";
 
+        try {
+            System.out.println(name + " " + intID);
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, Integer.parseInt(intID));
+
+            int numberOfRows = preparedStatement.executeUpdate();
+            System.out.println("Completed insert. Number of rows affected:" + numberOfRows);
+            if (numberOfRows == 0)
+            {
+                //Create a new instructor
+                writeToDBInstructor( Integer.parseInt(intID), name);
+            }
+
+        }catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 
     public ArrayList<Activity> getDBactivities() {

@@ -28,6 +28,7 @@ public class ActivityScene {
     ArrayList<Activity> activities = new ArrayList<>();
     TextField nameTextField = new TextField();
     TextArea descriptionArea = new TextArea();
+    TextArea instructorArea = new TextArea();
     TextField ageLimitTextfield = new TextField();
     TextField priceTextField = new TextField();
     VBox vBox;
@@ -79,6 +80,9 @@ public class ActivityScene {
         if(getDescriptionArea().equals("")) {
             result = false;
         }
+        if(instructorArea.getText().toString().equals("")) {
+            result = false;
+        }
         if(ageLimitTextfield.getText().toString().equals(""))
         {
             result = false;
@@ -122,7 +126,7 @@ public class ActivityScene {
                     ageLimitTextfield.setText(String.valueOf(rowData.getAgeLimit()));
                     priceTextField.setText(String.valueOf(rowData.getPrice()));
                     descriptionArea.setText(rowData.getDescription());
-
+                    instructorArea.setText(modelClass.getDBInstructorByActivityID(rowData.getIdActivity()).getName());
 
                     intID = rowData.getIdActivity();
                 }
@@ -200,14 +204,17 @@ public class ActivityScene {
         Label descriptionLabel = new Label("Description: ");
         descriptionArea.setPrefSize(187,100);
         descriptionArea.setWrapText(true);
+        instructorArea.setPrefSize(50,0);
+        Label instructorLabel = new Label("Instructor name: ");
         Label priceLabel = new Label("Price: ");
         Label ageLimitLabel = new Label("Age Limit: ");
         nameLabel.setPrefHeight(115);
         descriptionLabel.setTranslateY(1);
-        ageLimitLabel.setTranslateY(45);
-        priceLabel.setTranslateY(60);
-        VBox labelVbox = new VBox(nameLabel,descriptionLabel,ageLimitLabel,priceLabel);
-        VBox textfieldsVbox = new VBox(edit,nameTextField, descriptionArea, ageLimitTextfield, priceTextField,vBox);
+        ageLimitLabel.setTranslateY(65);
+        instructorLabel.setTranslateY(40);
+        priceLabel.setTranslateY(70);
+        VBox labelVbox = new VBox(nameLabel,descriptionLabel,instructorLabel, ageLimitLabel,priceLabel);
+        VBox textfieldsVbox = new VBox(edit,nameTextField, descriptionArea,instructorArea, ageLimitTextfield, priceTextField,vBox);
 
         HBox labelandtextField = new HBox(labelVbox, textfieldsVbox);
         labelandtextField.setPadding(new Insets(20, 10, 10, 50));
@@ -239,6 +246,7 @@ public class ActivityScene {
                 modelClass = new ModelClass();
                 if (edit.getText().equals("EDIT: ")) {
                     modelClass.updateDBActivity(name, age, price, description, intID);
+                    modelClass.updateDBInstructor(instructorArea.getText().toString(), intID);
                     notificationLabel.setVisible(true);
                     notificationLabel.setText("Activity edit successful!");
                     notificationLabel.setTextFill(Color.web("green"));
@@ -249,6 +257,7 @@ public class ActivityScene {
                 }
                 if (edit.getText().equals("NEW: ")) {
                     modelClass.writeToDBActivity(name, age, price, description);
+                    modelClass.writeToDBInstructor(modelClass.getLastActivityID(), instructorArea.getText().toString());
                     notificationLabel.setVisible(true);
                     notificationLabel.setText("Activity add successful!");
                     notificationLabel.setTextFill(Color.web("green"));
@@ -324,6 +333,7 @@ public class ActivityScene {
     {
         nameTextField.clear();
         descriptionArea.clear();
+        instructorArea.clear();
         priceTextField.clear();
         ageLimitTextfield.clear();
     }
