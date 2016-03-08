@@ -80,7 +80,7 @@ public class KioskScene  {
         //rightGrid.add(new Label("aspoldkaspdjfas"), 3, 0);
        // rightGrid.add(new Label("button+"), 45, 1);
        // rightGrid.setPadding(new Insets(0, 300, 0, 25));
-        rightGrid.setStyle("-fx-background-color:rgb(255,181,81);" +
+        rightGrid.setStyle("-fx-background-color:rgb(255,181,120);" +
                 "fx-border-color: blue;" +
                 "-fx-border-insets: 5;" +
                 "-fx-border-width: 3;" +
@@ -102,7 +102,7 @@ public class KioskScene  {
 
             int positionY = buttonCounter / 3;
             int positionX = buttonCounter - positionY * 3;
-            Button button = new Button(k.getName());
+            Button button = new Button(k.getName()+"\n   "+k.getPrice() + " kr.");
             button.setId("kioskItemButtons");
             buttonList.add(button);
             button.setMinHeight(55);
@@ -188,12 +188,12 @@ public class KioskScene  {
             b.setDisable(false);
         }
         rightGrid.getChildren().clear();
-        rightGrid.add(new Label("Name                           "), 0, 0);
+        rightGrid.add(new Label("Name                    "), 0, 0);
         rightGrid.add(new Label("Amount         "), 1, 0);
         //rightGrid.add(new Label("       "), 1, 0);
-        rightGrid.add(new Label("Price       "), 2, 0);
+        rightGrid.add(new Label("Price        "), 2, 0); // see this
         rightGrid.add(new Label("   "), 3, 0);
-        rightGrid.add(new Label("                                  "), 4, 0);
+        rightGrid.add(new Label("                "), 4, 0);  // done
 
         int lineY = 1;
         for (SoldItems s : itemList)
@@ -227,7 +227,7 @@ public class KioskScene  {
         lineY += 1;
     }
 
-        rightGrid.add(new Label("               "), 0, lineY);
+        rightGrid.add(new Label("               "), 0, lineY);  //dont touch this
         lineY += 1;
         rightGrid.add(new Label("Subtotal:"), 0, lineY);
         //Calculate total price
@@ -260,12 +260,12 @@ public class KioskScene  {
         Label paymentLabel = new Label("Payment successfull!");
         paymentLabel.setId("kioskPaymentLabel");
         rightGrid.add(paymentLabel, 0, 0);
-        rightGrid.add(new Label("Name                           "), 0, 1);
+        rightGrid.add(new Label("Name              "), 0, 1);
         rightGrid.add(new Label("Amount         "), 1, 1);
         //rightGrid.add(new Label("       "), 1, 0);
         rightGrid.add(new Label("Price       "), 2, 1);
         rightGrid.add(new Label("   "), 3, 1);
-        rightGrid.add(new Label("                                  "), 4, 1);
+        rightGrid.add(new Label("    "), 4, 1);  // done
 
         int lineY = 2;
         for (SoldItems s : itemList)
@@ -276,7 +276,7 @@ public class KioskScene  {
             lineY += 1;
         }
 
-        rightGrid.add(new Label("               "), 0, lineY);
+        rightGrid.add(new Label("   "), 0, lineY);
         lineY += 1;
         rightGrid.add(new Label("Subtotal:"), 0, lineY);
         //Calculate total price
