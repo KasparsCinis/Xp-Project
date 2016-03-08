@@ -184,7 +184,7 @@ public class ReservationScene {
                 commentArea.setText(rowData.getDescription());
 
 
-                intID = rowData.getIdActivity();
+                intID = rowData.getIdActivity(); // change to resID and new table
             }
             });
             return row;
@@ -367,16 +367,21 @@ public class ReservationScene {
                 int nrPeople = getNrOfPeople();
                 String comment = getCommentArea();
                 int time = 11;
-                int idOfInstructor=0;
-                for (Instructor a : instructorList)
-                {
-                    if(a.getName().equals(instructor)){
-                        idOfInstructor=a.getIdInstructor();
+                int idOfInstructor = 0;
+                for (Instructor a : instructorList) {
+                    if (a.getName().equals(instructor)) {
+                        idOfInstructor = a.getIdInstructor();
                     }
                 }
                 ModelClass modelClass = new ModelClass();
-                modelClass.writeToDBReservation(activitiesInReservationArrayList, idOfInstructor, getDate(), getCustomerName(), String.valueOf(getPhoneNumber()), getNrOfPeople(), String.valueOf(getCommentArea()));
+                if (editLabel.getText().equals("EDIT: ")) {
+                    modelClass.writeToDBReservation(activitiesInReservationArrayList, idOfInstructor, getDate(), getCustomerName(), String.valueOf(getPhoneNumber()), getNrOfPeople(), String.valueOf(getCommentArea()));
+                } else if (editLabel.getText().equals("NEW: ")) {
+                    modelClass.updateDBReservation(activitiesInReservationArrayList, idOfInstructor, resId, getDate(), getCustomerName(), String.valueOf(getPhoneNumber()), getNrOfPeople(), String.valueOf(getCommentArea()));
+                }
                 System.out.println("Hi............");
+
+
 
                 display(primaryStage);
                 primaryStage.setScene(window.getScene());
