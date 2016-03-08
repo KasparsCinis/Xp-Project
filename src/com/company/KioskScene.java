@@ -32,8 +32,8 @@ public class KioskScene  {
     ImageView imgView;
 
     ModelClass database = new ModelClass();
-    ArrayList<kioskItem> kioskItems = new ArrayList<>();
-    ArrayList<soldItems> itemList = new ArrayList<>();
+    ArrayList<KioskItem> kioskItems = new ArrayList<>();
+    ArrayList<SoldItems> itemList = new ArrayList<>();
 
     ArrayList<Button> buttonList = new ArrayList<>();
 
@@ -97,7 +97,7 @@ public class KioskScene  {
         //Get stuff from database
         kioskItems = database.getDBKioskItems();
         int buttonCounter = 0;
-        for (kioskItem k : kioskItems)
+        for (KioskItem k : kioskItems)
         {
 
             int positionY = buttonCounter / 3;
@@ -110,7 +110,7 @@ public class KioskScene  {
             button.setOnAction(event -> {
                 //receiptList.add(new );
                 boolean alreadyInTheList = false;
-                for (soldItems s : itemList)
+                for (SoldItems s : itemList)
                 {
                     if (s.getIdKioskItem() == k.getIdKioskItem())
                     {
@@ -123,7 +123,7 @@ public class KioskScene  {
                 if (alreadyInTheList == false)
                 {
                     //Add it to the list
-                    itemList.add(new soldItems(k.getName(), k.getIdKioskItem(), 1, k.getPrice()));
+                    itemList.add(new SoldItems(k.getName(), k.getIdKioskItem(), 1, k.getPrice()));
                 }
                // System.out.println(k.getIdKioskItem());
                 updateRightGrid();
@@ -194,7 +194,7 @@ public class KioskScene  {
         rightGrid.add(new Label("                                  "), 4, 0);
 
         int lineY = 1;
-        for (soldItems s : itemList)
+        for (SoldItems s : itemList)
         {
             rightGrid.add(new Label(s.getName()), 0, lineY);
             rightGrid.add(new Label(Integer.toString(s.getQuantity())), 1, lineY);
@@ -230,7 +230,7 @@ public class KioskScene  {
         rightGrid.add(new Label("Subtotal:"), 0, lineY);
         //Calculate total price
         int totalPrice =  0;
-        for (soldItems s : itemList)
+        for (SoldItems s : itemList)
         {
             totalPrice += s.getQuantity() * s.getTotalPrice();
         }
@@ -263,7 +263,7 @@ public class KioskScene  {
         rightGrid.add(new Label("                                  "), 4, 0);
 
         int lineY = 1;
-        for (soldItems s : itemList)
+        for (SoldItems s : itemList)
         {
             rightGrid.add(new Label(s.getName()), 0, lineY);
             rightGrid.add(new Label(Integer.toString(s.getQuantity())), 1, lineY);
@@ -276,7 +276,7 @@ public class KioskScene  {
         rightGrid.add(new Label("Subtotal:"), 0, lineY);
         //Calculate total price
         int totalPrice =  0;
-        for (soldItems s : itemList)
+        for (SoldItems s : itemList)
         {
             totalPrice += s.getQuantity() * s.getTotalPrice();
         }

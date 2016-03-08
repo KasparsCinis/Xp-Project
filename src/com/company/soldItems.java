@@ -3,16 +3,16 @@ package com.company;
 /**
  * Created by kasdi on 04.03.2016.
  */
-public class soldItems {
+public class SoldItems {
     private String name;
     private int idKioskItem;
     private int Quantity;
     private int totalPrice;
 
-    public soldItems() {
+    public SoldItems() {
     }
 
-    public soldItems(String name, int idKioskItem, int quantity, int totalPrice) {
+    public SoldItems(String name, int idKioskItem, int quantity, int totalPrice) {
         this.name = name;
         this.idKioskItem = idKioskItem;
         Quantity = quantity;
