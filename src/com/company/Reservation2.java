@@ -1,14 +1,15 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
-<<<<<<< HEAD
+ <<<<<<< HEAD
  * Created by kasdi on 01.03.2016.
  */
 public class Reservation2 {
 
-    ArrayList<ActivitiesInReservation> activitiesInReservations = new ArrayList<>();
+    List<ActivitiesInReservation> activitiesInReservations = new ArrayList<>();
 
     private int idReservation;
     private int idActivity;
@@ -16,10 +17,10 @@ public class Reservation2 {
     private String date;
     private String customerName;
     private String customerMobilePhone;
-    private int numberOfPeple;
+    private int numberOfPeople;
     private String comment;
 
-    public Reservation2(ArrayList<ActivitiesInReservation> activitiesInReservations, int idReservation, int idActivity, int idInstructor, String date, String customerName, String customerMobilePhone, int numberOfPeple, String comment) {
+    public Reservation2(List<ActivitiesInReservation> activitiesInReservations, int idReservation, int idActivity, int idInstructor, String date, String customerName, String customerMobilePhone, int numberOfPeople, String comment) {
         this.activitiesInReservations = activitiesInReservations;
         this.idReservation = idReservation;
         this.idActivity = idActivity;
@@ -27,7 +28,7 @@ public class Reservation2 {
         this.date = date;
         this.customerName = customerName;
         this.customerMobilePhone = customerMobilePhone;
-        this.numberOfPeple = numberOfPeple;
+        this.numberOfPeople = numberOfPeople;
         this.comment = comment;
     }
 
@@ -84,12 +85,12 @@ public class Reservation2 {
         this.customerMobilePhone = customerMobilePhone;
     }
 
-    public int getNumberOfPeple() {
-        return numberOfPeple;
+    public int getNumberOfPeople() {
+        return numberOfPeople;
     }
 
-    public void setNumberOfPeple(int numberOfPeple) {
-        this.numberOfPeple = numberOfPeple;
+    public void setNumberOfPeople(int numberOfPeople) {
+        this.numberOfPeople = numberOfPeople;
     }
 
     public String getComment() {
@@ -106,7 +107,7 @@ public class Reservation2 {
 
         for (int i = 0; i <activitiesInReservations.size(); i++ )
         {
-           toReturn += activitiesInReservations.get(i).getIdActivity();
+            toReturn += activitiesInReservations.get(i).getIdActivity();
         }
 
         return toReturn ;

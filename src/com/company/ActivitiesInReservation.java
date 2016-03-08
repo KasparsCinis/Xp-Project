@@ -59,7 +59,7 @@ public class ActivitiesInReservation {
     }
 
     public int getEndTime() {
-        return endTime;
+        return endTime +1;
     }
 
     public void setEndTime(int endTime) {

@@ -30,7 +30,7 @@ import java.util.List;
  */
 public class ReservationScene {
 
-    ArrayList<Activity> activities = new ArrayList<>();
+    ArrayList<Reservation2> activities = new ArrayList<>();
 
     public ArrayList<ActivitiesInReservation> getActivitiesInReservationArrayList() {
         return activitiesInReservationArrayList;
@@ -79,7 +79,7 @@ public class ReservationScene {
     int resId;
 
     ModelClass modelClass = new ModelClass();
-    TableView<Activity> activityTableView;
+    TableView<Reservation2> activityTableView;
 
 
     public String getDate() {
@@ -152,39 +152,49 @@ public class ReservationScene {
 
 
         window.setTitle("Adventure reservation");
-        TableColumn<Activity, String> timeColumn = new TableColumn<>("Time");
+        TableColumn<Reservation2, String> timeColumn = new TableColumn<>("Time");
         timeColumn.setMinWidth(50);
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
-        TableColumn<Activity, String> activityColumn = new TableColumn<>("Activity");
+        TableColumn<Reservation2, String> activityColumn = new TableColumn<>("Activity");
         activityColumn.setMinWidth(100);
-        activityColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        TableColumn<Activity, String> customerColumn = new TableColumn<>("Customer");
+        activityColumn.setCellValueFactory(new PropertyValueFactory<>("idActivity"));
+        TableColumn<Reservation2, String> customerColumn = new TableColumn<>("Customer");
         customerColumn.setMinWidth(100);
         customerColumn.setCellValueFactory(new PropertyValueFactory<>("customerName"));
-        //activityColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        TableColumn<Activity, String> nrOfPeopleColumn = new TableColumn<>("No of ppl");
+        TableColumn<Reservation2, String> phoneColumn = new TableColumn<>("Phone");
+        phoneColumn.setMinWidth(100);
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("customerMobilePhone"));
+        // activityColumn.setCellValueFactory(new PropertyValueFactory<>("cName"));
+        TableColumn<Reservation2, String> nrOfPeopleColumn = new TableColumn<>("No of ppl");
         nrOfPeopleColumn.setMinWidth(20);
-        nrOfPeopleColumn.setCellValueFactory(new PropertyValueFactory<>("nrOfPeople"));
+        nrOfPeopleColumn.setCellValueFactory(new PropertyValueFactory<>("numberOfPeople"));
+        TableColumn<ActivitiesInReservation, String> time = new TableColumn<>("No of ppl");
+        nrOfPeopleColumn.setMinWidth(20);
+        nrOfPeopleColumn.setCellValueFactory(new PropertyValueFactory<>("numberOfPeople"));
         activityTableView = new TableView<>();
-        activityTableView.setItems(getActivity());
+
+        activityTableView.setItems(getReservationsList());
+
         activityTableView.getColumns().add(timeColumn);
         activityTableView.getColumns().add(activityColumn);
         activityTableView.getColumns().add(customerColumn);
         activityTableView.getColumns().add(nrOfPeopleColumn);
+        activityTableView.getColumns().add(phoneColumn);
 
         activityTableView.setRowFactory(activityTableView-> {
-            TableRow<Activity>row = new TableRow<Activity>();
+            TableRow<Reservation2> row = new TableRow<Reservation2>();
             row.setOnMouseClicked(event -> {if (event.getClickCount() ==1&&(! row.isEmpty())){
                 editLabel.setText("EDIT: ");
-                Activity rowData = row.getItem();
+                Reservation2 rowData = row.getItem();
                 System.out.println(rowData);
-                date.setText(rowData.getName());
-                customerName.setText(String.valueOf(rowData.getName()));
-                phoneNumber.setText(String.valueOf(rowData.getPrice()));
-                commentArea.setText(rowData.getDescription());
+                date.setText(row.getText());
+                customerName.setText(String.valueOf(rowData.getCustomerName()));
+                phoneNumber.setText(String.valueOf(rowData.getCustomerMobilePhone()));
+                numberOfPeople.setText(String.valueOf(rowData.getNumberOfPeople()));
+                commentArea.setText(rowData.getComment());
 
 
-                intID = rowData.getIdActivity(); // change to resID and new table
+                resId = rowData.getIdReservation();
             }
             });
             return row;
@@ -251,8 +261,8 @@ public class ReservationScene {
         iv2.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                CalendarTable calendarTable= new CalendarTable();
-                calendarTable.start();
+               CalendarTable calendarTable= new CalendarTable();
+               calendarTable.start();
                 primaryStage.close();
 
                 //iv2.setImage(null);
@@ -262,7 +272,7 @@ public class ReservationScene {
         deleteButton2 = new Button("Delete");
         deleteButton2.setOnAction(event ->{
                     modelClass.deleteDBReservation(resId);
-                    activityTableView.setItems(getActivity());
+                    //activityTableView.setItems(getActivity());
                     clearTextFieldsReservation();
                 }
         );
@@ -356,7 +366,7 @@ public class ReservationScene {
                 System.out.println("Calendar opens");
             }
         });
-        System.out.println(activities.get(0).getName());
+        //System.out.println(activities.get(0).getName());
         saveButton.setOnAction(event -> {
             if (validate()) {
                 String date = getDate();
@@ -366,22 +376,17 @@ public class ReservationScene {
                 int phone = getPhoneNumber();
                 int nrPeople = getNrOfPeople();
                 String comment = getCommentArea();
-                int time = 11;
-                int idOfInstructor = 0;
-                for (Instructor a : instructorList) {
-                    if (a.getName().equals(instructor)) {
-                        idOfInstructor = a.getIdInstructor();
+                //int time = 11;
+                int idOfInstructor=0;
+                for (Instructor a : instructorList)
+                {
+                    if(a.getName().equals(instructor)){
+                        idOfInstructor=a.getIdInstructor();
                     }
                 }
                 ModelClass modelClass = new ModelClass();
-                if (editLabel.getText().equals("EDIT: ")) {
-                    modelClass.writeToDBReservation(activitiesInReservationArrayList, idOfInstructor, getDate(), getCustomerName(), String.valueOf(getPhoneNumber()), getNrOfPeople(), String.valueOf(getCommentArea()));
-                } else if (editLabel.getText().equals("NEW: ")) {
-                    modelClass.updateDBReservation(activitiesInReservationArrayList, idOfInstructor, resId, getDate(), getCustomerName(), String.valueOf(getPhoneNumber()), getNrOfPeople(), String.valueOf(getCommentArea()));
-                }
+                modelClass.writeToDBReservation(activitiesInReservationArrayList, idOfInstructor, getDate(), getCustomerName(), String.valueOf(getPhoneNumber()), getNrOfPeople(), String.valueOf(getCommentArea()));
                 System.out.println("Hi............");
-
-
 
                 display(primaryStage);
                 primaryStage.setScene(window.getScene());
@@ -437,12 +442,43 @@ public class ReservationScene {
         list = modelClass.getDBactivities();
         for (Activity a: list)
         {
-            activities.add(a);
+            //activities.add(a);
             activities2.add(a);
             System.out.println(a.toString());
         }
         return activities2;
     }
+
+    public ObservableList<Reservation2> getReservationsList(){
+        //ModelClass modelClass = new ModelClass();
+        List<Reservation2> list = modelClass.getDBReservations();
+
+        ObservableList<Reservation2> reservationObservableList = FXCollections.observableArrayList(list);
+
+
+        for (Reservation2 r: list)
+        {
+            //activities.add(r);
+            reservationObservableList.add(r);
+            System.out.println(r.toString());
+        }
+        return reservationObservableList;
+    }
+
+    public ObservableList<ActivitiesInReservation> getActivitiesInReservation(){
+        //ModelClass modelClass = new ModelClass();
+        List<ActivitiesInReservation> list = new ArrayList<>();
+        ObservableList<ActivitiesInReservation> activities2 = FXCollections.observableArrayList();
+        list = modelClass.getDBActivitiesInReservation(0);
+        for (ActivitiesInReservation a: list)
+        {
+            //activities.add(a);
+            activities2.add(a);
+            System.out.println(a.toString());
+        }
+        return activities2;
+    }
+
 
     public void clearTextFieldsReservation()
     {
