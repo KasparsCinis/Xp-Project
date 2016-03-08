@@ -326,13 +326,13 @@ public class ReservationScene {
         instructors.setPrefSize(187,100);
         activitiesAndTime.setPrefSize(187,100);
         commentArea.setPrefSize(187,100);
-        dateLabel.setPrefHeight(115);
-        instructorLabel.setTranslateY(-35);
-        actAndTimeLabel.setTranslateY(-25);
-        cNameLabel.setTranslateY(55);
-        phoneLabel.setTranslateY(65);
-        nrOfPeopleLabel.setTranslateY(75);
-        commentLabel.setTranslateY(85);
+        dateLabel.setPrefHeight(65);
+        instructorLabel.setTranslateY(-13);
+        actAndTimeLabel.setTranslateY(-3);
+        cNameLabel.setTranslateY(80);
+        phoneLabel.setTranslateY(90);
+        nrOfPeopleLabel.setTranslateY(100);
+        commentLabel.setTranslateY(110);
         VBox labelVbox = new VBox(dateLabel,instructorLabel,actAndTimeLabel,cNameLabel,phoneLabel,nrOfPeopleLabel,commentLabel);
         VBox textfieldsVbox = new VBox(editLabel, date,instructors, activitiesAndTime, customerName, phoneNumber, numberOfPeople,commentArea, vBox); ////////*******
 

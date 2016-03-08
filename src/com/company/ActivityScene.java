@@ -208,11 +208,12 @@ public class ActivityScene {
         Label instructorLabel = new Label("Instructor name: ");
         Label priceLabel = new Label("Price: ");
         Label ageLimitLabel = new Label("Age Limit: ");
-        nameLabel.setPrefHeight(115);
+        nameLabel.setPrefHeight(55);
         descriptionLabel.setTranslateY(1);
         ageLimitLabel.setTranslateY(65);
-        instructorLabel.setTranslateY(40);
-        priceLabel.setTranslateY(70);
+        instructorLabel.setTranslateY(80);
+        ageLimitLabel.setTranslateY(105);
+        priceLabel.setTranslateY(113);
         VBox labelVbox = new VBox(nameLabel,descriptionLabel,instructorLabel, ageLimitLabel,priceLabel);
         VBox textfieldsVbox = new VBox(edit,nameTextField, descriptionArea,instructorArea, ageLimitTextfield, priceTextField,vBox);
 
