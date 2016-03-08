@@ -305,6 +305,7 @@ public class ActivityScene {
         layout.setRight(labelandtextField);
         Scene scene = new Scene(layout, 800, 600);
         window.setScene(scene);
+        scene.getStylesheets().add("com/company/style.css");
         homeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -337,4 +338,5 @@ public class ActivityScene {
         priceTextField.clear();
         ageLimitTextfield.clear();
     }
+
 }

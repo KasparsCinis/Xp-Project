@@ -103,6 +103,7 @@ public class KioskScene  {
             int positionY = buttonCounter / 3;
             int positionX = buttonCounter - positionY * 3;
             Button button = new Button(k.getName());
+            button.setId("kioskItemButtons");
             buttonList.add(button);
             button.setMinHeight(55);
             button.setMinWidth(100);
@@ -172,6 +173,7 @@ public class KioskScene  {
 
         Scene scene = new Scene(layout, 800, 600);
         primaryStage.setTitle("Kiosk");
+        scene.getStylesheets().add("com/company/style.css");
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -255,14 +257,17 @@ public class KioskScene  {
             b.setDisable(true);
         }
         rightGrid.getChildren().clear();
-        rightGrid.add(new Label("Name                           "), 0, 0);
-        rightGrid.add(new Label("Amount         "), 1, 0);
+        Label paymentLabel = new Label("Payment successfull!");
+        paymentLabel.setId("kioskPaymentLabel");
+        rightGrid.add(paymentLabel, 0, 0);
+        rightGrid.add(new Label("Name                           "), 0, 1);
+        rightGrid.add(new Label("Amount         "), 1, 1);
         //rightGrid.add(new Label("       "), 1, 0);
-        rightGrid.add(new Label("Price       "), 2, 0);
-        rightGrid.add(new Label("   "), 3, 0);
-        rightGrid.add(new Label("                                  "), 4, 0);
+        rightGrid.add(new Label("Price       "), 2, 1);
+        rightGrid.add(new Label("   "), 3, 1);
+        rightGrid.add(new Label("                                  "), 4, 1);
 
-        int lineY = 1;
+        int lineY = 2;
         for (SoldItems s : itemList)
         {
             rightGrid.add(new Label(s.getName()), 0, lineY);

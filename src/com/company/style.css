@@ -31,7 +31,11 @@
 .date-picker .text-field {
     -fx-font: 15px "Arial";
 }
-
+.label
+{
+    -fx-font-family: "Arial Black", Gadget, sans-serif;
+    -fx-font-size: 9pt;
+}
 
 
 #manageBtnStyle
@@ -60,6 +64,17 @@
 
 
  }
+#kioskItemButtons
+{
+    -fx-font-family: "Arial Black", Gadget, sans-serif;
+    -fx-font-size: 9pt;
+}
+
+#kioskPaymentLabel
+{
+    -fx-font-family: "Arial Black", Gadget, sans-serif;
+    -fx-font-size: 12pt;
+}
 
 
 
