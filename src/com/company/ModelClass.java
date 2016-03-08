@@ -2,6 +2,7 @@ package com.company;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Dom on 2016-02-25.
@@ -99,9 +100,9 @@ public class ModelClass {
 
     }
 
-    public ArrayList<Instructor> getDBInstructors()
+    public List<Instructor> getDBInstructors()
     {
-        ArrayList<Instructor> list = new ArrayList<>();
+        List<Instructor> list = new ArrayList<>();
         try {
             String sql = "SELECT * FROM instructor";
 
@@ -217,7 +218,7 @@ public class ModelClass {
         return reserv;
     }
 
-    public ArrayList<ActivitiesInReservation> getDBActivitiesInReservation(int reservationID)
+    public List<ActivitiesInReservation> getDBActivitiesInReservation(int reservationID)
     {
         ArrayList<ActivitiesInReservation> activitiesInReservations = new ArrayList<>();
 
@@ -299,7 +300,7 @@ public class ModelClass {
 
 
 
-    public ArrayList<Reservation2> getDBReservationsOnDay(String date)
+    public List<Reservation2> getDBReservationsOnDay(String date)
     {
         ArrayList<Reservation2> list = new ArrayList<>();
         try {
@@ -329,9 +330,9 @@ public class ModelClass {
         }
         return list;
     }
-    public ArrayList<Reservation2> getDBReservations()
+    public List<Reservation2> getDBReservations()
     {
-        ArrayList<Reservation2> list = new ArrayList<>();
+        List<Reservation2> list = new ArrayList<>();
         try {
             String sql = "SELECT * FROM reservations";
 

@@ -363,6 +363,9 @@ public class ReservationScene {
         date.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                CalendarTable calendarTable= new CalendarTable();
+                calendarTable.start();
+                //primaryStage.hide();
                 System.out.println("Calendar opens");
             }
         });

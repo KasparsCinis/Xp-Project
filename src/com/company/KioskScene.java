@@ -80,11 +80,13 @@ public class KioskScene  {
         //rightGrid.add(new Label("aspoldkaspdjfas"), 3, 0);
        // rightGrid.add(new Label("button+"), 45, 1);
        // rightGrid.setPadding(new Insets(0, 300, 0, 25));
-        rightGrid.setStyle("-fx-background-color:rgb(179, 226, 255);" +
+        rightGrid.setStyle("-fx-background-color:rgb(179,226,255);" +
                 "fx-border-color: blue;" +
                 "-fx-border-insets: 5;" +
                 "-fx-border-width: 3;" +
                 "-fx-border-style: solid;");
+        rightGrid.setMaxSize(350,500);
+        rightGrid.setMinSize(350,500);
 
         //grid.setGridLinesVisible(true);
 
@@ -110,6 +112,8 @@ public class KioskScene  {
             button.setMaxWidth(100);
             button.setOnAction(event -> {
                 //receiptList.add(new );
+                rightGrid.setMaxSize(350,500);
+                rightGrid.setMinSize(350,500);
                 boolean alreadyInTheList = false;
                 for (SoldItems s : itemList)
                 {

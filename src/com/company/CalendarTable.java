@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CalendarTable {
 
@@ -37,7 +38,7 @@ public class CalendarTable {
 
         Stage stage = new Stage();
         //Scene scene = new Scene();
-        stage.setTitle("Table View Sample");
+        stage.setTitle("Calendar");
         stage.setWidth(800);
         stage.setHeight(600);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -55,6 +56,7 @@ public class CalendarTable {
         Button backButton = new Button("Back");
         backButton.setOnAction(event1 -> {
             stage.close();
+
         });
         Button bookButton = new Button("Book");
         ArrayList<Integer> activityIdList = new ArrayList<>();
@@ -76,19 +78,13 @@ public class CalendarTable {
                             minH = reservation.getStartTime();
                         if (reservation.getStartTime() > maxH)
                             maxH = reservation.getStartTime();
-
-
                     }
-
-
                 }
                 if (minH != 23 && maxH != 0)
                     reservationsWithStartEnd.add(new ActivitiesInReservation(activityIdList.get(index), minH, maxH));
                 index++;
                 minH = 23;
                 maxH = 0;
-
-
             }
 
             /** Test */
@@ -224,7 +220,7 @@ public class CalendarTable {
     }
 
     private void updateOnStartButtons() {
-        ArrayList<ActivitiesInReservation> listOfActivitiesAndTimes= new ArrayList<ActivitiesInReservation>();
+        List<ActivitiesInReservation> listOfActivitiesAndTimes= new ArrayList<ActivitiesInReservation>();
             /*listOfActivitiesAndTimes.add(new ActivitiesInReservation(3, 10));
             listOfActivitiesAndTimes.add(new ActivitiesInReservation(5, 15));
             listOfActivitiesAndTimes.add(new ActivitiesInReservation(5, 12));*/
@@ -253,7 +249,7 @@ public class CalendarTable {
 
 
     private void updateButtons() {
-        ArrayList<ActivitiesInReservation> listOfActivitiesAndTimes= new ArrayList<ActivitiesInReservation>();
+        List<ActivitiesInReservation> listOfActivitiesAndTimes= new ArrayList<ActivitiesInReservation>();
             /*listOfActivitiesAndTimes.add(new ActivitiesInReservation(3, 10));
             listOfActivitiesAndTimes.add(new ActivitiesInReservation(5, 15));
             listOfActivitiesAndTimes.add(new ActivitiesInReservation(5, 12));*/
@@ -286,10 +282,10 @@ public class CalendarTable {
         }
     }
 
-    public ArrayList<ActivitiesInReservation> getStartEndIdFromReservations(String day){
+    public List<ActivitiesInReservation> getStartEndIdFromReservations(String day){
         ModelClass model= new ModelClass();
-        ArrayList<ActivitiesInReservation> returnList= new ArrayList<>();
-        ArrayList<Reservation2> startEndIdList= model.getDBReservationsOnDay(day);
+        List<ActivitiesInReservation> returnList= new ArrayList<>();
+        List<Reservation2> startEndIdList= model.getDBReservationsOnDay(day);
 
         for (Reservation2 r:startEndIdList){
             System.out.println(r.getIdActivity());
