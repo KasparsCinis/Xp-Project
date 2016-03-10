@@ -436,6 +436,22 @@ public class ModelClass {
             e.printStackTrace();
         }
     }
+
+    public void deleteActivityReserv(int ID)
+    {
+        String sql = "DELETE FROM activitiesInReservation WHERE idReservation  = ?";
+
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, ID);
+            int numberOfRows= preparedStatement.executeUpdate();
+            System.out.println("Completed delete. Number of rows affected:"+numberOfRows);
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public void deleteDBInstructor(int ID)
     {
         String sql = "DELETE FROM instructor WHERE idInstructor = ?";
