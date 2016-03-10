@@ -272,7 +272,16 @@ public class ReservationScene {
         deleteButton2 = new Button("Delete");
         deleteButton2.setOnAction(event ->{
                     modelClass.deleteDBReservation(resId);
+                    //modelClass.deleteDBActivity(intID);
+                    //activityTableView.setItems();
                     //activityTableView.setItems(getActivity());
+            notificationLabel.setText("Reservation successfully deleted");
+            notificationLabel.setTextFill(Color.web("green"));
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.millis(3000),
+                    ae ->   notificationLabel.setVisible(false)));
+            timeline.play();
+
                     clearTextFieldsReservation();
                 }
         );
