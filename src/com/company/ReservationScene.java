@@ -152,9 +152,9 @@ public class ReservationScene {
 
 
         window.setTitle("Adventure reservation");
-        TableColumn<Reservation2, String> timeColumn = new TableColumn<>("Time");
+        TableColumn<Reservation2, String> timeColumn = new TableColumn<>("Date");
         timeColumn.setMinWidth(50);
-        timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+        timeColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         TableColumn<Reservation2, String> activityColumn = new TableColumn<>("Activity");
         activityColumn.setMinWidth(100);
         activityColumn.setCellValueFactory(new PropertyValueFactory<>("idActivity"));
@@ -187,7 +187,7 @@ public class ReservationScene {
                 editLabel.setText("EDIT: ");
                 Reservation2 rowData = row.getItem();
                 System.out.println(rowData);
-                date.setText(row.getText());
+                date.setText(rowData.getDate());
                 customerName.setText(String.valueOf(rowData.getCustomerName()));
                 phoneNumber.setText(String.valueOf(rowData.getCustomerMobilePhone()));
                 numberOfPeople.setText(String.valueOf(rowData.getNumberOfPeople()));
