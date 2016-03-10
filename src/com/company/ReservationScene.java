@@ -211,6 +211,11 @@ public class ReservationScene {
         //instructorsList.addAll(modelClass.getDBInstructors().get(0).getName());
 
         instructors = new ComboBox(instructorsList);
+        instructorList= (ArrayList<Instructor>) modelClass.getDBInstructors();
+        for (Instructor a : instructorList)
+        {
+            instructorsList.addAll(a.getName());
+        }
         instructors.setPromptText("click for instructors");
 
 
@@ -506,6 +511,7 @@ public class ReservationScene {
         commentArea.clear();
     }
     public void refreshInstructors(){
+        instructorsList.clear();
         ArrayList<Integer> idsOfActivities= new ArrayList<>();
         for (ActivitiesInReservation kk: activitiesInReservationArrayList){
             idsOfActivities.add(kk.getIdActivity());
