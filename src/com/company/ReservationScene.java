@@ -280,6 +280,7 @@ public class ReservationScene {
                             Duration.millis(3000),
                             ae ->   notificationLabel.setVisible(false)));
                     timeline.play();
+
                 }
         );
 
@@ -394,8 +395,13 @@ public class ReservationScene {
                     }
                 }
                 ModelClass modelClass = new ModelClass();
-                modelClass.writeToDBReservation(activitiesInReservationArrayList, idOfInstructor, getDate(), getCustomerName(), String.valueOf(getPhoneNumber()), getNrOfPeople(), String.valueOf(getCommentArea()));
-                System.out.println("Hi............");
+                if (editLabel.getText().equals("NEW: "))
+                {
+                    modelClass.writeToDBReservation(activitiesInReservationArrayList, idOfInstructor, getDate(), getCustomerName(), String.valueOf(getPhoneNumber()), getNrOfPeople(), String.valueOf(getCommentArea()));
+                }else if (editLabel.getText().equals("EDIT: "))
+                {
+                    modelClass.updateDBReservation(activitiesInReservationArrayList, idOfInstructor, resId, getDate(), getCustomerName(), String.valueOf(getPhoneNumber()), getNrOfPeople(), String.valueOf(getCommentArea()));
+                }                System.out.println("Hi............");
 
                 display(primaryStage);
                 primaryStage.setScene(window.getScene());

@@ -32,6 +32,7 @@ public class CalendarTable {
     int index = 0;// for finding the starting and ending hour
     OpenDatePicker openDatePicker = new OpenDatePicker();
     ModelClass modelClass= new ModelClass();
+    ReservationScene reservationScene= new ReservationScene();
 
     public void start() {
 
@@ -55,7 +56,9 @@ public class CalendarTable {
         });
         Button backButton = new Button("Back");
         backButton.setOnAction(event1 -> {
-            stage.close();
+            reservationScene.display(stage);
+            stage.show();
+            stage.setScene(reservationScene.window.getScene());
 
         });
         Button bookButton = new Button("Book");
@@ -71,6 +74,7 @@ public class CalendarTable {
         bookButton.setOnAction(event1 -> {
             /*HashMap<Integer, ArrayList<Integer>> minMax= new HashMap<>();*/
             System.out.println("gowno");
+            reservationScene.editLabel.setText("NEW: ");
             while (index < activityIdList.size()) {
                 for (ActivitiesInReservation reservation : reservations) {
                     if (activityIdList.get(index) == reservation.getIdActivity()) {
@@ -88,7 +92,6 @@ public class CalendarTable {
             }
 
             /** Test */
-            ReservationScene reservationScene= new ReservationScene();
             reservationScene.display(stage);
 
             stage.show();
